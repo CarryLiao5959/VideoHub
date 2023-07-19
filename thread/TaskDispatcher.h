@@ -14,6 +14,9 @@ namespace yazi
         class TaskDispatcher : public Thread
         {
         public:
+            TaskDispatcher();
+            ~TaskDispatcher();
+
             void init(int threads);
             void assign(Task *task);
             void handle(Task *task);

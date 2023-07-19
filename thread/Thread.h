@@ -11,6 +11,7 @@ namespace yazi
     {
         class Thread
         {
+            friend class ThreadPool;
         public:
             Thread();
             virtual ~Thread();

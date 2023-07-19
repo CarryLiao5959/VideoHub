@@ -32,9 +32,16 @@ namespace yazi
             bool bind(const string &ip, int port);
             bool listen(int backlog);
             int accept();
+            bool connect(const string &ip, int port);
             bool close();
 
             bool set_non_blocking();
+            bool set_send_buffer(int size);
+            bool set_recv_buffer(int size);
+            bool set_linger(bool active, int seconds);
+            bool set_keep_alive();
+            bool set_reuse_addr();
+            bool set_reuse_port();
 
         protected:
             string m_ip;

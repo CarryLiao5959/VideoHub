@@ -48,6 +48,20 @@ int Socket::accept()
     return sockfd;
 }
 
+bool Socket::connect(const string &ip, int port)
+{
+    struct sockaddr_in sockaddr;
+    memset(&sockaddr, 0, sizeof(sockaddr));
+    sockaddr.sin_family = AF_INET;
+    sockaddr.sin_addr.s_addr = inet_addr(ip.c_str());
+    sockaddr.sin_port = htons(port);
+    if (::connect(m_sockfd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0)
+    {
+        return false;
+    }
+    return true;
+}
+
 bool Socket::close()
 {
     if (m_sockfd > 0)
@@ -67,6 +81,74 @@ bool Socket::set_non_blocking()
     }
     flags |= O_NONBLOCK;
     if (fcntl(m_sockfd, F_SETFL, flags) < 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Socket::set_send_buffer(int size)
+{
+    int buff_size = size;
+    if (setsockopt(m_sockfd, SOL_SOCKET, SO_SNDBUF, &buff_size, sizeof(buff_size)) < 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Socket::set_recv_buffer(int size)
+{
+    int buff_size = size;
+    if (setsockopt(m_sockfd, SOL_SOCKET, SO_RCVBUF, &buff_size, sizeof(buff_size)) < 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Socket::set_linger(bool active, int seconds)
+{
+    struct linger l;
+    memset(&l, 0, sizeof(l));
+
+    if (active)
+        l.l_onoff = 1;
+    else
+        l.l_onoff = 0;
+    l.l_linger = seconds;
+
+    if (setsockopt(m_sockfd, SOL_SOCKET, SO_LINGER, &l, sizeof(l)) < 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Socket::set_keep_alive()
+{
+    int flag = 1;
+    if (setsockopt(m_sockfd, SOL_SOCKET, SO_KEEPALIVE, &flag, sizeof(flag)) < 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Socket::set_reuse_addr()
+{
+    int flag = 1;
+    if (setsockopt(m_sockfd, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(flag)) < 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Socket::set_reuse_port()
+{
+    int flag = 1;
+    if (setsockopt(m_sockfd, SOL_SOCKET, SO_REUSEPORT, &flag, sizeof(flag)) < 0)
     {
         return false;
     }

@@ -5,6 +5,9 @@ using namespace yazi::util;
 
 using namespace yazi::thread;
 
+TaskDispatcher::TaskDispatcher() {}
+TaskDispatcher::~TaskDispatcher() {}
+
 void TaskDispatcher::init(int threads)
 {
     Singleton<ThreadPool>::instance()->create(threads);

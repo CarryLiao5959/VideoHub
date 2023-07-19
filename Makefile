@@ -15,11 +15,11 @@ INCLUDE = $(patsubst %,-I %, $(INCLUDE_TEMP))
 $(warning INCLUDE is ${INCLUDE})
 
 # 编译选项
-CFLAGS = -g -O2 -Wall -Werror -Wno-unused -ldl -fPIC
+CFLAGS = -g -O2 -Wall -Werror -Wno-unused -fPIC
 $(warning CFLAGS is ${CFLAGS})
 
 # 链接选项
-LDFLAG = -lpthread -std=c++11
+LDFLAG = -lpthread -std=c++11 -ldl
 
 # 主程序
 SRC_MAIN = main.cpp
@@ -28,7 +28,7 @@ EXE_MAIN = main
 
 target: ${EXE_MAIN}
 $(EXE_MAIN): $(OBJ_MAIN) $(OBJS)
-	$(CC) -o $@ $^ $(CFLAGS) $(INCLUDE) $(LDFLAG)
+	$(CC) -o $@ $^ $(LDFLAG) $(CFLAGS) $(INCLUDE)
 
 %.o: %.cpp
 	${CC} ${CFLAGS} ${INCLUDE} -c $< -o $@

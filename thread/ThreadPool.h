@@ -17,10 +17,17 @@ namespace yazi
             ThreadPool();
             ~ThreadPool();
 
-            int get_idle_thread_numbers();
-            void move_to_idle_list(Thread *thread);
-            void assign(Task *task);
             void create(int threads);
+
+            Thread *get_idle_thread();
+
+            void move_to_idle_list(Thread *thread);
+            void move_to_busy_list(Thread *thread);
+
+            int get_idle_thread_numbers();
+            int get_busy_thread_numbers();
+
+            void assign(Task *task);
 
         private:
             int m_threads;
