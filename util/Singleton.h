@@ -2,6 +2,7 @@
 
 namespace yazi {
 namespace util {
+
 template <typename T> class Singleton {
   public:
     static T *instance() {
@@ -22,5 +23,6 @@ template <typename T> class Singleton {
 };
 
 template <typename T> T *Singleton<T>::m_instance = nullptr;
+
 } // namespace util
 } // namespace yazi

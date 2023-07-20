@@ -1,11 +1,7 @@
-#include "server/Server.h"
-#include "util/IniFile.h"
-#include "util/Logger.h"
-#include "util/Singleton.h"
-#include "util/System.h"
+#include "System.h"
+#include "Singleton.h"
 
 using namespace yazi::util;
-using namespace yazi::server;
 
 int main() {
     System *sys = Singleton<System>::instance();
