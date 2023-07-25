@@ -1,6 +1,7 @@
 #include "WorkerThread.h"
 
 #include "Singleton.h"
+#include "Logger.h"
 using namespace yazi::util;
 
 #include "Task.h"
@@ -8,7 +9,10 @@ using namespace yazi::util;
 using namespace yazi::thread;
 
 WorkerThread::WorkerThread() : Thread()
-{
+{   
+}
+
+WorkerThread::WorkerThread(int tid) : Thread(tid) {
 }
 
 WorkerThread::~WorkerThread()

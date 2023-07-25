@@ -14,6 +14,7 @@ namespace yazi
         {
         public:
             WorkerThread();
+            WorkerThread(int tid);
             virtual ~WorkerThread();
 
             virtual void run();

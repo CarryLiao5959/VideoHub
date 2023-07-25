@@ -9,6 +9,7 @@
 #include <string>
 #include <sys/types.h>
 #include <unistd.h>
+#include <iostream>
 using namespace yazi::util;
 using namespace yazi::server;
 using namespace std;
@@ -22,21 +23,20 @@ class System {
     System() {}
     ~System() {}
     void init() {
-        m_root_path = get_root_path();
-
+        get_root_path();
         Logger::instance()->open(m_root_path + "/log/main.log");
-        info("init logger");
+
+        debug("open log/main.log");
 
         IniFile *ini = Singleton<IniFile>::instance();
-        ini->load(get_root_path() + "/config/main.ini");
-        info("init inifile");
+        ini->load(m_root_path + "/config/main.ini");
+        debug("load config/main.ini");
 
-        const string &ip = (*ini)["server"]["ip"];
+        const string ip = (*ini)["server"]["ip"];
         int port = (*ini)["server"]["port"];
         int threads = (*ini)["server"]["threads"];
         int max_conn = (*ini)["server"]["max_conn"];
         int wait_time = (*ini)["server"]["wait_time"];
-        (*ini).show();
 
         Server *server = Singleton<Server>::instance();
         server->set_threads(threads);
@@ -46,16 +46,15 @@ class System {
         server->start();
     }
 
-    string get_root_path() {
+    void get_root_path() {
         if (m_root_path != "") {
-            return m_root_path;
+            return;
         }
         char path[1024];
         memset(path, 0, 1024);
         int cnt = readlink("/proc/self/exe", path, 1024);
-        debug("[Running Proc] %s", path);
         if (cnt < 0 || cnt >= 1024) {
-            return "";
+            return;
         }
         for (int i = cnt; i >= 0; --i) {
             if (path[i] == '/') {
@@ -63,7 +62,7 @@ class System {
                 break;
             }
         }
-        return string(path);
+        m_root_path = path;
     }
 };
 } // namespace util

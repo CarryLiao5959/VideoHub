@@ -1,4 +1,52 @@
-2023-07-17 21:08:07 INFO util/System.cpp: 19 init logger
-2023-07-17 21:08:07 INFO util/System.cpp: 23 init inifile
-2023-07-19 19:07:06 INFO ./util/System.h: 28 init logger
-2023-07-19 19:07:06 INFO ./util/System.h: 32 init inifile
+2023-07-21 17:46:17 DEBUG ./util/System.h: 29 open log/main.log
+2023-07-21 17:46:17 DEBUG ./util/System.h: 33 load config/main.ini
+2023-07-21 17:46:17 DEBUG server/Server.cpp: 54 set_threads: 16
+2023-07-21 17:46:17 DEBUG server/Server.cpp: 59 set_connects: 16
+2023-07-21 17:46:17 DEBUG server/Server.cpp: 64 set_wait_time: 10
+2023-07-21 17:46:17 DEBUG server/Server.cpp: 23 listen: 127.0.0.1:8080
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 9 Thread created, tid is 0
+2023-07-21 17:46:17 DEBUG thread/TaskDispatcher.cpp: 13 init TaskDispatcher
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 1
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 1
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 2
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 2
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 3
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 3
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 4
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 4
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 5
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 5
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 6
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 6
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 7
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 7
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 8
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 8
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 9
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 9
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 10
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 10
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 11
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 11
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 12
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 12
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 13
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 13
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 14
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 14
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 15
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 15
+2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 16
+2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 16
+2023-07-21 17:46:17 DEBUG socket/ServerSocket.h: 21 new ServerSocket sockfd: 4
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 5
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 6
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 7
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 8
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 9
+2023-07-21 17:46:17 DEBUG socket/EventPoller.cpp: 59 add event to epoll socket 4
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 10
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 11
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 12
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 14
+2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 15

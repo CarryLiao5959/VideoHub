@@ -1,5 +1,6 @@
 #include "SocketHandler.h"
-
+#include "Logger.h"
+using namespace yazi::util;
 using namespace yazi::socket;
 
 SocketHandler::SocketHandler() {}
@@ -28,14 +29,15 @@ void SocketHandler::handle(int max_connects, int wait_time)
             // a new client try to connect -> server
             if (m_server == static_cast<Socket *>(m_epoll->m_events[i].data.ptr))
             {
-                int soctfd = m_server->accept();
+                int sockfd = m_server->accept();
                 // 1 connect <-> 1 socket
-                Socket *socket = m_sockpool.allocate();
+                Socket *socket = m_sockpool.get();
                 if (socket == nullptr)
                 {
+                    warn("no socket available in socketpool");
                     break;
                 }
-                socket->m_sockfd = soctfd;
+                socket->m_sockfd = sockfd;
                 socket->set_non_blocking();
                 attach(socket);
             }
@@ -79,5 +81,5 @@ void SocketHandler::detach(Socket *socket)
 void SocketHandler::remove(Socket *socket)
 {
     socket->close();
-    m_sockpool.release(socket);
+    m_sockpool.put(socket);
 }

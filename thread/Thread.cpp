@@ -1,9 +1,16 @@
 #include "Thread.h"
 #include "AutoLock.h"
 using namespace yazi::thread;
+#include "Logger.h"
+using namespace yazi::util;
 
 Thread::Thread() : m_tid(0), m_task(NULL)
 {
+    debug("Thread created, tid is %d", m_tid);
+}
+
+Thread::Thread(int tid) : m_tid(tid), m_task(NULL) {
+    debug("Thread created, tid is %d", m_tid);
 }
 
 Thread::~Thread()

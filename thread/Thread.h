@@ -14,7 +14,8 @@ namespace yazi
             friend class ThreadPool;
         public:
             Thread();
-            virtual ~Thread();
+            Thread(int tid);
+            ~Thread();
 
             virtual void run() = 0;
 

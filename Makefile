@@ -28,7 +28,7 @@ SRC_MAIN = main.cpp
 OBJ_MAIN = ${SRC_MAIN:%.cpp=%.o}
 EXE_MAIN = main
 
-target: ${EXE_MAIN}
+target: clean ${EXE_MAIN}
 $(EXE_MAIN): $(OBJ_MAIN) $(OBJS)
 	$(CC) -o $@ $^ $(LDFLAG) $(CFLAGS) $(INCLUDE)
 

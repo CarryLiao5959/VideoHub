@@ -87,9 +87,10 @@ void ThreadPool::create(int threads)
 {
     AutoLock lock(&m_mutex_idle);
     m_threads = threads;
-    for (int i = 0; i < threads; i++)
+    for (int i = 1; i <= threads; i++)
     {
-        Thread *thread = new WorkerThread();
+        Thread *thread = new WorkerThread(i);
+        debug("WorkerThread created %d",i);
         m_list_idle.insert(thread);
         thread->start();
     }

@@ -1,4 +1,6 @@
 #include "Socket.h"
+#include "Logger.h"
+using namespace yazi::util;
 
 using namespace yazi::socket;
 
@@ -57,6 +59,7 @@ bool Socket::connect(const string &ip, int port)
     sockaddr.sin_port = htons(port);
     if (::connect(m_sockfd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0)
     {
+        debug("connect failed");
         return false;
     }
     return true;

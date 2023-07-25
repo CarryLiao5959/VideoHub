@@ -1,6 +1,7 @@
 #include "EventPoller.h"
-
+#include "Logger.h"
 using namespace yazi::socket;
+using namespace yazi::util;
 
 EventPoller::EventPoller(bool et) : m_epfd(0), m_max_connections(0), m_events(nullptr), m_et(et)
 {
@@ -55,11 +56,13 @@ void EventPoller::create(int max_connections)
 void EventPoller::add(int fd, void *ptr, __uint32_t events)
 {
     ctrl(fd, ptr, events, EPOLL_CTL_ADD);
+    debug("add event to epoll socket %d", fd);
 }
 
 void EventPoller::del(int fd, void *ptr, __uint32_t events)
 {
     ctrl(fd, ptr, events, EPOLL_CTL_DEL);
+    debug("delete event from epoll socket %d", fd);
 }
 
 int EventPoller::wait(int millsecond)

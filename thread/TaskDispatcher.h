@@ -19,7 +19,6 @@ namespace yazi
 
             void init(int threads);
             void assign(Task *task);
-            void handle(Task *task);
             virtual void run();
 
         protected:

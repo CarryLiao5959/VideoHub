@@ -1,10 +1,9 @@
 #pragma once
-
 #include <fstream>
 #include <string>
-
+#include "Mutex.h"
+using namespace yazi::thread;
 using namespace std;
-
 namespace yazi {
 namespace util {
 
@@ -40,6 +39,7 @@ class Logger {
     int m_len;
     static const char *s_level[LEVEL_COUNT];
     static Logger *m_instance;
+    Mutex m_mutex;
 };
 
 #define debug(format, ...)                                                     \
