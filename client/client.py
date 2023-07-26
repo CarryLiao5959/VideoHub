@@ -2,15 +2,6 @@ import socket
 import struct
 
 
-def send_data(client, data):
-    cmd = 1
-    data_len = len(data)
-    data = struct.pack(f'8sII{data_len}s', b'work', cmd, data_len, data.encode('utf-8'))
-    client.send(data)  # 发送TCP数据
-    info = client.recv(1024).decode()
-    print(info)
-
-
 if __name__ == '__main__':
 
     host = '127.0.0.1'
@@ -25,7 +16,6 @@ if __name__ == '__main__':
     else:
         print("Connection success!")
 
-    # send_data(client, 'hello')
     message = 'hello'
     data = message.encode()
     sent_bytes = client.send(data)
