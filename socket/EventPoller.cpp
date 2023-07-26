@@ -56,13 +56,13 @@ void EventPoller::create(int max_connections)
 void EventPoller::add(int fd, void *ptr, __uint32_t events)
 {
     ctrl(fd, ptr, events, EPOLL_CTL_ADD);
-    debug("add event to epoll socket %d", fd);
+    debug("add event to epoll sockfd: %d", fd);
 }
 
 void EventPoller::del(int fd, void *ptr, __uint32_t events)
 {
     ctrl(fd, ptr, events, EPOLL_CTL_DEL);
-    debug("delete event from epoll socket %d", fd);
+    debug("delete event from epoll sockfd: %d", fd);
 }
 
 int EventPoller::wait(int millsecond)

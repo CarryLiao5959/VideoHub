@@ -10,11 +10,15 @@ class Task {
     Task(void *data);
     virtual ~Task();
 
-    void run();
-    void destroy();
+    void *get_data();
+    void set_data(void *data);
+
+    virtual void run() = 0;
+    virtual void destroy() = 0;
 
   protected:
     void *m_data;
+    Mutex m_mutex;
 };
 } // namespace thread
 } // namespace yazi

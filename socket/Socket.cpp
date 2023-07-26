@@ -37,6 +37,7 @@ bool Socket::listen(int backlog)
         printf("socket listen error: errno=%d errstr=%s", errno, strerror(errno));
         return false;
     }
+    debug("sockfd %d listen: %s:%d",m_sockfd,m_ip.c_str(),m_port);
     return true;
 }
 
@@ -47,6 +48,7 @@ int Socket::accept()
     {
         sockfd = -1;
     }
+    debug("accept success sockfd: %d", sockfd);
     return sockfd;
 }
 
@@ -63,6 +65,14 @@ bool Socket::connect(const string &ip, int port)
         return false;
     }
     return true;
+}
+
+int Socket::recv(char *buf, int len) {
+    return ::recv(m_sockfd, buf, len, 0);
+}
+
+int Socket::send(const char *buf, int len) {
+    return ::send(m_sockfd, buf, len, 0);
 }
 
 bool Socket::close()

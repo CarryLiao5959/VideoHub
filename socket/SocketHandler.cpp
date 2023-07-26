@@ -22,8 +22,10 @@ void SocketHandler::handle(int max_connects, int wait_time)
         int num = m_epoll->wait(wait_time);
         if (num == 0)
         {
+            // debug("epoll wait: find no events");
             continue;
         }
+        debug("epoll wait: find %d events", num);
         for (int i = 0; i < num; i++)
         {
             // a new client try to connect -> server
@@ -40,23 +42,24 @@ void SocketHandler::handle(int max_connects, int wait_time)
                 socket->m_sockfd = sockfd;
                 socket->set_non_blocking();
                 attach(socket);
-            }
-            else
-            {
+            }else{
                 // handle client event
                 Socket *socket = static_cast<Socket *>(m_epoll->m_events[i].data.ptr);
                 if (m_epoll->m_events[i].events & EPOLLHUP)
                 {
+                    debug("EPOLLHUP");
                     detach(socket);
                     remove(socket);
                 }
                 else if (m_epoll->m_events[i].events & EPOLLERR)
                 {
+                    debug("EPOLLERR");
                     detach(socket);
                     remove(socket);
                 }
                 else if (m_epoll->m_events[i].events & EPOLLIN)
                 {
+                    debug("EPOLLIN");
                     detach(socket);
                     Task * task = TaskFactory::create(socket);
                     Singleton<TaskDispatcher>::instance()->assign(task);

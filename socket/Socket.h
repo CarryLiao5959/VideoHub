@@ -30,6 +30,8 @@ class Socket {
     bool listen(int backlog);
     int accept();
     bool connect(const string &ip, int port);
+    int recv(char *buf, int len);
+    int send(const char *buf, int len);
     bool close();
 
     bool set_non_blocking();

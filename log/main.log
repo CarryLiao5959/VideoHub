@@ -1,52 +1,268 @@
-2023-07-21 17:46:17 DEBUG ./util/System.h: 29 open log/main.log
-2023-07-21 17:46:17 DEBUG ./util/System.h: 33 load config/main.ini
-2023-07-21 17:46:17 DEBUG server/Server.cpp: 54 set_threads: 16
-2023-07-21 17:46:17 DEBUG server/Server.cpp: 59 set_connects: 16
-2023-07-21 17:46:17 DEBUG server/Server.cpp: 64 set_wait_time: 10
-2023-07-21 17:46:17 DEBUG server/Server.cpp: 23 listen: 127.0.0.1:8080
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 9 Thread created, tid is 0
-2023-07-21 17:46:17 DEBUG thread/TaskDispatcher.cpp: 13 init TaskDispatcher
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 1
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 1
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 2
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 2
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 3
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 3
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 4
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 4
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 5
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 5
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 6
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 6
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 7
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 7
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 8
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 8
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 9
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 9
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 10
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 10
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 11
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 11
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 12
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 12
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 13
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 13
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 14
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 14
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 15
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 15
-2023-07-21 17:46:17 DEBUG thread/Thread.cpp: 13 Thread created, tid is 16
-2023-07-21 17:46:17 DEBUG thread/ThreadPool.cpp: 93 WorkerThread created 16
-2023-07-21 17:46:17 DEBUG socket/ServerSocket.h: 21 new ServerSocket sockfd: 4
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 5
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 6
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 7
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 8
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 9
-2023-07-21 17:46:17 DEBUG socket/EventPoller.cpp: 59 add event to epoll socket 4
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 10
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 11
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 12
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 14
-2023-07-21 17:46:17 DEBUG ./socket/ClientSocket.h: 19 new ClientSocket sockfd: 15
+2023-07-26 19:13:15 DEBUG ./util/System.h: 29 open log/main.log
+2023-07-26 19:13:15 DEBUG ./util/System.h: 33 load config/main.ini
+2023-07-26 19:13:15 DEBUG server/Server.cpp: 38 set_threads: 16
+2023-07-26 19:13:15 DEBUG server/Server.cpp: 43 set_connects: 16
+2023-07-26 19:13:15 DEBUG server/Server.cpp: 48 set_wait_time: 10
+2023-07-26 19:13:15 DEBUG server/Server.cpp: 21 listen: 127.0.0.1:8080
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 9 Thread created, tid is 0
+2023-07-26 19:13:15 DEBUG thread/TaskDispatcher.cpp: 13 init TaskDispatcher
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 1
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 1
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 2
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 2
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 3
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 3
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 4
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 4
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 5
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 5
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 6
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 6
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 7
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 7
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 8
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 8
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 9
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 9
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 10
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 10
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 11
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 11
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 12
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 12
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 13
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 13
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 14
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 14
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 15
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 15
+2023-07-26 19:13:15 DEBUG thread/Thread.cpp: 13 Thread created, tid is 16
+2023-07-26 19:13:15 DEBUG thread/ThreadPool.h: 26 WorkerThread created 16
+2023-07-26 19:13:15 DEBUG socket/ServerSocket.h: 21 new ServerSocket sockfd: 4
+2023-07-26 19:13:15 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:15 DEBUG socket/Socket.cpp: 40 sockfd 4 listen: 127.0.0.1:8080
+2023-07-26 19:13:15 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 4
+2023-07-26 19:13:17 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:17 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:13:17 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:17 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:17 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:17 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:17 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:17 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:17 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:17 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:17 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:17 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:13:17 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:17 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:17 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:17 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:17 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:17 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:17 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:17 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:17 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:17 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:17 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:13:17 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:17 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:17 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:17 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:13:17 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:29 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:29 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:13:29 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:29 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:29 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:29 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:29 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:29 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:29 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:29 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:29 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:29 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:13:29 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:29 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:29 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:29 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:29 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:29 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:29 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:29 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:29 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:29 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:29 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:13:29 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:29 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:29 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:29 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:13:29 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:33 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:33 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:13:33 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:33 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:33 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:33 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:33 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:33 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:33 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:33 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:33 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:33 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:13:33 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:33 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:33 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:33 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:33 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:33 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:33 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:33 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:33 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:33 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:33 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:13:33 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:33 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:33 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:33 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:13:33 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:34 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:34 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:13:34 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:34 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:34 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:34 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:34 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:34 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:34 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:34 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:34 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:34 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:13:34 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:34 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:34 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:34 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:34 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:34 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:34 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:34 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:34 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:34 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:34 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:13:34 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:34 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:34 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:13:34 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:34 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:35 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:35 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:13:35 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:35 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:35 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:35 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:35 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:35 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:35 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:35 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:35 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:35 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:13:35 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:35 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:35 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:35 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:35 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:35 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:35 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:35 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:35 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:35 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:35 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:13:35 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:35 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:35 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:35 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:13:35 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:36 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:36 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:13:36 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:36 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:36 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:36 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:36 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:36 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:36 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:36 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:36 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:36 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:13:36 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:36 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:36 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:36 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:36 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:36 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:36 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:36 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:36 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:36 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:36 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:13:36 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:36 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:36 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:13:36 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:36 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:45 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:45 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:13:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:45 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:45 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:45 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:45 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:45 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:13:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:45 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:45 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:45 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:13:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:13:45 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:13:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:13:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:13:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:13:45 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:13:45 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:13:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:13:45 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:13:45 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:13:45 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:13:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:14:03 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:14:03 DEBUG socket/Socket.cpp: 51 accept success sockfd: 6
+2023-07-26 19:14:03 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:14:03 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:14:03 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:14:03 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:14:03 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:14:03 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:14:03 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:14:03 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:14:03 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:14:03 INFO task/WorkTask.cpp: 40 recv len: 5, msg data: hello
+2023-07-26 19:14:03 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:14:03 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:14:03 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:14:03 DEBUG socket/SocketHandler.cpp: 62 EPOLLIN
+2023-07-26 19:14:03 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-07-26 19:14:03 DEBUG task/WorkTask.cpp: 16 new WorkTask sockfd: 6
+2023-07-26 19:14:03 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-07-26 19:14:03 INFO thread/ThreadPool.cpp: 68 task is given to thread -904120576
+2023-07-26 19:14:03 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-07-26 19:14:03 DEBUG task/WorkTask.cpp: 22 WorkTask running
+2023-07-26 19:14:03 INFO task/WorkTask.cpp: 40 recv len: 0, msg data: 
+2023-07-26 19:14:03 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-07-26 19:14:03 DEBUG task/WorkTask.cpp: 48 work job destory
+2023-07-26 19:14:03 DEBUG socket/SocketHandler.cpp: 28 epoll wait: find 1 events
+2023-07-26 19:14:03 DEBUG socket/SocketHandler.cpp: 50 EPOLLHUP
+2023-07-26 19:14:03 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6

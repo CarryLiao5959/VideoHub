@@ -1,16 +1,7 @@
 #include "ThreadPool.h"
-#include "WorkerThread.h"
 #include "Logger.h"
 using namespace yazi::util;
 using namespace yazi::thread;
-
-ThreadPool::ThreadPool() : m_threads(0)
-{
-}
-
-ThreadPool::~ThreadPool()
-{
-}
 
 Thread *ThreadPool::get_idle_thread()
 {
@@ -38,7 +29,7 @@ void ThreadPool::move_to_idle_list(Thread *thread)
 void ThreadPool::move_to_busy_list(Thread *thread)
 {
     m_mutex_busy.lock();
-    while (m_list_busy.size() == (size_t)(m_threads))
+    while (m_list_busy.size() == (size_t)(m_thread_cnt))
         m_cond_busy.wait(&m_mutex_busy);
     m_list_busy.insert(thread);
     m_mutex_busy.unlock();
@@ -80,18 +71,5 @@ void ThreadPool::assign(Task *task)
     else
     {
         info("there is no idle thread to handle task");
-    }
-}
-
-void ThreadPool::create(int threads)
-{
-    AutoLock lock(&m_mutex_idle);
-    m_threads = threads;
-    for (int i = 1; i <= threads; i++)
-    {
-        Thread *thread = new WorkerThread(i);
-        debug("WorkerThread created %d",i);
-        m_list_idle.insert(thread);
-        thread->start();
     }
 }

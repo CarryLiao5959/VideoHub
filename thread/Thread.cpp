@@ -13,9 +13,7 @@ Thread::Thread(int tid) : m_tid(tid), m_task(NULL) {
     debug("Thread created, tid is %d", m_tid);
 }
 
-Thread::~Thread()
-{
-}
+Thread::~Thread(){}
 
 void Thread::start()
 {

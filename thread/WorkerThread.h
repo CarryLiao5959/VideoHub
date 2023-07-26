@@ -2,9 +2,9 @@
 
 #include <pthread.h>
 #include <signal.h>
-
 #include "Thread.h"
-
+#include "Logger.h"
+using namespace yazi::util;
 namespace yazi
 {
     namespace thread
@@ -13,13 +13,15 @@ namespace yazi
         class WorkerThread : public Thread
         {
         public:
-            WorkerThread();
-            WorkerThread(int tid);
-            virtual ~WorkerThread();
+            WorkerThread():Thread(){}
+            WorkerThread(int tid) : Thread(tid) {}
+            virtual ~WorkerThread(){}
 
             virtual void run();
 
-            static void cleanup(void *ptr);
+            static void cleanup(void *ptr){
+                info("worker thread cleanup handler: %x", ptr);
+            }
         };
 
     }

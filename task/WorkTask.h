@@ -17,15 +17,14 @@ struct MsgHead {
 
 const uint32_t recv_buff_size = 1024;
 
-
 class WorkTask : public Task
 {
 public:
     WorkTask(Socket * socket);
     virtual ~WorkTask();
 
-    virtual void run();
-    virtual void destroy();
+    virtual void run() override;
+    virtual void destroy() override;
 };
 
 }}

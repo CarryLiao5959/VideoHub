@@ -1,47 +1,25 @@
 #include "WorkerThread.h"
-
 #include "Singleton.h"
-#include "Logger.h"
-using namespace yazi::util;
-
 #include "Task.h"
 #include "ThreadPool.h"
 using namespace yazi::thread;
 
-WorkerThread::WorkerThread() : Thread()
-{   
-}
-
-WorkerThread::WorkerThread(int tid) : Thread(tid) {
-}
-
-WorkerThread::~WorkerThread()
-{
-}
-
-void WorkerThread::cleanup(void *ptr)
-{
-}
-
-void WorkerThread::run()
-{
+void WorkerThread::run() {
     sigset_t mask;
-    if (0 != sigfillset(&mask))
-    {
+    if (0 != sigfillset(&mask)) {
+        error("workerthread sigfillset fail!");
     }
-    if (0 != pthread_sigmask(SIG_SETMASK, &mask, NULL))
-    {
+    if (0 != pthread_sigmask(SIG_SETMASK, &mask, NULL)) {
+        error("workerthread pthread_sigmask fail!");
     }
     pthread_cleanup_push(cleanup, this);
 
-    while (true)
-    {
+    while (true) {
         // start wait for task
         m_mutex.lock();
         while (m_task == NULL)
             m_cond.wait(&m_mutex);
         m_mutex.unlock();
-        // end wait for task
 
         int rc = 0;
         int old_state = 0;

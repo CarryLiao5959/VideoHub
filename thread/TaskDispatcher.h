@@ -19,9 +19,10 @@ namespace yazi
 
             void init(int threads);
             void assign(Task *task);
-            virtual void run();
+            
+            virtual void run() override;
 
-        protected:
+          protected:
             std::list<Task *> m_tasks;
         };
     }
