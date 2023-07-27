@@ -1,7 +1,9 @@
 #include "SocketHandler.h"
 #include "Logger.h"
+#include "TaskFactory.h"
 using namespace yazi::util;
 using namespace yazi::socket;
+using namespace yazi::task;
 
 SocketHandler::SocketHandler() {}
 SocketHandler::~SocketHandler() {}

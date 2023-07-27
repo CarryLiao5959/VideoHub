@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Task.h"
-using namespace yazi::thread;
-
 #include "Socket.h"
+#include "Task.h"
+#include "SocketHandler.h"
 using namespace yazi::socket;
+using namespace yazi::thread;
 
 namespace yazi {
 namespace task {
@@ -17,14 +17,23 @@ struct MsgHead {
 
 const uint32_t recv_buff_size = 1024;
 
-class WorkTask : public Task
-{
-public:
-    WorkTask(Socket * socket);
-    virtual ~WorkTask();
+class WorkTask : public Task {
+  public:
+    WorkTask(Socket *socket) : Task(socket) {
+        debug("new WorkTask sockfd: %d", socket->getfd());
+    }
+
+    virtual ~WorkTask() {}
 
     virtual void run() override;
-    virtual void destroy() override;
+    virtual void destroy() override {
+        debug("work job destory");
+        delete this;
+    }
+
+    void echo(int msg_head_len);
+    void text();
 };
 
-}}
+} // namespace task
+} // namespace yazi

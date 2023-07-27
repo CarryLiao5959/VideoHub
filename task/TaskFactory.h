@@ -1,10 +1,9 @@
 #pragma once
 
 #include "Socket.h"
-using namespace yazi::socket;
-#include "WorkTask.h"
-using namespace yazi::task;
 #include "Task.h"
+#include "WorkTask.h"
+using namespace yazi::socket;
 using namespace yazi::thread;
 
 namespace yazi {

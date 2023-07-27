@@ -1,0 +1,415 @@
+为了发送一个头文件，您需要在Python中创建一个类来模拟C语言中的结构。在这里，我们可以使用`struct`库来达成目标。请看以下的代码：
+
+```python
+import struct
+import socket
+
+class MsgHead:
+    def __init__(self, flag, cmd, len):
+        self.flag = flag
+        self.cmd = cmd
+        self.len = len
+
+    def to_bytes(self):
+        # assuming that flag is a string of 8 characters, cmd and len are unsigned 32-bit integers
+        return struct.pack('8sII', self.flag.encode(), self.cmd, self.len)
+
+if __name__ == '__main__':
+
+    host = '127.0.0.1'
+    port = 8080
+    client = socket.socket()
+    print("client fd:", client.fileno(), "connect to", host, ":", port, "...")
+
+    try:
+        client.connect((host, port))
+    except socket.error as e:
+        print("Connection failed!")
+    else:
+        print("Connection success!")
+
+    message = 'hello'
+    msg = MsgHead('MSGHEAD', 123, len(message))
+
+    # Send header
+    sent_bytes = client.send(msg.to_bytes())
+    if sent_bytes == 12: # header size is 12 bytes
+        print("Header was sent successfully!")
+    else:
+        print("Only part of header was sent!")
+
+    # Send data
+    data = message.encode()
+    sent_bytes = client.send(data)
+    if sent_bytes == len(data):
+        print("Data was sent successfully!")
+    else:
+        print("Only part of data was sent!")
+
+    buffer_size = 1024
+    data = client.recv(buffer_size)
+    if len(data) == 0:
+        print("No data received, the connection might be closed.")
+    elif len(data) > 0:
+        print("Data received: ", data.decode())
+
+    client.close()
+```
+
+在上述代码中，我们首先创建了一个名为`MsgHead`的类，该类有三个属性：`flag`, `cmd`, 和 `len`。其中，`to_bytes`方法用来把这个结构转换成二进制数据。
+
+我们使用`struct.pack`函数来编码这些数据。在此函数中，`8sII`表示一个8字节的字符串，以及两个无符号32位整数。后续的参数是需要被编码的数据。
+
+然后在发送数据之前，我们先发送了头文件。我们使用`msg.to_bytes()`来获取二进制的头文件，并发送出去。之后，我们再发送实际的数据。
+
+这是一个将`MsgHead`类的实例转化为二进制格式的方法。`struct.pack`函数用于将Python的值转化为C语言中结构体的二进制表示。此函数使用一个格式化字符串来指定要转化的数据的结构。
+
+在`struct.pack('8sII', self.flag.encode(), self.cmd, self.len)`这个调用中，`'8sII'`是一个格式化字符串，其中每个字符代表一种数据类型，并且它们的数量和顺序定义了要打包的数据的结构。
+
+- `'8s'` 表示一个8字节的字符串。这是对`self.flag`的编码，它假定`self.flag`是一个长度为8的字符串。字符串在被打包前需要先转化为字节，因此使用了`self.flag.encode()`。
+
+- `'I'` 表示一个无符号（unsigned）的32位（4字节）整数。这用于打包`self.cmd`和`self.len`，假定它们都是这种类型的数据。
+
+因此，整个调用的结果是一个包含`self.flag`（作为一个8字节字符串）、`self.cmd`和`self.len`（作为32位整数）的字节串。
+
+这是一种将数据转化为可以在网络上传输或者保存到磁盘上的形式的常用方式。这种格式的数据可以被C语言（或者其他底层语言）很容易地解码和使用。
+
+如果在发送头文件后，需要接收一个"OK"字符串并根据其内容决定是否继续执行，那么你可以修改代码如下：
+
+```python
+import struct
+import socket
+
+class MsgHead:
+    def __init__(self, flag, cmd, len):
+        self.flag = flag
+        self.cmd = cmd
+        self.len = len
+
+    def to_bytes(self):
+        # assuming that flag is a string of 8 characters, cmd and len are unsigned 32-bit integers
+        return struct.pack('8sII', self.flag.encode(), self.cmd, self.len)
+
+if __name__ == '__main__':
+
+    host = '127.0.0.1'
+    port = 8080
+    client = socket.socket()
+    print("client fd:", client.fileno(), "connect to", host, ":", port, "...")
+
+    try:
+        client.connect((host, port))
+    except socket.error as e:
+        print("Connection failed!")
+    else:
+        print("Connection success!")
+
+    message = 'hello'
+    msg = MsgHead('MSGHEAD', 123, len(message))
+
+    # Send header
+    sent_bytes = client.send(msg.to_bytes())
+    if sent_bytes == 16: # header size is 16 bytes
+        print("Header was sent successfully!")
+    else:
+        print("Only part of header was sent!")
+        client.close()
+        exit(1)
+
+    # Wait for 'OK' from server
+    data = client.recv(1024)  # receive data from the server
+    if data.decode() != 'OK':
+        print("Didn't receive 'OK' from server, terminating connection.")
+        client.close()
+        exit(1)
+    else:
+        print("'OK' received from server, continuing.")
+
+    # Send data
+    data = message.encode()
+    sent_bytes = client.send(data)
+    if sent_bytes == len(data):
+        print("Data was sent successfully!")
+    else:
+        print("Only part of data was sent!")
+        client.close()
+        exit(1)
+
+    buffer_size = 1024
+    data = client.recv(buffer_size)
+    if len(data) == 0:
+        print("No data received, the connection might be closed.")
+    elif len(data) > 0:
+        print("Data received: ", data.decode())
+
+    client.close()
+```
+
+在这个修改后的版本中，我们在发送头文件之后，立即从服务器接收数据。我们期待收到的是"OK"字符串。如果接收到的不是"OK"，我们将打印一条消息并终止连接。如果收到了"OK"，我们将打印一条消息并继续执行。
+
+你在代码中遇到的问题可能是由于头文件包含的顺序和/或命名空间的使用错误。在你的代码中，`WorkTask`类应该在`TaskFactory`之前声明和定义。而且，你在`TaskFactory.h`头文件中引入了`WorkTask.h`，但在`WorkTask.h`里并没有看到定义`WorkTask`类的代码。同时在`TaskFactory.h`头文件中使用`using namespace yazi::task;`，这可能会引起命名空间冲突，因为它在定义`yazi::task`命名空间之前使用了这个命名空间。
+
+我提供一个可能的解决方案，但是由于没有完整的代码，这只是一个猜测。如果这不能解决你的问题，你可能需要提供更详细的代码。
+
+在`TaskFactory.h`中，你应该这样做：
+
+```cpp
+#pragma once
+
+#include "Socket.h"
+#include "Task.h"
+#include "WorkTask.h"
+
+using namespace yazi::socket;
+using namespace yazi::thread;
+
+namespace yazi {
+namespace task {
+class TaskFactory {
+  public:
+    static Task *create(Socket *socket) { return new WorkTask(socket); }
+};
+} // namespace task
+} // namespace yazi
+```
+
+在这个修改后的版本中，我把包含`WorkTask.h`的位置放在了包含`Socket.h`和`Task.h`之后，然后移除了`using namespace yazi::task;`，因为我们在当前的文件就在定义`yazi::task`这个命名空间。当然，你需要保证`WorkTask.h`文件中确实定义了`WorkTask`类，并且它在`yazi::task`命名空间下。
+
+这个错误表明编译器在 `TaskFactory.h` 处理 `new WorkTask(socket)` 表达式时找不到 `WorkTask` 的定义。这可能是由于 `WorkTask` 的定义在使用之前没有被包含，或者它不在预期的命名空间中。
+
+你的代码片段中并没有包含 `WorkTask.h`，所以我假设 `WorkTask` 类的定义可能在 `WorkTask.h` 中。你需要确保在使用 `WorkTask` 之前，它已经被正确地声明和定义了。
+
+检查你的 `WorkTask.h` 文件，确认 `WorkTask` 类是在 `yazi::task` 命名空间中定义的。看起来 `WorkTask` 类应该像这样：
+
+```cpp
+#pragma once
+
+#include "Socket.h"
+#include "Task.h"
+
+using namespace yazi::socket;
+using namespace yazi::thread;
+
+namespace yazi {
+namespace task {
+
+class WorkTask : public Task {
+    // WorkTask class definition...
+    // constructor should be like this: 
+    // WorkTask(Socket* socket);
+    // ...
+};
+
+} // namespace task
+} // namespace yazi
+```
+
+如果 `WorkTask.h` 中的代码正确，且放在了正确的位置，那么 `TaskFactory.h` 应该可以找到 `WorkTask` 的定义。如果问题仍然存在，可能需要检查其他的地方，例如包含路径设置、编译顺序等。
+
+看起来你的 `WorkTask.h` 文件是正确的，`WorkTask` 类在 `yazi::task` 命名空间中被正确地定义了。那么问题可能出在 `TaskFactory.h` 文件中。
+
+检查 `TaskFactory.h` 文件，确保它看起来像这样：
+
+```cpp
+#pragma once
+
+#include "Socket.h"
+#include "Task.h"
+#include "WorkTask.h"  // make sure WorkTask.h is included
+
+using namespace yazi::socket;
+using namespace yazi::thread;
+
+namespace yazi {
+namespace task {
+
+class TaskFactory {
+public:
+    static Task *create(Socket *socket) { return new WorkTask(socket); }
+};
+
+}  // namespace task
+}  // namespace yazi
+```
+
+如果 `TaskFactory.h` 看起来没有问题，那么问题可能出在其他地方。这可能是循环包含问题（两个头文件相互包含），或者可能是编译设置的问题（例如，某些文件没有被正确地编译或链接）。
+
+首先，检查是否存在循环包含问题。在你提供的代码中，我注意到 `WorkTask.h` 包含了 `SocketHandler.h`，然后 `SocketHandler.h` 又包含了 `TaskFactory.h`，这将导致 `WorkTask` 在 `TaskFactory` 中使用时未被定义。这是一个常见的循环依赖问题，你需要重新设计你的代码以避免这种循环依赖。
+
+另一个可能的问题是编译设置问题。你的错误信息显示 `task/WorkTask.o` 在编译过程中出现了问题。检查你的 Makefile 或者编译脚本，确保所有的 `.cpp` 文件都被正确地编译并链接在一起。
+
+最后，还有一种可能是 `WorkTask.cpp` 中没有包含 `WorkTask.h` 文件。这是一个常见的问题，可以通过在 `WorkTask.cpp` 文件的开始处加上 `#include "WorkTask.h"` 来解决。
+
+这个问题可能是由于字符串比较时带来的问题。在你的Python代码中，你接收到的数据可能包含额外的空格或者特殊字符，这就是为什么`data.decode() != 'OK'`成立，你得到了 "Didn't receive 'OK' from server, terminating connection."的输出。
+
+另外，我注意到你在C++代码中发送"OK"字符串时，`memcpy(buf, "OK", 3);`这行代码实际上在buf的最后一位写入了一个空字符（'\0'），这是C字符串的结束标志，但在Python中这个字符是不需要的。
+
+因此，你可以尝试去掉接收到的字符串的额外空格或特殊字符，然后再进行比较。这可以使用Python的`strip()`函数来实现，它会去掉字符串前后的所有空白字符（包括空格、换行、回车、制表符等）：
+
+```python
+if data.decode().strip() != 'OK':
+```
+
+或者你可以在比较之前，先输出你接收到的原始数据和解码后的数据：
+
+```python
+print("Raw data:", data)
+print("Decoded data:", data.decode())
+```
+
+这样就可以看到接收到的原始数据和解码后的数据是什么样的，帮助你更好地理解问题。
+
+看到你的输出结果，你实际收到的数据是 `'OK\x00'`，这个 `\x00` 是一个 null 字符，是由于你在 C++ 代码中使用 `memcpy(buf, "OK", 3);` 导致的，这行代码复制了 "OK" 和其后面的 null 字符。
+
+在 Python 中，普通字符串是不包含 null 字符的，所以在比较 `'OK\x00'` 和 `'OK'` 时会得到 False。你需要在比较之前移除 null 字符。
+
+你可以使用以下代码去掉 null 字符后再比较：
+
+```python
+if data.decode().replace('\x00', '') != 'OK':
+```
+
+或者你可以在 C++ 代码中只发送 "OK" 而不包含 null 字符，修改为 `memcpy(buf, "OK", 2);` 或者 `socket->send("OK", 2);`。
+
+"Broken pipe" 错误通常意味着在你试图向某个 socket 发送数据时，另一端（在你的情况下是服务器）已经关闭了连接。这可能是由于服务器端崩溃、主动关闭了连接，或者是在你的客户端试图发送数据之前，服务器端已经意外地关闭了连接。
+
+解决这个问题，你需要确保：
+
+1. 你的服务器是否已经正常运行，监听在正确的 IP 地址和端口上。
+2. 服务器是否已经正确处理连接请求，没有在客户端尝试发送数据之前就关闭连接。
+3. 检查是否有防火墙或者网络设置阻止了你的客户端和服务器之间的连接。
+4. 如果你的服务器是多线程或者多进程的，确保每个线程或进程都正确地处理了它们各自的 socket 连接。
+
+你可以试着在服务器端增加一些日志输出，看看是否有新的连接请求，以及连接在何时被关闭。这可能会提供一些有关这个问题的线索。
+
+从你提供的日志中，我们可以看到一些问题：
+
+1. 在服务器端的 `WorkTask.cpp` 的第57行，接收socket数据返回的长度是 -1，错误信息是 `EWOULDBLOCK`（对应的错误码是 `errno: 11`）。这通常意味着在非阻塞模式下，尝试读取的数据并未就绪。
+
+2. 在 `WorkTask.cpp` 的第41行，你试图接收一个消息头，但是接收到的长度是5，看起来像是出错了。然后这条日志的错误码又是 `errno: 11`。
+
+另一方面，客户端在尝试接收数据时报告了 `ConnectionResetError: [Errno 104] Connection reset by peer`。这个错误通常意味着服务器端强行关闭了一个连接。
+
+这些情况可能是由于服务器端在处理 socket 时出现了问题，可能是在尝试读取未准备好的数据，或者在出现错误时没有正确地处理，导致了连接被重置。
+
+你需要检查你的服务器端代码，特别是处理 socket 读取和错误处理的部分。确认在尝试读取数据前，数据是否已经就绪，当出现错误时，是否有正确的错误处理逻辑。例如，当在非阻塞模式下尝试读取数据，而数据并未就绪时，你可能需要稍后再次尝试，而不是直接关闭连接。
+
+在你的代码中，你已经处理了当数据未就绪的情况，通过 `handler->attach(socket);` 将套接字重新添加回事件监听器。这是正确的处理方式，当数据未就绪时，你不应立即关闭连接，而是应该将套接字重新添加回事件监听器，等待数据准备就绪。
+
+然而，对于 `EWOULDBLOCK` 和 `EINTR` 的处理，你都只是将套接字重新添加回事件监听器，没有进行任何后续的处理或者重试，可能会造成程序在数据未准备好的情况下继续执行下去。
+
+你可以尝试在发生这两种错误时使用一个循环来反复尝试读取，直到成功为止。不过要注意，这可能会导致程序在等待数据时变得非常忙碌，消耗大量的 CPU 资源。你可能需要添加一些延迟，或者使用更复杂的方法，如 select、poll 或 epoll，来等待数据准备好。
+
+另外，根据你的代码和描述，看起来你的服务器是基于事件驱动的，这种情况下，你通常不应该在事件处理函数中进行阻塞操作，例如反复尝试读取数据。相反，你应该在数据就绪时由事件系统通知你，然后再去读取数据。
+
+此外，我注意到你的代码中在发送数据后又将套接字添加回了事件监听器，但是这通常并不需要，除非你还期待在这个连接上接收更多的数据。如果你已经完成了所有的数据发送，你可以直接关闭连接。
+
+再者，我建议你仔细检查你的代码，确保你在所有需要的地方都正确地处理了错误，尤其是那些可能导致连接被关闭的错误。
+
+根据你提供的代码，看起来你的服务器在收到客户端发送的消息后，会发送一条 "OK" 消息，然后尝试读取一个与收到的 `msg_head.len` 长度相同的消息，最后再发送一条 "hello client" 消息。
+
+然而，你的客户端在发送完头部信息后，会等待接收 "OK" 消息，然后再发送 "hello" 消息。然后，它会立即尝试接收服务器的 "hello client" 消息。
+
+这种情况下，可能的原因是服务器在发送完 "OK" 消息后，立即尝试读取客户端的 "hello" 消息。但是，此时客户端可能还没有发送这个 "hello" 消息，因为它在等待接收服务器的 "OK" 消息。这样，服务器就可能会在读取 "hello" 消息时失败，从而导致它没有发送 "hello client" 消息。
+
+为了解决这个问题，你可以将客户端的代码修改为在发送 "hello" 消息前不等待 "OK" 消息，或者在服务器的代码中，发送 "OK" 消息后不立即尝试读取 "hello" 消息，而是等待一段时间，或者直接发送 "hello client" 消息。
+
+此外，你也应该检查服务器和客户端是否都正确处理了所有可能的错误，并确保在出现错误时可以关闭连接，这样可以避免在出现错误后继续执行可能会导致其他错误的代码。
+
+这样做确实可能有效，因为`usleep(1)`函数会将当前线程挂起1微秒，这个时间虽然很短，但可能足以让操作系统完成一些必要的计划任务，包括处理网络I/O。这样，你的客户端就可能有足够的时间接收到"OK"，然后发送"hello"消息，然后你的服务器才尝试读取这个消息。
+
+然而，请注意这个解决方案并不是很稳定，因为网络延迟、操作系统调度和其他因素都可能导致1微秒的等待时间不足以完成所有的任务。在实际生产环境中，你可能需要实现更复杂的逻辑，例如使用select、poll或epoll等系统调用来异步地处理多个网络连接，或者使用一个独立的线程来处理每个连接。
+
+另外，请注意`usleep`函数在POSIX.1-2001标准中已被废弃，而在POSIX.1-2008标准中已被移除。如果你的代码需要在多种平台或未来的操作系统上运行，建议你使用更现代的函数，例如`nanosleep`或者`std::this_thread::sleep_for`(如果你使用的是C++11或更高版本的C++标准)。
+
+从你的日志中看到，服务器在第二次接收数据时（即第二个`recv MsgHead`日志行之后），收到的长度为0，这通常表示客户端已经关闭了连接。这是因为TCP在传输控制层（transport layer）上是基于字节流的，而不是基于消息的，因此，在服务器的每次`recv`调用都只是从TCP字节流中读取数据，而不一定能够接收到一个完整的消息。
+
+在你的情况下，可能的情况是客户端发送了`MsgHead`和随后的`hello`消息，然后关闭了连接。然后，服务器的第一次`recv`调用读取了`MsgHead`和`hello`，然后在第二次`recv`调用时尝试从已经关闭的连接中读取数据，这就导致了返回长度为0。 
+
+为了解决这个问题，你可以在客户端发送完所有数据之后，添加一段代码来暂停一段时间（例如，使用`time.sleep`），然后再关闭连接。或者你可以修改你的服务器代码，让它能够处理客户端突然关闭连接的情况，例如，当`recv`返回0时，你可以认为客户端已经关闭了连接，然后优雅地结束服务器的处理过程。
+
+在Python中，你可以使用`time`模块的`sleep`函数来暂停代码的执行。`sleep`函数的参数是你想要暂停的秒数。以下是一个简单的示例：
+
+```python
+import time
+
+print("This is printed immediately.")
+time.sleep(3)  # Pause execution for 3 seconds
+print("This is printed after 3 seconds.")
+```
+
+请注意，`sleep`函数接受一个浮点数作为参数，所以你也可以用它来暂停小于一秒的时间。例如，`time.sleep(0.5)`将会暂停执行半秒。
+
+看上去，这可能是服务器收到客户端关闭连接通知（即客户端的`client.close()`被调用）之后尝试从该连接中再读取数据造成的。
+
+你的客户端代码在发送了数据后立即关闭了连接，所以服务器在第一次处理客户端数据并放回到`epoll`队列后，接下来再尝试从这个socket读取数据时，因为客户端已经关闭了连接，所以读取长度为0，表示EOF（End of File）。
+
+解决这个问题的一种方法是确保服务器不会尝试从已经关闭的连接中读取数据。可以通过在收到长度为0的消息时立即从epoll中移除该socket，不再监听其上的事件。另外，客户端也可以在发送完所有数据之后稍等片刻再关闭连接，确保服务器有足够的时间处理所有数据。
+
+如果你要传输的是一个文件（在这个案例中是一个图片文件 "img/goal.png"），你需要先将文件读取为二进制数据，然后通过socket发送这些数据。这个过程中你可能需要包含文件的元信息，例如文件名、文件大小等，以便在接收端能正确解析并重新创建这个文件。在这个示例中，我将假定我们只传输文件的内容。
+
+首先，你需要创建一个函数来读取文件并转化为二进制数据：
+
+```cpp
+std::vector<char> readFile(const std::string& filename) {
+    std::ifstream file(filename, std::ios::binary);
+    return {std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>()};
+}
+```
+
+然后在你的`run`函数中使用这个函数读取文件并发送：
+
+```cpp
+void WorkTask::run() {
+    //... your code ...
+
+    //Read the file
+    std::vector<char> fileContent = readFile("img/goal.png");
+
+    //Send the size of the file
+    int fileSize = fileContent.size();
+    socket->send(reinterpret_cast<const char*>(&fileSize), sizeof(int));
+
+    //Send the file
+    socket->send(fileContent.data(), fileContent.size());
+
+    //... your code ...
+}
+```
+
+请注意这个代码片段没有包含错误处理。在实际的代码中，你应该处理可能的错误，比如文件可能不存在，或者网络中断等。对于大文件，你可能还需要分块发送。
+
+在客户端，你需要先读取文件的大小，然后根据文件的大小读取相应的数据，并将这些数据写入到一个文件中。对于大文件，你可能需要分块接收。
+
+在C++中，`protected`关键字用于修饰类的成员，该成员可以被其自身访问，也可以被其派生类访问，但不能被其他类访问。如果一个类的成员声明为`protected`，那么该成员在该类的任何成员函数以及该类的子类的成员函数中都是可以直接访问的。
+
+下面是一个简单的例子来说明这一点：
+
+```cpp
+class Base {
+protected:
+    int m_value;
+
+public:
+    Base(int value) : m_value(value) {}
+};
+
+class Derived : public Base {
+public:
+    Derived(int value) : Base(value) {}
+
+    void print() {
+        std::cout << "m_value: " << m_value << std::endl;  // 这里可以直接访问父类的protected成员
+    }
+};
+
+int main() {
+    Derived derived(5);
+    derived.print();  // 输出：m_value: 5
+    return 0;
+}
+```
+
+在上面的例子中，子类`Derived`可以直接访问从父类`Base`继承的`protected`成员`m_value`。
+
+EOF
