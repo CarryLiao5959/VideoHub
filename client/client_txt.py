@@ -38,7 +38,7 @@ if __name__ == '__main__':
         client.close()
         exit(1)
 
-    buffer_size = 1024
+    buffer_size = 1024*2
 
     cnt = 1
     with open("./src/received.txt", "wb") as f:

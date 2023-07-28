@@ -35,7 +35,7 @@ $ python3 client/client.py
 
 ## server IP配置
 
-可以在log/main.ini文件中修改配置：
+可以在config/main.ini文件中修改配置：
 
 ```ini
 [server]

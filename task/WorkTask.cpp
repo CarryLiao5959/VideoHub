@@ -57,6 +57,9 @@ void WorkTask::run() {
     case 4:
         gif();
         break;
+    case 5:
+        mp4();
+        break;
     default:
         error("Unknown command");
         break;
@@ -65,17 +68,54 @@ void WorkTask::run() {
     handler->attach(socket);
 }
 
+void WorkTask::mp4() {
+    debug("mp4");
+    SocketHandler *handler = Singleton<SocketHandler>::instance();
+    Socket *socket = static_cast<Socket *>(m_data);
+
+    string filename = "file/mp4/armv8.mp4";
+    std::ifstream file(filename, std::ios::binary);
+    if (!file) {
+        error("could not open %s", filename.c_str());
+        handler->remove(socket);
+        return;
+    }
+
+    file.seekg(0, std::ios::end);
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    char buf[buf_size[5]];
+    memset(buf, 0, buf_size[5]);
+
+    int cnt = 1;
+    while (!file.eof()) {
+        file.read(buf, buf_size[5]);
+        std::streamsize count = file.gcount();
+        socket->send(buf, count);
+        usleep(100);
+        debug("send package %d", cnt++);
+        memset(buf, 0, buf_size[5]);
+    }
+    memset(buf, 0, buf_size[5]);
+    socket->send(buf, 0);
+    debug("send package %d", cnt++);
+    debug("img sent success");
+
+    file.close();
+}
+
 void WorkTask::echo(int msg_head_len) {
     debug("echo");
     SocketHandler *handler = Singleton<SocketHandler>::instance();
     Socket *socket = static_cast<Socket *>(m_data);
 
-    char buf[recv_buff_size];
+    char buf[buf_size[1]];
     // memset(buf, 0, recv_buff_size);
     // memcpy(buf, "OK", 2);
     // socket->send(buf, 2);
     // usleep(1);
-    memset(buf, 0, recv_buff_size);
+    memset(buf, 0, buf_size[1]);
     int len = socket->recv(buf, msg_head_len);
 
     if (len == -1) {
@@ -98,7 +138,7 @@ void WorkTask::echo(int msg_head_len) {
 
     info("recv len: %d, msg data: %s", len, buf);
 
-    memset(buf, 0, recv_buff_size);
+    memset(buf, 0, buf_size[1]);
     memcpy(buf, "hello client", 13);
     socket->send(buf, 13);
 }
@@ -120,19 +160,19 @@ void WorkTask::text() {
     std::streamsize size = file.tellg();
     file.seekg(0, std::ios::beg);
 
-    char buf[recv_buff_size];
-    memset(buf, 0, recv_buff_size);
+    char buf[buf_size[2]];
+    memset(buf, 0, buf_size[2]);
 
     int cnt = 1;
     while (!file.eof()) {
-        file.read(buf, recv_buff_size);
+        file.read(buf, buf_size[2]);
         std::streamsize count = file.gcount();
         socket->send(buf, count);
         // usleep(100);
         debug("send package %d", cnt++);
-        memset(buf, 0, recv_buff_size);
+        memset(buf, 0, buf_size[2]);
     }
-    memset(buf, 0, recv_buff_size);
+    memset(buf, 0, buf_size[2]);
     socket->send(buf, 0);
     debug("send package %d", cnt++);
     debug("text sent success");
@@ -157,19 +197,19 @@ void WorkTask::img() {
     std::streamsize size = file.tellg();
     file.seekg(0, std::ios::beg);
 
-    char buf[recv_buff_size];
-    memset(buf, 0, recv_buff_size);
+    char buf[buf_size[3]];
+    memset(buf, 0, buf_size[3]);
 
     int cnt = 1;
     while (!file.eof()) {
-        file.read(buf, recv_buff_size);
+        file.read(buf, buf_size[3]);
         std::streamsize count = file.gcount();
         socket->send(buf, count);
         usleep(100);
         debug("send package %d", cnt++);
-        memset(buf, 0, recv_buff_size);
+        memset(buf, 0, buf_size[3]);
     }
-    memset(buf, 0, recv_buff_size);
+    memset(buf, 0, buf_size[3]);
     socket->send(buf, 0);
     debug("send package %d", cnt++);
     debug("img sent success");
@@ -194,19 +234,19 @@ void WorkTask::gif() {
     std::streamsize size = file.tellg();
     file.seekg(0, std::ios::beg);
 
-    char buf[recv_buff_size];
-    memset(buf, 0, recv_buff_size);
+    char buf[buf_size[4]];
+    memset(buf, 0, buf_size[4]);
 
     int cnt = 1;
     while (!file.eof()) {
-        file.read(buf, recv_buff_size);
+        file.read(buf, buf_size[4]);
         std::streamsize count = file.gcount();
         socket->send(buf, count);
         usleep(100);
         debug("send package %d", cnt++);
-        memset(buf, 0, recv_buff_size);
+        memset(buf, 0, buf_size[4]);
     }
-    memset(buf, 0, recv_buff_size);
+    memset(buf, 0, buf_size[4]);
     socket->send(buf, 0);
     debug("send package %d", cnt++);
     debug("img sent success");
