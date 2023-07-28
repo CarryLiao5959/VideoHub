@@ -50,7 +50,7 @@ if __name__ == '__main__':
                 break
             f.write(data)
             print("write package "+ str(cnt) +" len: " +str(len(data)))
-            if len(data) < 1024:
+            if len(data) < buffer_size:
                 break
             cnt += 1
         print("File received success")

@@ -15,7 +15,7 @@ struct MsgHead {
     uint32_t len;
 };
 
-const uint32_t recv_buff_size = 1024;
+const uint32_t recv_buff_size = 1024*4;
 
 class WorkTask : public Task {
   public:
@@ -34,6 +34,7 @@ class WorkTask : public Task {
     void echo(int msg_head_len);
     void text();
     void img();
+    void gif();
 };
 
 } // namespace task

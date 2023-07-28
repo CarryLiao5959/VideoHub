@@ -54,6 +54,9 @@ void WorkTask::run() {
     case 3:
         img();
         break;
+    case 4:
+        gif();
+        break;
     default:
         error("Unknown command");
         break;
@@ -142,7 +145,7 @@ void WorkTask::img() {
     SocketHandler *handler = Singleton<SocketHandler>::instance();
     Socket *socket = static_cast<Socket *>(m_data);
 
-    string filename = "file/img/goal.png";
+    string filename = "file/img/road.jpg";
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
         error("could not open %s", filename.c_str());
@@ -162,6 +165,44 @@ void WorkTask::img() {
         file.read(buf, recv_buff_size);
         std::streamsize count = file.gcount();
         socket->send(buf, count);
+        usleep(100);
+        debug("send package %d", cnt++);
+        memset(buf, 0, recv_buff_size);
+    }
+    memset(buf, 0, recv_buff_size);
+    socket->send(buf, 0);
+    debug("send package %d", cnt++);
+    debug("img sent success");
+
+    file.close();
+}
+
+void WorkTask::gif() {
+    debug("gif");
+    SocketHandler *handler = Singleton<SocketHandler>::instance();
+    Socket *socket = static_cast<Socket *>(m_data);
+
+    string filename = "file/gif/cheer.gif";
+    std::ifstream file(filename, std::ios::binary);
+    if (!file) {
+        error("could not open %s", filename.c_str());
+        handler->remove(socket);
+        return;
+    }
+
+    file.seekg(0, std::ios::end);
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    char buf[recv_buff_size];
+    memset(buf, 0, recv_buff_size);
+
+    int cnt = 1;
+    while (!file.eof()) {
+        file.read(buf, recv_buff_size);
+        std::streamsize count = file.gcount();
+        socket->send(buf, count);
+        usleep(100);
         debug("send package %d", cnt++);
         memset(buf, 0, recv_buff_size);
     }
