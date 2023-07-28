@@ -27,10 +27,12 @@ $ ./main
 
 ## 客户端连接
 
-另起一个终端执行：
+另起一个终端执行，客户端将下载服务端的文件：
 
 ```bash
-$ python3 client/client.py
+$ python3 client/client_txt.py
+$ python3 client/client_img.py
+$ python3 client/client_gif.py
 ```
 
 ## server IP配置
