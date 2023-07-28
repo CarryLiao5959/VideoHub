@@ -33,6 +33,7 @@ class WorkTask : public Task {
 
     void echo(int msg_head_len);
     void text();
+    void img();
 };
 
 } // namespace task

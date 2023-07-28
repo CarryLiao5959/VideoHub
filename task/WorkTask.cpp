@@ -47,8 +47,16 @@ void WorkTask::run() {
     switch (msg_head.cmd) {
     case 1:
         echo((int)(msg_head.len));
+        break;
     case 2:
         text();
+        break;
+    case 3:
+        img();
+        break;
+    default:
+        error("Unknown command");
+        break;
     }
 
     handler->attach(socket);
@@ -125,6 +133,42 @@ void WorkTask::text() {
     socket->send(buf, 0);
     debug("send package %d", cnt++);
     debug("text sent success");
+
+    file.close();
+}
+
+void WorkTask::img() {
+    debug("img");
+    SocketHandler *handler = Singleton<SocketHandler>::instance();
+    Socket *socket = static_cast<Socket *>(m_data);
+
+    string filename = "file/img/goal.png";
+    std::ifstream file(filename, std::ios::binary);
+    if (!file) {
+        error("could not open %s", filename.c_str());
+        handler->remove(socket);
+        return;
+    }
+
+    file.seekg(0, std::ios::end);
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    char buf[recv_buff_size];
+    memset(buf, 0, recv_buff_size);
+
+    int cnt = 1;
+    while (!file.eof()) {
+        file.read(buf, recv_buff_size);
+        std::streamsize count = file.gcount();
+        socket->send(buf, count);
+        debug("send package %d", cnt++);
+        memset(buf, 0, recv_buff_size);
+    }
+    memset(buf, 0, recv_buff_size);
+    socket->send(buf, 0);
+    debug("send package %d", cnt++);
+    debug("img sent success");
 
     file.close();
 }

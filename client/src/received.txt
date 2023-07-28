@@ -412,4 +412,3 @@ int main() {
 
 在上面的例子中，子类`Derived`可以直接访问从父类`Base`继承的`protected`成员`m_value`。
 
-EOF

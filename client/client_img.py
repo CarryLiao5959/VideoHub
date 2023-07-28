@@ -26,8 +26,8 @@ if __name__ == '__main__':
     else:
         print("Connection success!")
 
-    msg_flag = 'TXT'
-    msg = MsgHead(msg_flag, 2, 0)
+    msg_flag = 'IMG'
+    msg = MsgHead(msg_flag, 3, 0)
 
     # Send header
     sent_bytes = client.send(msg.to_bytes())
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     buffer_size = 1024
 
     cnt = 1
-    with open("./src/received.txt", "wb") as f:
+    with open("./src/received.png", "wb") as f:
         while True:
             data = client.recv(buffer_size)
             if not data: 
