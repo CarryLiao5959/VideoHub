@@ -1,2 +1,2 @@
-file/
-client/src/
+client/src/*
+*.mp4
