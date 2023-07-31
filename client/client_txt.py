@@ -29,7 +29,6 @@ if __name__ == '__main__':
     msg_flag = 'TXT'
     msg = MsgHead(msg_flag, 2, 0)
 
-    # Send header
     sent_bytes = client.send(msg.to_bytes())
     if sent_bytes == 16: 
         print("Header sent success")

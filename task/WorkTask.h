@@ -21,7 +21,7 @@ const uint32_t buf_size[6] = {
     1024 * 2, 
     1024 * 4, 
     1024 * 4, 
-    1024 * 1024,
+    1024 * 8,
 };
 
 class WorkTask : public Task {
@@ -37,7 +37,6 @@ class WorkTask : public Task {
         debug("work job destory");
         delete this;
     }
-
     void echo(int msg_head_len);
     void text();
     void img();

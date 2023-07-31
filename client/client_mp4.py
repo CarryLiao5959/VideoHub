@@ -17,6 +17,7 @@ if __name__ == '__main__':
     host = '127.0.0.1'
     port = 8080
     client = socket.socket()
+    client.settimeout(2.0)
     print("client fd:", client.fileno(), "connect to", host, ":", port, "...")
 
     try:
@@ -38,17 +39,23 @@ if __name__ == '__main__':
         client.close()
         exit(1)
 
-    buffer_size = 1024*1024
+    buffer_size = 1024*8
 
     cnt = 1
     with open("./src/received.mp4", "wb") as f:
         while True:
-            data = client.recv(buffer_size)
+            try:
+                data = client.recv(buffer_size)
+            except socket.timeout:
+                print("Recv Timeout")
+                break
             if not data: 
                 break
             f.write(data)
-            print("write package "+ str(cnt) +" len: " +str(len(data)))
+            if cnt%100 == 0:
+                print("write package "+ str(cnt) +" len: " +str(len(data)))
             cnt += 1
+        print("write package "+ str(cnt) +" len: " +str(len(data)))
         print("File received success")
 
     time.sleep(1)

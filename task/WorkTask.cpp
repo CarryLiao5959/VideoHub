@@ -73,7 +73,7 @@ void WorkTask::mp4() {
     SocketHandler *handler = Singleton<SocketHandler>::instance();
     Socket *socket = static_cast<Socket *>(m_data);
 
-    string filename = "file/mp4/armv8.mp4";
+    string filename = "file/mp4/android.mp4";
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
         error("could not open %s", filename.c_str());
@@ -94,12 +94,13 @@ void WorkTask::mp4() {
         std::streamsize count = file.gcount();
         socket->send(buf, count);
         usleep(100);
-        debug("send package %d", cnt++);
+        if(cnt%100==0){
+            debug("send package %d", cnt);
+        }
+        cnt++;
         memset(buf, 0, buf_size[5]);
     }
-    memset(buf, 0, buf_size[5]);
-    socket->send(buf, 0);
-    debug("send package %d", cnt++);
+    debug("send package %d", cnt);
     debug("img sent success");
 
     file.close();

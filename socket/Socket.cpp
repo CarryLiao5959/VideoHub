@@ -75,6 +75,10 @@ int Socket::send(const char *buf, int len) {
     return ::send(m_sockfd, buf, len, 0);
 }
 
+int Socket::send(int *buf, int len) {
+    return ::send(m_sockfd, buf, len, 0);
+}
+
 bool Socket::close()
 {
     if (m_sockfd > 0)
