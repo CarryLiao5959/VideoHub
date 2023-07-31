@@ -12,8 +12,8 @@ namespace task {
 class TaskFactory {
   public:
     static Task *create(Socket *socket) {
-        // return new WorkTask(socket);
-        return new HLSTask(socket);
+        return new WorkTask(socket);
+        // return new HLSTask(socket);
     }
 };
 } // namespace task

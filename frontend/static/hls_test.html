@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HLS video player</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        video {
+            width: 80%;
+            height: 80%;
+        }
+    </style>
+  </head>
+  <body>
+    <video id="videoElement" controls></video>
+    <script>
+      if (Hls.isSupported()) {
+        const videoElement = document.getElementById("videoElement");
+        const hlsPlayer = new Hls();
+        hlsPlayer.loadSource("http://20.222.213.210:3000/mp4/playlist.m3u8");
+        hlsPlayer.attachMedia(videoElement);
+        hlsPlayer.on(Hls.Events.MANIFEST_PARSED, () => {
+          videoElement.play();
+        });
+      }
+    </script>
+  </body>
+</html>
