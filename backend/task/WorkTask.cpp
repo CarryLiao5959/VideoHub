@@ -70,12 +70,92 @@ void WorkTask::run() {
     case 7:
         hls_ts();
         break;
+    case 8:
+        hls_ts_from_second((int)(msg_head.len));
+        break;
     default:
         error("Unknown command");
         break;
     }
 
     handler->attach(socket);
+}
+
+void WorkTask::get_m3u8(int second){
+
+}
+
+void WorkTask::hls_ts_from_second(int second){
+    debug("hls_ts_from_second");
+    int buffer_size = buf_size[3];
+    SocketHandler *handler = Singleton<SocketHandler>::instance();
+    Socket *socket = static_cast<Socket *>(m_data);
+
+    string directory = "file/mp4-6min/";
+    vector<string> filenames;
+    DIR *dirp = opendir(directory.c_str());
+    struct dirent *dp=nullptr;
+    while((dp=readdir(dirp)) != NULL){
+        string filename(dp->d_name);
+        if(filename == "." || filename == ".."){
+            continue;
+        }
+        int pos=filename.rfind(".");
+        int len=filename.size()-pos;
+        string extention = filename.substr(pos,len);
+        if(extention == ".ts"){
+            filenames.push_back(directory+filename);
+            debug("get %s: %s", directory.c_str(),filename.c_str())
+        }
+    }
+
+    sort(filenames.begin(),filenames.end());
+    for(auto f:filenames){
+        debug("after sort: %s", f.c_str());
+    }
+
+    char buf[buffer_size];
+
+    int file_num=filenames.size();
+    int slice_time = 10;
+    int n = second/slice_time;
+    int start = n - 5 < 0 ? 0 : n-5;
+    int end = n+5 > file_num? file_num:n+5;
+
+    int send_num = end - start; 
+    socket->send(&send_num, sizeof(int));
+    debug("send file_num %d", file_num);
+    usleep(100);
+
+    for(int i=start;i<end;i++){
+        string filename = filenames[i];
+        std::ifstream file(filename, std::ios::binary);
+        if (!file) {
+            error("could not open %s", filename.c_str());
+            handler->remove(socket);
+            return;
+        }
+
+        file.seekg(0, std::ios::end);
+        std::streamsize size = file.tellg();
+        file.seekg(0, std::ios::beg);
+
+        memset(buf, 0, buffer_size);
+
+        int cnt = 1;
+        while (!file.eof()) {
+            file.read(buf, buffer_size);
+            std::streamsize count = file.gcount();
+            socket->send(buf, count);
+            usleep(100);
+            if(cnt%20==0){
+                debug("send package %d", cnt++);
+            }
+            memset(buf, 0, buffer_size);
+        }
+        debug("%s sent success",filename.c_str());
+        file.close();
+    }
 }
 
 void WorkTask::hls_ts(){
@@ -107,34 +187,7 @@ void WorkTask::hls_ts(){
         debug("after sort: %s", f.c_str());
     }
 
-    string filename = "file/mp4-6min/playlist.m3u8";
-    std::ifstream file(filename, std::ios::binary);
-    if (!file) {
-        error("could not open %s", filename.c_str());
-        handler->remove(socket);
-        return;
-    }
-
-    file.seekg(0, std::ios::end);
-    std::streamsize size = file.tellg();
-    file.seekg(0, std::ios::beg);
-
     char buf[buffer_size];
-    memset(buf, 0, buffer_size);
-
-    int cnt = 1;
-    while (!file.eof()) {
-        file.read(buf, buffer_size);
-        std::streamsize count = file.gcount();
-        socket->send(buf, count);
-        usleep(100);
-        debug("send package %d", cnt++);
-        memset(buf, 0, buffer_size);
-    }
-    memset(buf, 0, buffer_size);
-    socket->send(buf, 0);
-    debug("send package %d", cnt++);
-    debug(".m3u8 sent success");
 
     int file_num=filenames.size();
     socket->send(&file_num, sizeof(int));
@@ -161,16 +214,15 @@ void WorkTask::hls_ts(){
             file.read(buf, buffer_size);
             std::streamsize count = file.gcount();
             socket->send(buf, count);
-            usleep(20000);
+            usleep(100);
             if(cnt%20==0){
                 debug("send package %d", cnt++);
             }
             memset(buf, 0, buffer_size);
         }
         debug("%s sent success",filename.c_str());
+        file.close();
     }
-
-    file.close();
 }
 
 void WorkTask::hls_m3u8(){

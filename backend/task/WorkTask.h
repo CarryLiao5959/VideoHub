@@ -44,6 +44,8 @@ class WorkTask : public Task {
     void mp4();
     void hls_m3u8();
     void hls_ts();
+    void hls_ts_from_second(int second);
+    void get_m3u8(int second);
 };
 
 } // namespace task

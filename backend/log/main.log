@@ -1,182 +1,157 @@
-2023-08-03 15:55:29 DEBUG ./util/System.h: 29 open log/main.log
-2023-08-03 15:55:29 DEBUG ./util/System.h: 33 load config/main.ini
-2023-08-03 15:55:29 DEBUG server/Server.cpp: 37 set_threads: 16
-2023-08-03 15:55:29 DEBUG server/Server.cpp: 42 set_connects: 16
-2023-08-03 15:55:29 DEBUG server/Server.cpp: 47 set_wait_time: 10
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 9 Thread created, tid is 0
-2023-08-03 15:55:29 DEBUG thread/TaskDispatcher.cpp: 13 init TaskDispatcher
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 1
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 1
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 2
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 2
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 3
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 3
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 4
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 4
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 5
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 5
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 6
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 6
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 7
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 7
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 8
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 8
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 9
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 9
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 10
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 10
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 11
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 11
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 12
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 12
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 13
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 13
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 14
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 14
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 15
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 15
-2023-08-03 15:55:29 DEBUG thread/Thread.cpp: 13 Thread created, tid is 16
-2023-08-03 15:55:29 DEBUG thread/ThreadPool.h: 26 WorkerThread created 16
-2023-08-03 15:55:29 INFO socket/ServerSocket.h: 21 new ServerSocket sockfd: 4
-2023-08-03 15:55:29 DEBUG socket/Socket.cpp: 24 set bind ip: INADDR_ANY
-2023-08-03 15:55:29 INFO socket/Socket.cpp: 32 bind success: 
-2023-08-03 15:55:29 DEBUG socket/Socket.cpp: 43 sockfd 4 listen: :8080
-2023-08-03 15:55:29 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 4
-2023-08-03 15:55:29 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-03 15:55:31 DEBUG socket/SocketHandler.cpp: 30 epoll wait: find 1 events
-2023-08-03 15:55:31 DEBUG socket/Socket.cpp: 54 accept success sockfd: 6
-2023-08-03 15:55:31 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
-2023-08-03 15:55:31 DEBUG socket/SocketHandler.cpp: 30 epoll wait: find 1 events
-2023-08-03 15:55:31 DEBUG socket/SocketHandler.cpp: 64 EPOLLIN
-2023-08-03 15:55:31 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
-2023-08-03 15:55:31 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 6
-2023-08-03 15:55:31 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-03 15:55:31 INFO thread/ThreadPool.cpp: 68 task is given to thread -1475639552
-2023-08-03 15:55:31 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: HLS_ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 7
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 0
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 82 hls_ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out012.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out031.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out035.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out013.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out029.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out019.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out004.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out032.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out015.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out023.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out038.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out033.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out027.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out034.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out025.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out010.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out022.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out007.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out020.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out001.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out009.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out028.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out003.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out036.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out037.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out008.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out021.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out018.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out030.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out024.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out011.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out026.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out039.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out005.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out016.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out014.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out017.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out002.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out006.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 101 get file/mp4-6min/: out000.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out000.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out001.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out002.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out003.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out004.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out005.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out006.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out007.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out008.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out009.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out010.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out011.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out012.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out013.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out014.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out015.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out016.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out017.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out018.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out019.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out020.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out021.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out022.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out023.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out024.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out025.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out026.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out027.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out028.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out029.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out030.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out031.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out032.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out033.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out034.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out035.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out036.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out037.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out038.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 107 after sort: file/mp4-6min/out039.ts
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 131 send package 1
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 136 send package 2
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 137 .m3u8 sent success
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 141 send file_num 40
-2023-08-03 15:55:31 DEBUG task/WorkTask.cpp: 142 send file_num size 4
-2023-08-03 15:55:32 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out000.ts sent success
-2023-08-03 15:55:33 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out001.ts sent success
-2023-08-03 15:55:34 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out002.ts sent success
-2023-08-03 15:55:35 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out003.ts sent success
-2023-08-03 15:55:36 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out004.ts sent success
-2023-08-03 15:55:36 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out005.ts sent success
-2023-08-03 15:55:37 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out006.ts sent success
-2023-08-03 15:55:38 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out007.ts sent success
-2023-08-03 15:55:39 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out008.ts sent success
-2023-08-03 15:55:40 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out009.ts sent success
-2023-08-03 15:55:40 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out010.ts sent success
-2023-08-03 15:55:41 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out011.ts sent success
-2023-08-03 15:55:42 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out012.ts sent success
-2023-08-03 15:55:43 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out013.ts sent success
-2023-08-03 15:55:43 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out014.ts sent success
-2023-08-03 15:55:44 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out015.ts sent success
-2023-08-03 15:55:45 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out016.ts sent success
-2023-08-03 15:55:46 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out017.ts sent success
-2023-08-03 15:55:47 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out018.ts sent success
-2023-08-03 15:55:47 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out019.ts sent success
-2023-08-03 15:55:48 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out020.ts sent success
-2023-08-03 15:55:49 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out021.ts sent success
-2023-08-03 15:55:50 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out022.ts sent success
-2023-08-03 15:55:51 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out023.ts sent success
-2023-08-03 15:55:52 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out024.ts sent success
-2023-08-03 15:55:52 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out025.ts sent success
-2023-08-03 15:55:53 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out026.ts sent success
-2023-08-03 15:55:55 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out027.ts sent success
-2023-08-03 15:55:55 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out028.ts sent success
-2023-08-03 15:55:56 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out029.ts sent success
-2023-08-03 15:55:57 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out030.ts sent success
-2023-08-03 15:55:57 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out031.ts sent success
-2023-08-03 15:55:59 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out032.ts sent success
-2023-08-03 15:55:59 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out033.ts sent success
-2023-08-03 15:56:00 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out034.ts sent success
-2023-08-03 15:56:01 DEBUG task/WorkTask.cpp: 170 file/mp4-6min/out035.ts sent success
+2023-08-03 16:31:42 DEBUG ./util/System.h: 29 open log/main.log
+2023-08-03 16:31:42 DEBUG ./util/System.h: 33 load config/main.ini
+2023-08-03 16:31:42 DEBUG server/Server.cpp: 37 set_threads: 16
+2023-08-03 16:31:42 DEBUG server/Server.cpp: 42 set_connects: 16
+2023-08-03 16:31:42 DEBUG server/Server.cpp: 47 set_wait_time: 10
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 9 Thread created, tid is 0
+2023-08-03 16:31:42 DEBUG thread/TaskDispatcher.cpp: 13 init TaskDispatcher
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 1
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 1
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 2
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 2
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 3
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 3
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 4
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 4
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 5
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 5
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 6
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 6
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 7
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 7
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 8
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 8
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 9
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 9
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 10
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 10
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 11
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 11
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 12
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 12
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 13
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 13
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 14
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 14
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 15
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 15
+2023-08-03 16:31:42 DEBUG thread/Thread.cpp: 13 Thread created, tid is 16
+2023-08-03 16:31:42 DEBUG thread/ThreadPool.h: 26 WorkerThread created 16
+2023-08-03 16:31:42 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-03 16:31:42 INFO socket/ServerSocket.h: 21 new ServerSocket sockfd: 4
+2023-08-03 16:31:42 DEBUG socket/Socket.cpp: 24 set bind ip: INADDR_ANY
+2023-08-03 16:31:42 INFO socket/Socket.cpp: 32 bind success: 
+2023-08-03 16:31:42 DEBUG socket/Socket.cpp: 43 sockfd 4 listen: :8080
+2023-08-03 16:31:42 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 4
+2023-08-03 16:31:46 DEBUG socket/SocketHandler.cpp: 30 epoll wait: find 1 events
+2023-08-03 16:31:46 DEBUG socket/Socket.cpp: 54 accept success sockfd: 6
+2023-08-03 16:31:46 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-08-03 16:31:46 DEBUG socket/SocketHandler.cpp: 30 epoll wait: find 1 events
+2023-08-03 16:31:46 DEBUG socket/SocketHandler.cpp: 64 EPOLLIN
+2023-08-03 16:31:46 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6
+2023-08-03 16:31:46 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 6
+2023-08-03 16:31:46 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-08-03 16:31:46 INFO thread/ThreadPool.cpp: 68 task is given to thread -1165023488
+2023-08-03 16:31:46 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 16 WorkTask running
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 23 recv len: 16
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: hls_TSFS
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 8
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 100
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 85 hls_ts_from_second
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out012.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out031.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out035.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out013.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out029.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out019.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out004.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out032.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out015.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out023.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out038.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out033.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out027.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out034.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out025.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out010.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out022.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out007.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out020.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out001.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out009.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out028.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out003.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out036.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out037.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out008.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out021.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out018.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out030.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out024.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out011.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out026.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out039.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out005.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out016.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out014.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out017.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out002.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out006.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 104 get file/mp4-6min/: out000.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out000.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out001.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out002.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out003.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out004.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out005.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out006.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out007.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out008.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out009.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out010.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out011.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out012.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out013.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out014.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out015.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out016.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out017.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out018.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out019.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out020.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out021.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out022.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out023.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out024.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out025.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out026.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out027.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out028.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out029.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out030.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out031.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out032.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out033.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out034.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out035.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out036.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out037.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out038.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 110 after sort: file/mp4-6min/out039.ts
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 123 send file_num 40
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out005.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out006.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out007.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out008.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out009.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out010.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out011.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out012.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out013.ts sent success
+2023-08-03 16:31:46 DEBUG task/WorkTask.cpp: 152 file/mp4-6min/out014.ts sent success
+2023-08-03 16:31:46 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-08-03 16:31:46 DEBUG task/WorkTask.h: 37 work job destory
+2023-08-03 16:31:47 DEBUG socket/SocketHandler.cpp: 30 epoll wait: find 1 events
+2023-08-03 16:31:47 DEBUG socket/SocketHandler.cpp: 52 EPOLLHUP
+2023-08-03 16:31:47 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 6

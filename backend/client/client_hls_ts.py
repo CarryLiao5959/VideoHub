@@ -38,20 +38,7 @@ if __name__ == '__main__':
         client.close()
         exit(1)
 
-    buffer_size = 1024*4
-
-    cnt = 1
-    with open("./src/received.m3u8", "wb") as f:
-        while True:
-            data = client.recv(buffer_size)
-            if not data: 
-                break
-            f.write(data)
-            print("write package "+ str(cnt) +" len: " +str(len(data)))
-            if len(data) < buffer_size:
-                break
-            cnt += 1
-        print("File received success")
+    buffer_size = 1024*32
 
     file_num_bytes = client.recv(4)  # An integer in C++ is typically 4 bytes.
     file_num = struct.unpack('i', file_num_bytes)[0]
