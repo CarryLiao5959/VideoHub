@@ -6,7 +6,11 @@ using namespace yazi::task;
 using namespace yazi::socket;
 #include <sstream>
 using std::ostringstream;
+#include <vector>
+using std::vector;
 #include <fstream>
+#include <dirent.h>
+#include <algorithm>
 
 void WorkTask::run() {
     debug("WorkTask running");
@@ -60,12 +64,151 @@ void WorkTask::run() {
     case 5:
         mp4();
         break;
+    case 6:
+        hls_m3u8();
+        break;
+    case 7:
+        hls_ts();
+        break;
     default:
         error("Unknown command");
         break;
     }
 
     handler->attach(socket);
+}
+
+void WorkTask::hls_ts(){
+    debug("hls_ts");
+    int buffer_size = buf_size[3];
+    SocketHandler *handler = Singleton<SocketHandler>::instance();
+    Socket *socket = static_cast<Socket *>(m_data);
+
+    string directory = "file/mp4-6min/";
+    vector<string> filenames;
+    DIR *dirp = opendir(directory.c_str());
+    struct dirent *dp=nullptr;
+    while((dp=readdir(dirp)) != NULL){
+        string filename(dp->d_name);
+        if(filename == "." || filename == ".."){
+            continue;
+        }
+        int pos=filename.rfind(".");
+        int len=filename.size()-pos;
+        string extention = filename.substr(pos,len);
+        if(extention == ".ts"){
+            filenames.push_back(directory+filename);
+            debug("get %s: %s", directory.c_str(),filename.c_str())
+        }
+    }
+
+    sort(filenames.begin(),filenames.end());
+    for(auto f:filenames){
+        debug("after sort: %s", f.c_str());
+    }
+
+    string filename = "file/mp4-6min/playlist.m3u8";
+    std::ifstream file(filename, std::ios::binary);
+    if (!file) {
+        error("could not open %s", filename.c_str());
+        handler->remove(socket);
+        return;
+    }
+
+    file.seekg(0, std::ios::end);
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    char buf[buffer_size];
+    memset(buf, 0, buffer_size);
+
+    int cnt = 1;
+    while (!file.eof()) {
+        file.read(buf, buffer_size);
+        std::streamsize count = file.gcount();
+        socket->send(buf, count);
+        usleep(100);
+        debug("send package %d", cnt++);
+        memset(buf, 0, buffer_size);
+    }
+    memset(buf, 0, buffer_size);
+    socket->send(buf, 0);
+    debug("send package %d", cnt++);
+    debug(".m3u8 sent success");
+
+    int file_num=filenames.size();
+    socket->send(&file_num, sizeof(int));
+    debug("send file_num %d", file_num);
+    debug("send file_num size %d", sizeof(file_num));
+    usleep(100);
+
+    for(auto filename:filenames){
+        std::ifstream file(filename, std::ios::binary);
+        if (!file) {
+            error("could not open %s", filename.c_str());
+            handler->remove(socket);
+            return;
+        }
+
+        file.seekg(0, std::ios::end);
+        std::streamsize size = file.tellg();
+        file.seekg(0, std::ios::beg);
+
+        memset(buf, 0, buffer_size);
+
+        int cnt = 1;
+        while (!file.eof()) {
+            file.read(buf, buffer_size);
+            std::streamsize count = file.gcount();
+            socket->send(buf, count);
+            usleep(20000);
+            if(cnt%20==0){
+                debug("send package %d", cnt++);
+            }
+            memset(buf, 0, buffer_size);
+        }
+        debug("%s sent success",filename.c_str());
+    }
+
+    file.close();
+}
+
+void WorkTask::hls_m3u8(){
+    debug("hls_m3u8");
+    int buffer_size = buf_size[3];
+    SocketHandler *handler = Singleton<SocketHandler>::instance();
+    Socket *socket = static_cast<Socket *>(m_data);
+
+    string filename = "file/mp4-6min/playlist.m3u8";
+    std::ifstream file(filename, std::ios::binary);
+    if (!file) {
+        error("could not open %s", filename.c_str());
+        handler->remove(socket);
+        return;
+    }
+
+    file.seekg(0, std::ios::end);
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    char buf[buffer_size];
+    memset(buf, 0, buffer_size);
+
+    int cnt = 1;
+    while (!file.eof()) {
+        file.read(buf, buffer_size);
+        std::streamsize count = file.gcount();
+        socket->send(buf, count);
+        usleep(100);
+        debug("send package %d", cnt++);
+        memset(buf, 0, buffer_size);
+    }
+    memset(buf, 0, buffer_size);
+    socket->send(buf, 0);
+    debug("send package %d", cnt++);
+    debug(".m3u8 sent success");
+
+    file.close();
 }
 
 void WorkTask::mp4() {

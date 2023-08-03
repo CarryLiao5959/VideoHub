@@ -15,10 +15,10 @@ class ServerSocket : public Socket {
     ServerSocket(const string &ip, int port) : Socket(ip, port) {
         m_sockfd = ::socket(AF_INET, SOCK_STREAM, 0);
         if (m_sockfd == -1) {
-            printf("create server socket error: errno=%d errstr=%s", errno,strerror(errno));
+            error("create server socket error: errno=%d errstr=%s", errno,strerror(errno));
             return;
         }
-        debug("new ServerSocket sockfd: %d", m_sockfd);
+        info("new ServerSocket sockfd: %d", m_sockfd);
 
         set_non_blocking();
         set_recv_buffer(10 * 1024);

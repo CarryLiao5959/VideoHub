@@ -16,17 +16,20 @@ bool Socket::bind(const string &ip, int port)
     if (ip != "")
     {
         sockaddr.sin_addr.s_addr = inet_addr(ip.c_str());
+        debug("set bind ip: %s", ip.c_str());
     }
     else
     {
         sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+        debug("set bind ip: INADDR_ANY");
     }
     sockaddr.sin_port = htons(port);
     if (::bind(m_sockfd, (struct sockaddr *)&sockaddr, sizeof(struct sockaddr)) < 0)
     {
-        printf("socket bind error: errno=%d errstr=%s", errno, strerror(errno));
+        error("socket bind error: errno=%d errstr=%s", errno, strerror(errno));
         return false;
     }
+    info("bind success: %s", ip.c_str());
     return true;
 }
 

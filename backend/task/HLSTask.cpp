@@ -23,34 +23,37 @@ void HLSTask::run() {
     SocketHandler *handler = Singleton<SocketHandler>::instance();
     Socket *socket = static_cast<Socket *>(m_data);
 
-    string directory = "file/mp4/";
-    std::vector<std::string> filenames;
+    // string directory = "file/mp4-6min/";
+    // std::vector<std::string> filenames;
 
-    DIR *dirp = opendir(directory.c_str());
-    struct dirent *dp;
-    while ((dp = readdir(dirp)) != NULL) {
-        std::string filename(dp->d_name);
-        if (filename == "." || filename == "..")
-            continue;
-        int pos = filename.rfind(".");
-        int len = filename.size()-pos;
-        std::string tmp = filename.substr(pos + 1, len);
-        if (tmp== "ts" || tmp == "m3u8"){
-            filenames.push_back(directory + filename);
-            debug("get %s", filename.c_str())
-        }
-    }
-    closedir(dirp);
+    // DIR *dirp = opendir(directory.c_str());
+    // struct dirent *dp;
+    // while ((dp = readdir(dirp)) != NULL) {
+    //     std::string filename(dp->d_name);
+    //     if (filename == "." || filename == "..")
+    //         continue;
+    //     int pos = filename.rfind(".");
+    //     int len = filename.size()-pos;
+    //     std::string tmp = filename.substr(pos + 1, len);
+    //     if (tmp== "ts" || tmp == "m3u8"){
+    //         filenames.push_back(directory + filename);
+    //         debug("get %s", filename.c_str())
+    //     }
+    // }
+    // closedir(dirp);
 
-    char buf[hls_buf_size];
-    memset(buf, 0, hls_buf_size);
-    std::string file_num = to_string(filenames.size());
-    memcpy(buf, file_num.c_str(), file_num.size());
-    int ret = socket->send(buf, file_num.size());
-    if(ret < 0) {
-        error("send error: %s", strerror(errno));
-    }
-    debug("send file_num: %d", file_num);
+    char ack='0';
+    memset(&ack, 0, sizeof(char));
+    socket->recv(&ack, sizeof(char));
+    debug("recv %c", ack);
+
+    // std::string file_num = to_string(filenames.size());
+    // memcpy(buf, file_num.c_str(), file_num.size());
+    // int ret = socket->send(buf, file_num.size());
+    // if(ret < 0) {
+    //     error("send error: %s", strerror(errno));
+    // }
+    // debug("send file_num: %s", file_num.c_str());
 
     // for (const auto &filename : filenames) {
     //     std::ifstream file(filename, std::ios::binary);

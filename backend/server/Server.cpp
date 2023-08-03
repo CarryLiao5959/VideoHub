@@ -18,7 +18,6 @@ void Server::listen(const string &ip, int port)
 {
     m_ip = ip;
     m_port = port;
-    debug("listen: %s:%d", m_ip.c_str(), m_port);
 }
 
 void Server::start()

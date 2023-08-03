@@ -42,6 +42,8 @@ class WorkTask : public Task {
     void img();
     void gif();
     void mp4();
+    void hls_m3u8();
+    void hls_ts();
 };
 
 } // namespace task

@@ -28,6 +28,7 @@ Logger::Logger() : m_level(DEBUG), m_max(1024 * 1024), m_len(0) {}
 Logger::~Logger() { close(); }
 
 void Logger::open(const string &filename) {
+    m_mutex.lock();
     m_fout.open(filename, ios::out | ios::trunc);
     m_filename = filename;
     if (m_fout.fail()) {
@@ -35,6 +36,7 @@ void Logger::open(const string &filename) {
     }
     m_fout.seekp(0, ios::end);
     m_len = m_fout.tellp();
+    m_mutex.unlock();
 }
 void Logger::close() { m_fout.close(); }
 
@@ -49,9 +51,13 @@ void Logger::log(Level level, const char *file, int line, const char *fmt, ...) 
 
     time_t ticks = time(NULL);
     struct tm *ptm = localtime(&ticks);
+    // add 8 hours to Beijing time
+    ptm->tm_hour+=8;
+    mktime(ptm);
     char timestamp[32];
     memset(timestamp, 0, 32);
     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", ptm);
+
 
     const char *myfmt = "%s %s %s: %d ";
     int size = snprintf(NULL, 0, myfmt, timestamp, s_level[level], file, line);
@@ -93,9 +99,12 @@ void Logger::rotate() {
 
     time_t ticks = time(NULL);
     struct tm *ptm = localtime(&ticks);
+    // add 8 hours to Beijing time
+    ptm->tm_hour+=8;
+    mktime(ptm);
     char timestamp[32];
     memset(timestamp, 0, 32);
-    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", ptm);
+    strftime(timestamp, sizeof(timestamp), " %Y-%m-%d %H:%M:%S", ptm);
 
     string filename = m_filename + timestamp;
     if (rename(m_filename.c_str(), filename.c_str()) != 0) {
