@@ -10,7 +10,7 @@ def get_threads_from_config():
 
 
 def run_program():
-    os.system('python3 client_hls_m3u8.py')
+    os.system('python3 client_m3u8.py')
 
 
 if __name__ == "__main__":
