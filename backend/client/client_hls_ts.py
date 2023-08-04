@@ -26,7 +26,7 @@ if __name__ == '__main__':
     else:
         print("Connection success!")
 
-    msg_flag = 'HLS_ts'
+    msg_flag = 'ts'
     msg = MsgHead(msg_flag, 7, 0)
 
     # Send header

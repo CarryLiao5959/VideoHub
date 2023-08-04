@@ -1,6 +1,7 @@
 import socket
 import struct
 import time
+import argparse
 
 class MsgHead:
     def __init__(self, flag, cmd, len):
@@ -13,6 +14,9 @@ class MsgHead:
         return struct.pack('8sII', self.flag.encode(), self.cmd, self.len)
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('second', type=int, help='the value for second')
+    args = parser.parse_args()
 
     host = '127.0.0.1'
     port = 8080
@@ -26,8 +30,8 @@ if __name__ == '__main__':
     else:
         print("Connection success!")
 
-    msg_flag = 'hls_TSFS'
-    second = 100
+    msg_flag = 'hls_s'
+    second = args.second
     msg = MsgHead(msg_flag, 8, second)
 
     # Send header
