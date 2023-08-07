@@ -16,7 +16,7 @@ INCLUDE = $(patsubst %,-I %, $(INCLUDE_TEMP))
 $(warning INCLUDE is ${INCLUDE})
 
 # 编译选项
-CFLAGS = -g -O2 -Wall -Werror -Wno-unused -fPIC
+CFLAGS = -g -O0 -Wall -Werror -Wno-unused -fPIC
 $(warning CFLAGS is ${CFLAGS})
 
 # 链接选项

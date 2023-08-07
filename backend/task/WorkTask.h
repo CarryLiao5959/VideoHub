@@ -34,7 +34,7 @@ class WorkTask : public Task {
 
     virtual void run() override;
     virtual void destroy() override {
-        debug("work job destory");
+        debug("WorkTask destory");
         delete this;
     }
     void echo(int msg_head_len);

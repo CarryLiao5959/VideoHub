@@ -4,6 +4,8 @@
 using namespace yazi::util;
 using namespace yazi::socket;
 using namespace yazi::task;
+#include<algorithm>
+#include <sys/inotify.h>
 
 SocketHandler::SocketHandler() {}
 SocketHandler::~SocketHandler() {}
@@ -19,6 +21,19 @@ void SocketHandler::handle(int max_connects, int wait_time)
     m_epoll->create(max_connects);
     m_epoll->add(m_server->m_sockfd, m_server, (EPOLLIN | EPOLLHUP | EPOLLERR));
     m_sockpool.init(max_connects);
+
+    int inotify_fd= inotify_init();
+    if (inotify_fd < 0) {
+        error("inotify_init");
+    }
+    debug("inotify_fd = %d", inotify_fd);
+    int watch_fd= inotify_add_watch(inotify_fd, "/home/engage/github_projects/socket/backend/RESTful/barrages.json", IN_MODIFY);c
+    if (watch_fd < 0) {
+        error("inotify_add_watch");
+    }
+    m_epoll->add(inotify_fd, nullptr, EPOLLIN);
+    debug("inotify_fd = %d", inotify_fd);
+
     while (1)
     {
         int num = m_epoll->wait(wait_time);
@@ -44,19 +59,43 @@ void SocketHandler::handle(int max_connects, int wait_time)
                 socket->m_sockfd = sockfd;
                 socket->set_non_blocking();
                 attach(socket);
+                active_sock.push_back(socket);
+            } else if (0 == m_epoll->m_events[i].data.fd) {
+                debug("m_epoll->m_events[i].data.fd = %d", m_epoll->m_events[i].data.fd);
+                char buffer[1024];
+                int length = read(inotify_fd, buffer, 1024);
+                if (length < 0) {
+                    error("read");
+                }
+                int index = 0;
+                while (index < length) {
+                    struct inotify_event *event = (struct inotify_event *)&buffer[index];
+                    if (event->mask & IN_MODIFY) {
+                        broadcast("barrages.json file was modified!");
+                    }
+                    index += sizeof(struct inotify_event) + event->len;
+                }
             }else{
                 // handle client event
                 Socket *socket = static_cast<Socket *>(m_epoll->m_events[i].data.ptr);
+                debug("m_epoll->m_events[i].data.fd = %d", m_epoll->m_events[i].data.fd);
+                auto it=std::find(active_sock.begin(),active_sock.end(),socket);
                 if (m_epoll->m_events[i].events & EPOLLHUP)
                 {
                     debug("EPOLLHUP");
                     detach(socket);
+                    if (it != active_sock.end()) {
+                        active_sock.erase(it);
+                    }
                     remove(socket);
                 }
                 else if (m_epoll->m_events[i].events & EPOLLERR)
                 {
                     debug("EPOLLERR");
                     detach(socket);
+                    if (it != active_sock.end()) {
+                        active_sock.erase(it);
+                    }
                     remove(socket);
                 }
                 else if (m_epoll->m_events[i].events & EPOLLIN)
@@ -68,6 +107,21 @@ void SocketHandler::handle(int max_connects, int wait_time)
                 }
             }
         }
+    }
+    inotify_rm_watch(inotify_fd, watch_fd);
+    close(inotify_fd);
+}
+
+void SocketHandler::broadcast(const string& message) {
+    debug("broadcast");
+    if (message.size() > 31) {
+        warn("Broadcast message is too long and will be truncated.");
+    }
+    char buf[32];
+    memset(buf, 0, sizeof(buf));  // initialize buffer with zeros
+    strncpy(buf, message.c_str(), sizeof(buf) - 1);  // copy up to 31 characters from message into buf
+    for (Socket* socket : active_sock) {
+        socket->send(buf, strlen(buf));  // send only the actual characters
     }
 }
 

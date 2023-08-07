@@ -32,5 +32,8 @@
   "bugs": {
     "email": "dwchentao@163.com",
     "url": "https://github.com/imtaotao/danmuku/issues"
+  },
+  "dependencies": {
+    "express-ws": "^5.0.2"
   }
 }

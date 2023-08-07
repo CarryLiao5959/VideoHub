@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 输入视频文件路径
-input_file="/home/engage/github_projects/socket/backend/file/mp4-30min/armv8.mp4"
+input_file="/home/engage/github_projects/socket/backend/file/mp4-43min/ARMv8.mp4"
 # 获取视频文件的目录路径
 dir_path=$(dirname "$input_file")
 # 输出的m3u8文件路径
