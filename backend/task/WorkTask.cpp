@@ -5,12 +5,14 @@ using namespace yazi::util;
 using namespace yazi::task;
 using namespace yazi::socket;
 #include <sstream>
-using std::ostringstream;
 #include <vector>
-using std::vector;
 #include <fstream>
+#include <iostream>
 #include <dirent.h>
 #include <algorithm>
+#include </usr/include/nlohmann/json.hpp>
+#include <iomanip>
+using namespace std;
 
 void WorkTask::run() {
     debug("WorkTask running");
@@ -73,12 +75,79 @@ void WorkTask::run() {
     case 8:
         hls_ts_from_second((int)(msg_head.len));
         break;
+    case 9:
+        write_barrage((int)(msg_head.len));
     default:
         error("Unknown command");
         break;
     }
 
     handler->attach(socket);
+}
+
+void WorkTask::write_barrage(int msg_head_len){
+    debug("write_barrage");
+    SocketHandler *handler = Singleton<SocketHandler>::instance();
+    Socket *socket = static_cast<Socket *>(m_data);
+    int buffer_size = buf_size[1];
+    char buf[buffer_size];
+    memset(buf, 0, buffer_size);
+    int len = socket->recv(buf, msg_head_len);
+
+    if (len == -1) {
+        switch (errno) {
+        case EWOULDBLOCK:
+            error("socket recv len: %d, error msg: EWOULDBLOCK errno: %d", len, errno);
+            handler->attach(socket);
+            return;
+        case EINTR:
+            error("socket recv len: %d, error msg: EINTR errno: %d", len, errno);
+            handler->attach(socket);
+            return;
+        }
+    }
+    if (len != msg_head_len) {
+        error("recv msg body error length: %d, body: %s, errno: %d", len, buf, errno);
+        handler->remove(socket);
+        return;
+    }
+    info("recv len: %d, msg data: %s", len, buf);
+
+    string s(buf);
+    int index=s.find("-");
+    string time= s.substr(0,index);
+    debug("time: %s",time.c_str());
+    string text=s.substr(index+1);
+    debug("text: %s",text.c_str());
+
+    string file_path = "/home/engage/github_projects/socket/backend/movie/movie1/barrages.json";
+    nlohmann::json j;
+
+    ifstream ifs(file_path);
+    if (ifs.is_open()) {
+        ifs >> j;
+        ifs.close();
+    }
+    if (j.find("barrages") == j.end()) {
+        j["barrages"] = nlohmann::json::array();
+    }
+    nlohmann::json new_entry;
+    new_entry["text"] = text;
+    new_entry["time"] = time;
+    j["barrages"].push_back(new_entry);
+
+    sort(j["barrages"].begin(), j["barrages"].end(), [](const nlohmann::json &a, const nlohmann::json &b) {
+        return a["time"].get<std::string>() < b["time"].get<std::string>();
+    });
+
+    ofstream ofs(file_path);
+    ofs << setw(4) << j << endl;
+
+    ofs.close();
+
+    memset(buf, 0, buffer_size);
+    memcpy(buf, "recv your barrage", 18);
+    socket->send(buf, 32);
 }
 
 void WorkTask::get_m3u8(int second){

@@ -37,6 +37,7 @@ class WorkTask : public Task {
         debug("WorkTask destory");
         delete this;
     }
+    void write_barrage(int msg_head_len);
     void echo(int msg_head_len);
     void text();
     void img();

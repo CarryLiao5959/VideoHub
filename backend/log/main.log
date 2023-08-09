@@ -1,232 +1,151 @@
-2023-08-07 17:09:45 DEBUG ./util/System.h: 29 open log/main.log
-2023-08-07 17:09:45 DEBUG ./util/System.h: 33 load config/main.ini
-2023-08-07 17:09:45 DEBUG server/Server.cpp: 37 set_threads: 10
-2023-08-07 17:09:45 DEBUG server/Server.cpp: 42 set_connects: 10
-2023-08-07 17:09:45 DEBUG server/Server.cpp: 47 set_wait_time: 10
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 9 Thread created, tid is 0
-2023-08-07 17:09:45 DEBUG thread/TaskDispatcher.cpp: 13 init TaskDispatcher
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 1
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 1
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 2
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 2
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 3
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 3
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 4
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 4
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 5
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 5
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 6
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 6
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 7
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 7
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 8
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 8
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 9
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 9
-2023-08-07 17:09:45 DEBUG thread/Thread.cpp: 13 Thread created, tid is 10
-2023-08-07 17:09:45 DEBUG thread/ThreadPool.h: 26 WorkerThread created 10
-2023-08-07 17:09:45 INFO socket/ServerSocket.h: 21 new ServerSocket sockfd: 4
-2023-08-07 17:09:45 DEBUG socket/Socket.cpp: 24 set bind ip: INADDR_ANY
-2023-08-07 17:09:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:09:45 INFO socket/Socket.cpp: 32 bind success: 
-2023-08-07 17:09:45 DEBUG socket/Socket.cpp: 43 sockfd 4 listen: :8080
-2023-08-07 17:09:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 4
-2023-08-07 17:09:45 DEBUG socket/SocketHandler.cpp: 29 inotify_fd = 6
-2023-08-07 17:09:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
-2023-08-07 17:09:45 DEBUG socket/SocketHandler.cpp: 35 inotify_fd = 6
-2023-08-07 17:09:48 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:09:48 DEBUG socket/Socket.cpp: 54 accept success sockfd: 7
-2023-08-07 17:09:48 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
-2023-08-07 17:09:48 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:09:48 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251312
-2023-08-07 17:09:48 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:09:48 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
-2023-08-07 17:09:48 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
-2023-08-07 17:09:48 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:09:48 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:09:48 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:09:48 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:09:48 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-07 17:09:48 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: ECHO
-2023-08-07 17:09:48 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 1
-2023-08-07 17:09:48 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 12
-2023-08-07 17:09:48 DEBUG task/WorkTask.cpp: 305 echo
-2023-08-07 17:09:48 INFO task/WorkTask.cpp: 335 recv len: 12, msg data: hello server
-2023-08-07 17:09:48 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
-2023-08-07 17:09:48 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:09:54 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:09:54 DEBUG socket/SocketHandler.cpp: 64 m_epoll->m_events[i].data.fd = 0
-2023-08-07 17:09:54 DEBUG socket/SocketHandler.cpp: 116 broadcast
-2023-08-07 17:09:54 WARN socket/SocketHandler.cpp: 118 Broadcast message is too long and will be truncated.
-2023-08-07 17:09:57 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:09:57 DEBUG socket/SocketHandler.cpp: 64 m_epoll->m_events[i].data.fd = 0
-2023-08-07 17:09:57 DEBUG socket/SocketHandler.cpp: 116 broadcast
-2023-08-07 17:09:57 WARN socket/SocketHandler.cpp: 118 Broadcast message is too long and will be truncated.
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:11:45 DEBUG socket/Socket.cpp: 54 accept success sockfd: 8
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251088
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 8
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:11:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: CONNECT cn.bing.À¿aû+
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 1647210083
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 778530409
-2023-08-07 17:11:45 ERROR task/WorkTask.cpp: 77 Unknown command
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251088
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 8
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:11:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: com:443 HTTP/1.1À¿aû+
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 1347703880
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 825110831
-2023-08-07 17:11:45 ERROR task/WorkTask.cpp: 77 Unknown command
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251088
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 8
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:11:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: 
-Host: cn.bing.À¿aû+
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 1647210083
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 778530409
-2023-08-07 17:11:45 ERROR task/WorkTask.cpp: 77 Unknown command
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251088
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 8
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:11:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: com:443
-User-AgÀ¿aû+
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 1702057226
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 1732324722
-2023-08-07 17:11:45 ERROR task/WorkTask.cpp: 77 Unknown command
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251088
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 8
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:11:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: ent: Go-http-cliÀ¿aû+
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 1886680168
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 1768710957
-2023-08-07 17:11:45 ERROR task/WorkTask.cpp: 77 Unknown command
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251088
-2023-08-07 17:11:45 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:11:45 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 8
-2023-08-07 17:11:45 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 8
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:11:45 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:11:45 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 23 recv len: 11
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: ent/1.1
-
-
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 658698
-2023-08-07 17:11:45 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 0
-2023-08-07 17:11:45 ERROR task/WorkTask.cpp: 46 recv msg head error length: 11, errno: 0
-2023-08-07 17:11:45 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:12:22 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:22 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251312
-2023-08-07 17:12:22 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:12:22 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
-2023-08-07 17:12:22 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
-2023-08-07 17:12:22 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:12:22 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:12:22 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:12:22 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:12:22 DEBUG task/WorkTask.cpp: 23 recv len: 0
-2023-08-07 17:12:22 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: 
-2023-08-07 17:12:22 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 0
-2023-08-07 17:12:22 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 0
-2023-08-07 17:12:22 ERROR task/WorkTask.cpp: 29 socket closed by peer
-2023-08-07 17:12:22 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:12:26 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:26 DEBUG socket/Socket.cpp: 54 accept success sockfd: 7
-2023-08-07 17:12:26 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
-2023-08-07 17:12:26 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:26 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251008
-2023-08-07 17:12:26 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:12:26 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
-2023-08-07 17:12:26 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
-2023-08-07 17:12:26 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:12:26 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:12:26 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:12:26 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:12:26 DEBUG task/WorkTask.cpp: 23 recv len: 16
-2023-08-07 17:12:26 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: ECHO
-2023-08-07 17:12:26 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 1
-2023-08-07 17:12:26 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 12
-2023-08-07 17:12:26 DEBUG task/WorkTask.cpp: 305 echo
-2023-08-07 17:12:26 INFO task/WorkTask.cpp: 335 recv len: 12, msg data: hello server
-2023-08-07 17:12:26 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
-2023-08-07 17:12:26 DEBUG task/WorkTask.h: 37 WorkTask destory
-2023-08-07 17:12:31 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:31 DEBUG socket/SocketHandler.cpp: 64 m_epoll->m_events[i].data.fd = 0
-2023-08-07 17:12:31 DEBUG socket/SocketHandler.cpp: 116 broadcast
-2023-08-07 17:12:31 WARN socket/SocketHandler.cpp: 118 Broadcast message is too long and will be truncated.
-2023-08-07 17:12:34 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:34 DEBUG socket/SocketHandler.cpp: 64 m_epoll->m_events[i].data.fd = 0
-2023-08-07 17:12:34 DEBUG socket/SocketHandler.cpp: 116 broadcast
-2023-08-07 17:12:34 WARN socket/SocketHandler.cpp: 118 Broadcast message is too long and will be truncated.
-2023-08-07 17:12:38 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:38 DEBUG socket/SocketHandler.cpp: 64 m_epoll->m_events[i].data.fd = 0
-2023-08-07 17:12:38 DEBUG socket/SocketHandler.cpp: 116 broadcast
-2023-08-07 17:12:38 WARN socket/SocketHandler.cpp: 118 Broadcast message is too long and will be truncated.
-2023-08-07 17:12:39 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:39 DEBUG socket/SocketHandler.cpp: 64 m_epoll->m_events[i].data.fd = 0
-2023-08-07 17:12:39 DEBUG socket/SocketHandler.cpp: 116 broadcast
-2023-08-07 17:12:39 WARN socket/SocketHandler.cpp: 118 Broadcast message is too long and will be truncated.
-2023-08-07 17:12:41 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
-2023-08-07 17:12:41 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -1369251008
-2023-08-07 17:12:41 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
-2023-08-07 17:12:41 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
-2023-08-07 17:12:41 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
-2023-08-07 17:12:41 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
-2023-08-07 17:12:41 INFO thread/ThreadPool.cpp: 68 task is given to thread -77478144
-2023-08-07 17:12:41 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
-2023-08-07 17:12:41 DEBUG task/WorkTask.cpp: 16 WorkTask running
-2023-08-07 17:12:41 DEBUG task/WorkTask.cpp: 23 recv len: 0
-2023-08-07 17:12:41 DEBUG task/WorkTask.cpp: 24 recv MsgHead.flag: 
-2023-08-07 17:12:41 DEBUG task/WorkTask.cpp: 25 recv MsgHead.cmd: 0
-2023-08-07 17:12:41 DEBUG task/WorkTask.cpp: 26 recv MsgHead.len: 0
-2023-08-07 17:12:41 ERROR task/WorkTask.cpp: 29 socket closed by peer
-2023-08-07 17:12:41 DEBUG task/WorkTask.h: 37 WorkTask destory
+2023-08-09 16:37:57 DEBUG ./util/System.h: 29 open log/main.log
+2023-08-09 16:37:57 DEBUG ./util/System.h: 33 load config/main.ini
+2023-08-09 16:37:57 DEBUG server/Server.cpp: 37 set_threads: 10
+2023-08-09 16:37:57 DEBUG server/Server.cpp: 42 set_connects: 10
+2023-08-09 16:37:57 DEBUG server/Server.cpp: 47 set_wait_time: 10
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 9 Thread created, tid is 0
+2023-08-09 16:37:57 DEBUG thread/TaskDispatcher.cpp: 13 init TaskDispatcher
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 1
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 1
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 2
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 2
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 3
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 3
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 4
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 4
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 5
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 5
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 6
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 6
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 7
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 7
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 8
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 8
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 9
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 9
+2023-08-09 16:37:57 DEBUG thread/Thread.cpp: 13 Thread created, tid is 10
+2023-08-09 16:37:57 DEBUG thread/ThreadPool.h: 26 WorkerThread created 10
+2023-08-09 16:37:57 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-09 16:37:57 INFO socket/ServerSocket.h: 21 new ServerSocket sockfd: 4
+2023-08-09 16:37:57 DEBUG socket/Socket.cpp: 24 set bind ip: INADDR_ANY
+2023-08-09 16:37:57 INFO socket/Socket.cpp: 32 bind success: 
+2023-08-09 16:37:57 DEBUG socket/Socket.cpp: 43 sockfd 4 listen: :8080
+2023-08-09 16:37:57 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 4
+2023-08-09 16:37:57 DEBUG socket/SocketHandler.cpp: 29 inotify_fd = 6
+2023-08-09 16:37:57 ERROR socket/SocketHandler.cpp: 32 inotify_add_watch
+2023-08-09 16:37:57 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 6
+2023-08-09 16:37:57 DEBUG socket/SocketHandler.cpp: 35 inotify_fd = 6
+2023-08-09 16:38:00 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:00 DEBUG socket/Socket.cpp: 54 accept success sockfd: 7
+2023-08-09 16:38:00 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
+2023-08-09 16:38:00 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:00 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -99257840
+2023-08-09 16:38:00 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
+2023-08-09 16:38:00 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
+2023-08-09 16:38:00 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
+2023-08-09 16:38:00 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-08-09 16:38:00 INFO thread/ThreadPool.cpp: 68 task is given to thread -1229838592
+2023-08-09 16:38:00 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 18 WorkTask running
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 25 recv len: 16
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 26 recv MsgHead.flag: Barrage
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 27 recv MsgHead.cmd: 9
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 28 recv MsgHead.len: 35
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 89 write_barrage
+2023-08-09 16:38:00 INFO task/WorkTask.cpp: 114 recv len: 35, msg data: 00:33:09.343-this movie is so good!
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 119 time: 00:33:09.343
+2023-08-09 16:38:00 DEBUG task/WorkTask.cpp: 121 text: this movie is so good!
+2023-08-09 16:38:00 ERROR task/WorkTask.cpp: 81 Unknown command
+2023-08-09 16:38:00 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
+2023-08-09 16:38:00 DEBUG task/WorkTask.h: 37 WorkTask destory
+2023-08-09 16:38:07 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:07 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -99257840
+2023-08-09 16:38:07 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
+2023-08-09 16:38:07 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
+2023-08-09 16:38:07 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
+2023-08-09 16:38:07 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-08-09 16:38:07 INFO thread/ThreadPool.cpp: 68 task is given to thread -1229838592
+2023-08-09 16:38:07 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-09 16:38:07 DEBUG task/WorkTask.cpp: 18 WorkTask running
+2023-08-09 16:38:07 DEBUG task/WorkTask.cpp: 25 recv len: 0
+2023-08-09 16:38:07 DEBUG task/WorkTask.cpp: 26 recv MsgHead.flag: 
+2023-08-09 16:38:07 DEBUG task/WorkTask.cpp: 27 recv MsgHead.cmd: 0
+2023-08-09 16:38:07 DEBUG task/WorkTask.cpp: 28 recv MsgHead.len: 0
+2023-08-09 16:38:07 ERROR task/WorkTask.cpp: 31 socket closed by peer
+2023-08-09 16:38:07 DEBUG task/WorkTask.h: 37 WorkTask destory
+2023-08-09 16:38:08 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:08 DEBUG socket/Socket.cpp: 54 accept success sockfd: 7
+2023-08-09 16:38:08 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
+2023-08-09 16:38:08 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:08 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -99257616
+2023-08-09 16:38:08 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
+2023-08-09 16:38:08 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
+2023-08-09 16:38:08 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
+2023-08-09 16:38:08 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-08-09 16:38:08 INFO thread/ThreadPool.cpp: 68 task is given to thread -1229838592
+2023-08-09 16:38:08 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 18 WorkTask running
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 25 recv len: 16
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 26 recv MsgHead.flag: Barrage
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 27 recv MsgHead.cmd: 9
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 28 recv MsgHead.len: 35
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 89 write_barrage
+2023-08-09 16:38:08 INFO task/WorkTask.cpp: 114 recv len: 35, msg data: 00:54:25.492-this movie is so good!
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 119 time: 00:54:25.492
+2023-08-09 16:38:08 DEBUG task/WorkTask.cpp: 121 text: this movie is so good!
+2023-08-09 16:38:08 ERROR task/WorkTask.cpp: 81 Unknown command
+2023-08-09 16:38:08 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
+2023-08-09 16:38:08 DEBUG task/WorkTask.h: 37 WorkTask destory
+2023-08-09 16:38:16 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:16 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -99257616
+2023-08-09 16:38:16 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
+2023-08-09 16:38:16 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
+2023-08-09 16:38:16 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
+2023-08-09 16:38:16 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-08-09 16:38:16 INFO thread/ThreadPool.cpp: 68 task is given to thread -1229838592
+2023-08-09 16:38:16 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-09 16:38:16 DEBUG task/WorkTask.cpp: 18 WorkTask running
+2023-08-09 16:38:16 DEBUG task/WorkTask.cpp: 25 recv len: 0
+2023-08-09 16:38:16 DEBUG task/WorkTask.cpp: 26 recv MsgHead.flag: 
+2023-08-09 16:38:16 DEBUG task/WorkTask.cpp: 27 recv MsgHead.cmd: 0
+2023-08-09 16:38:16 DEBUG task/WorkTask.cpp: 28 recv MsgHead.len: 0
+2023-08-09 16:38:16 ERROR task/WorkTask.cpp: 31 socket closed by peer
+2023-08-09 16:38:16 DEBUG task/WorkTask.h: 37 WorkTask destory
+2023-08-09 16:38:18 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:18 DEBUG socket/Socket.cpp: 54 accept success sockfd: 7
+2023-08-09 16:38:18 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
+2023-08-09 16:38:18 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:18 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -99257536
+2023-08-09 16:38:18 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
+2023-08-09 16:38:18 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
+2023-08-09 16:38:18 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
+2023-08-09 16:38:18 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-08-09 16:38:18 INFO thread/ThreadPool.cpp: 68 task is given to thread -1229838592
+2023-08-09 16:38:18 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 18 WorkTask running
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 25 recv len: 16
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 26 recv MsgHead.flag: Barrage
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 27 recv MsgHead.cmd: 9
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 28 recv MsgHead.len: 35
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 89 write_barrage
+2023-08-09 16:38:18 INFO task/WorkTask.cpp: 114 recv len: 35, msg data: 01:22:15.884-this movie is so good!
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 119 time: 01:22:15.884
+2023-08-09 16:38:18 DEBUG task/WorkTask.cpp: 121 text: this movie is so good!
+2023-08-09 16:38:18 ERROR task/WorkTask.cpp: 81 Unknown command
+2023-08-09 16:38:18 DEBUG socket/EventPoller.cpp: 59 add event to epoll sockfd: 7
+2023-08-09 16:38:18 DEBUG task/WorkTask.h: 37 WorkTask destory
+2023-08-09 16:38:22 DEBUG socket/SocketHandler.cpp: 45 epoll wait: find 1 events
+2023-08-09 16:38:22 DEBUG socket/SocketHandler.cpp: 81 m_epoll->m_events[i].data.fd = -99257536
+2023-08-09 16:38:22 DEBUG socket/SocketHandler.cpp: 103 EPOLLIN
+2023-08-09 16:38:22 DEBUG socket/EventPoller.cpp: 65 delete event from epoll sockfd: 7
+2023-08-09 16:38:22 DEBUG ./task/WorkTask.h: 30 new WorkTask sockfd: 7
+2023-08-09 16:38:22 DEBUG thread/TaskDispatcher.cpp: 47 TaskDispatcher: let threadpool to assign task
+2023-08-09 16:38:22 INFO thread/ThreadPool.cpp: 68 task is given to thread -1229838592
+2023-08-09 16:38:22 DEBUG thread/TaskDispatcher.cpp: 37 TaskDispatcher m_tasks is empty
+2023-08-09 16:38:22 DEBUG task/WorkTask.cpp: 18 WorkTask running
+2023-08-09 16:38:22 DEBUG task/WorkTask.cpp: 25 recv len: 0
+2023-08-09 16:38:22 DEBUG task/WorkTask.cpp: 26 recv MsgHead.flag: 
+2023-08-09 16:38:22 DEBUG task/WorkTask.cpp: 27 recv MsgHead.cmd: 0
+2023-08-09 16:38:22 DEBUG task/WorkTask.cpp: 28 recv MsgHead.len: 0
+2023-08-09 16:38:22 ERROR task/WorkTask.cpp: 31 socket closed by peer
+2023-08-09 16:38:22 DEBUG task/WorkTask.h: 37 WorkTask destory

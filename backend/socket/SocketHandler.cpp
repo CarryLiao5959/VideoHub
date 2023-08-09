@@ -27,7 +27,7 @@ void SocketHandler::handle(int max_connects, int wait_time)
         error("inotify_init");
     }
     debug("inotify_fd = %d", inotify_fd);
-    int watch_fd= inotify_add_watch(inotify_fd, "/home/engage/github_projects/socket/backend/RESTful/barrages.json", IN_MODIFY);c
+    int watch_fd= inotify_add_watch(inotify_fd, "/home/engage/github_projects/socket/backend/RESTful/barrages.json", IN_MODIFY);
     if (watch_fd < 0) {
         error("inotify_add_watch");
     }
