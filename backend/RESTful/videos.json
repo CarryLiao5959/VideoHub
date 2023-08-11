@@ -2,17 +2,17 @@
     "videos": [
         {
             "title": "arm instructions overview",
-            "url": "/static/movie1/ins.mp4",
+            "url": "/static/movie1/output.m3u8",
             "cover": "/static/movie1/cover.png"
         },
         {
             "title": "armv8 introduction 1",
-            "url": "/static/movie2/armv8.mp4",
+            "url": "/static/movie2/output.m3u8",
             "cover": "/static/movie1/cover.png"
         },
         {
             "title": "armv8 introduction 2",
-            "url": "/static/movie3/ARMv8.mp4",
+            "url": "/static/movie3/output.m3u8",
             "cover": "/static/movie1/cover.png"
         }
     ]

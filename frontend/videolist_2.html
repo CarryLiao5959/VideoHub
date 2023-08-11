@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+
+</head>
+<body>
+
+<h1>Video List</h1>
+<ul id="videolist"></ul>
+
+<script>
+    
+$(document).ready(function(){
+    $.ajax({
+        url: 'http://20.222.213.210:5000/videos',
+        method: 'GET',
+        success: function(data){
+            data.videos.forEach(function(video){
+                let videoItem = `
+                    <li style="list-style-type: none; margin: 10px 0;">
+                        <video-js controls class="vjs-default-skin" style="width: 640px; height: 360px;">
+                            <source src="${video.url}" type="application/x-mpegURL">
+                        </video-js>
+                        <div style="text-align: center;">${video.title}</div>
+                    </li>
+                `;
+                $('#videolist').append(videoItem);
+            });
+
+            // 初始化每个 video-js 元素
+            document.querySelectorAll('video-js').forEach(function(element) {
+                videojs(element);
+            });
+
+        },
+        error: function(error){
+            alert('Error fetching videos: ' + error.statusText);
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>

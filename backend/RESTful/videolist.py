@@ -19,7 +19,7 @@ def get_videos():
 @app.route('/videolist')
 def video_list():
     frontend_path = "/home/engage/github_projects/socket/frontend"
-    return send_from_directory(frontend_path, 'videolist.html')
+    return send_from_directory(frontend_path, 'videolist_2.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
