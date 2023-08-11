@@ -37,7 +37,7 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
 
     # Create a file handler
-    handler = logging.FileHandler('./log/barrage.log')
+    handler = logging.FileHandler('/home/engage/github_projects/socket/backend/client/log/barrage.log')
     handler.setLevel(logging.INFO)
 
     # Create a logging format

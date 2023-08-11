@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h1>Video List</h1>
+<ul id="videolist"></ul>
+
+<script>
+$(document).ready(function(){
+    $.ajax({
+        url: 'http://20.222.213.210:5000/videos',
+        method: 'GET',
+        success: function(data){
+            data.videos.forEach(function(video){
+                let videoItem = `
+                    <li style="list-style-type: none; margin: 10px 0;">
+                        <a href="${video.url}">
+                            <img src="${video.cover}" alt="${video.title}" style="width: 200px; height: 112.5px; display: block; margin: 0 auto;">
+                            <div style="text-align: center;">${video.title}</div>
+                        </a>
+                    </li>
+                `;
+                $('#videolist').append(videoItem);
+            });
+        },
+        error: function(error){
+            alert('Error fetching videos: ' + error.statusText);
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>

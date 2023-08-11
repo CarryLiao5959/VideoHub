@@ -2,15 +2,18 @@
     "videos": [
         {
             "title": "arm instructions overview",
-            "url": "/home/engage/github_projects/socket/backend/file/mp4-13min/ins.mp4"
+            "url": "/static/movie1/ins.mp4",
+            "cover": "/static/movie1/cover.png"
         },
         {
             "title": "armv8 introduction 1",
-            "url": "/home/engage/github_projects/socket/backend/file/mp4-30min/armv8.mp4"
+            "url": "/static/movie2/armv8.mp4",
+            "cover": "/static/movie1/cover.png"
         },
         {
             "title": "armv8 introduction 2",
-            "url": "/home/engage/github_projects/socket/backend/file/mp4-43min/ARMv8.mp4"
+            "url": "/static/movie3/ARMv8.mp4",
+            "cover": "/static/movie1/cover.png"
         }
     ]
 }
