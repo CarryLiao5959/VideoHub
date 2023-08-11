@@ -51,7 +51,7 @@ class Logger {
 #define warn(format, ...)                                                      \
     Logger::instance()->log(Logger::WARN, __FILE__, __LINE__, format,          \
                             ##__VA_ARGS__);
-#define error(format, ...)                                                     \
+#define log_error(format, ...)                                                     \
     Logger::instance()->log(Logger::ERROR, __FILE__, __LINE__, format,         \
                             ##__VA_ARGS__);
 #define fatal(format, ...)                                                     \

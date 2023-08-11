@@ -26,7 +26,7 @@ bool Socket::bind(const string &ip, int port)
     sockaddr.sin_port = htons(port);
     if (::bind(m_sockfd, (struct sockaddr *)&sockaddr, sizeof(struct sockaddr)) < 0)
     {
-        error("socket bind error: errno=%d errstr=%s", errno, strerror(errno));
+        log_error("socket bind error: errno=%d errstr=%s", errno, strerror(errno));
         return false;
     }
     info("bind success: %s", ip.c_str());

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Client</title>
+</head>
+<body>
+
+<script>
+    // Connect to the WebSocket server
+    let socket = new WebSocket("ws://20.222.213.210:8081");
+
+    // Connection established
+    socket.onopen = function(event) {
+        console.log("Connected to the WebSocket server");
+        // Send a simple message
+        socket.send("Hello WebSocket server!");
+    };
+
+    // Receiving a message from the server
+    socket.onmessage = function(event) {
+        console.log("Received data from server:", event.data);
+    };
+
+    // Connection closed
+    socket.onclose = function(event) {
+        if (event.wasClean) {
+            console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
+        } else {
+            console.error('Connection died');
+        }
+    };
+
+    // Connection error
+    socket.onerror = function(error) {
+        console.error(`[WebSocket Error]: ${error.message}`);
+    };
+</script>
+
+</body>
+</html>

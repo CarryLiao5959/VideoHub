@@ -51,14 +51,14 @@ void HLSTask::run() {
     // memcpy(buf, file_num.c_str(), file_num.size());
     // int ret = socket->send(buf, file_num.size());
     // if(ret < 0) {
-    //     error("send error: %s", strerror(errno));
+    //     log_error("send error: %s", strerror(errno));
     // }
     // debug("send file_num: %s", file_num.c_str());
 
     // for (const auto &filename : filenames) {
     //     std::ifstream file(filename, std::ios::binary);
     //     if (!file) {
-    //         error("could not open %s", filename.c_str());
+    //         log_error("could not open %s", filename.c_str());
     //         handler->remove(socket);
     //         return;
     //     }

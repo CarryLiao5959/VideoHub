@@ -28,24 +28,24 @@ void WorkTask::run() {
     debug("recv MsgHead.len: %d", msg_head.len);
 
     if (len == 0) {
-        error("socket closed by peer");
+        log_error("socket closed by peer");
         handler->remove(socket);
         return;
     }
     if (len == -1) {
         switch (errno) {
         case EWOULDBLOCK:
-            error("socket recv len: %d, error msg: EWOULDBLOCK errno: %d", len, errno);
+            log_error("socket recv len: %d, error msg: EWOULDBLOCK errno: %d", len, errno);
             handler->attach(socket);
             return;
         case EINTR:
-            error("socket recv len: %d, error msg: EINTR errno: %d", len, errno);
+            log_error("socket recv len: %d, error msg: EINTR errno: %d", len, errno);
             handler->attach(socket);
             return;
         }
     }
     if (len != sizeof(msg_head)) {
-        error("recv msg head error length: %d, errno: %d", len, errno);
+        log_error("recv msg head error length: %d, errno: %d", len, errno);
         handler->remove(socket);
         return;
     }
@@ -78,7 +78,7 @@ void WorkTask::run() {
     case 9:
         write_barrage((int)(msg_head.len));
     default:
-        error("Unknown command");
+        log_error("Unknown command");
         break;
     }
 
@@ -97,17 +97,17 @@ void WorkTask::write_barrage(int msg_head_len){
     if (len == -1) {
         switch (errno) {
         case EWOULDBLOCK:
-            error("socket recv len: %d, error msg: EWOULDBLOCK errno: %d", len, errno);
+            log_error("socket recv len: %d, error msg: EWOULDBLOCK errno: %d", len, errno);
             handler->attach(socket);
             return;
         case EINTR:
-            error("socket recv len: %d, error msg: EINTR errno: %d", len, errno);
+            log_error("socket recv len: %d, error msg: EINTR errno: %d", len, errno);
             handler->attach(socket);
             return;
         }
     }
     if (len != msg_head_len) {
-        error("recv msg body error length: %d, body: %s, errno: %d", len, buf, errno);
+        log_error("recv msg body error length: %d, body: %s, errno: %d", len, buf, errno);
         handler->remove(socket);
         return;
     }
@@ -200,7 +200,7 @@ void WorkTask::hls_ts_from_second(int second){
         string filename = filenames[i];
         std::ifstream file(filename, std::ios::binary);
         if (!file) {
-            error("could not open %s", filename.c_str());
+            log_error("could not open %s", filename.c_str());
             handler->remove(socket);
             return;
         }
@@ -267,7 +267,7 @@ void WorkTask::hls_ts(){
     for(auto filename:filenames){
         std::ifstream file(filename, std::ios::binary);
         if (!file) {
-            error("could not open %s", filename.c_str());
+            log_error("could not open %s", filename.c_str());
             handler->remove(socket);
             return;
         }
@@ -303,7 +303,7 @@ void WorkTask::hls_m3u8(){
     string filename = "file/mp4-6min/playlist.m3u8";
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
-        error("could not open %s", filename.c_str());
+        log_error("could not open %s", filename.c_str());
         handler->remove(socket);
         return;
     }
@@ -340,7 +340,7 @@ void WorkTask::mp4() {
     string filename = "file/mp4/android.mp4";
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
-        error("could not open %s", filename.c_str());
+        log_error("could not open %s", filename.c_str());
         handler->remove(socket);
         return;
     }
@@ -386,17 +386,17 @@ void WorkTask::echo(int msg_head_len) {
     if (len == -1) {
         switch (errno) {
         case EWOULDBLOCK:
-            error("socket recv len: %d, error msg: EWOULDBLOCK errno: %d", len, errno);
+            log_error("socket recv len: %d, error msg: EWOULDBLOCK errno: %d", len, errno);
             handler->attach(socket);
             return;
         case EINTR:
-            error("socket recv len: %d, error msg: EINTR errno: %d", len, errno);
+            log_error("socket recv len: %d, error msg: EINTR errno: %d", len, errno);
             handler->attach(socket);
             return;
         }
     }
     if (len != msg_head_len) {
-        error("recv msg body error length: %d, body: %s, errno: %d", len, buf, errno);
+        log_error("recv msg body error length: %d, body: %s, errno: %d", len, buf, errno);
         handler->remove(socket);
         return;
     }
@@ -416,7 +416,7 @@ void WorkTask::text() {
     string filename = "file/txt/file.txt";
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
-        error("could not open %s",filename.c_str());
+        log_error("could not open %s",filename.c_str());
         handler->remove(socket);
         return;
     }
@@ -453,7 +453,7 @@ void WorkTask::img() {
     string filename = "file/img/road.jpg";
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
-        error("could not open %s", filename.c_str());
+        log_error("could not open %s", filename.c_str());
         handler->remove(socket);
         return;
     }
@@ -490,7 +490,7 @@ void WorkTask::gif() {
     string filename = "file/gif/cheer.gif";
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
-        error("could not open %s", filename.c_str());
+        log_error("could not open %s", filename.c_str());
         handler->remove(socket);
         return;
     }

@@ -2,7 +2,7 @@
 CC = g++
 
 # 源文件
-SRCS := $(shell find ./* -type f | grep '\.cpp' | grep -v 'main\.cpp')
+SRCS := $(shell find ./* -type f | grep '\.cpp' | grep -v 'main\.cpp' | grep -v './websocketpp/')
 $(warning SRCS is ${SRCS})
 
 # 目标文件
@@ -11,8 +11,10 @@ $(warning OBJS is ${OBJS})
 ALL_OBJS := $(shell find . -name "*.o")
 
 # 头文件
-INCLUDE_TEMP = $(shell find ./* -type d | grep -v '\./config')
-INCLUDE = $(patsubst %,-I %, $(INCLUDE_TEMP))
+INCLUDE_PATH = -I/usr/include
+WEBSOCKETPP_INCLUDE_PATH = -I/home/engage/github_projects/socket/websocketpp
+INCLUDE_TEMP = $(shell find ./* -type d | grep -v '\./config' | grep -v './websocketpp/')
+INCLUDE = $(WEBSOCKETPP_INCLUDE_PATH) $(INCLUDE_PATH) $(patsubst %,-I %, $(INCLUDE_TEMP))
 $(warning INCLUDE is ${INCLUDE})
 
 # 编译选项

@@ -15,7 +15,7 @@ class ServerSocket : public Socket {
     ServerSocket(const string &ip, int port) : Socket(ip, port) {
         m_sockfd = ::socket(AF_INET, SOCK_STREAM, 0);
         if (m_sockfd == -1) {
-            error("create server socket error: errno=%d errstr=%s", errno,strerror(errno));
+            log_error("create server socket error: errno=%d errstr=%s", errno,strerror(errno));
             return;
         }
         info("new ServerSocket sockfd: %d", m_sockfd);

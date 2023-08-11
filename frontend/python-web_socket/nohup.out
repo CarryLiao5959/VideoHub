@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "socket_server.py", line 12, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.8/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "socket_server.py", line 9, in main
+    async with websockets.serve(echo, "0.0.0.0", 8765):
+  File "/home/engage/.local/lib/python3.8/site-packages/websockets/legacy/server.py", line 1109, in __aenter__
+    return await self
+  File "/home/engage/.local/lib/python3.8/site-packages/websockets/legacy/server.py", line 1127, in __await_impl__
+    server = await self._create_server()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1463, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 98] error while attempting to bind on address ('0.0.0.0', 8765): address already in use

@@ -5,11 +5,17 @@ namespace util {
 
 template <typename T> class Singleton {
   public:
-    static T *instance() {
+    template <typename... Args>
+    static T *instance(Args... args) {
         if (m_instance == nullptr) {
-            m_instance = new T();
+            m_instance = new T(std::forward<Args>(args)...);
         }
         return m_instance;
+    }
+
+    static void destroy() {
+        delete m_instance;
+        m_instance = nullptr;
     }
 
   private:

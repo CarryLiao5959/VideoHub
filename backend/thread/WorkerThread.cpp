@@ -7,10 +7,10 @@ using namespace yazi::thread;
 void WorkerThread::run() {
     sigset_t mask;
     if (0 != sigfillset(&mask)) {
-        error("workerthread sigfillset fail!");
+        log_error("workerthread sigfillset fail!");
     }
     if (0 != pthread_sigmask(SIG_SETMASK, &mask, NULL)) {
-        error("workerthread pthread_sigmask fail!");
+        log_error("workerthread pthread_sigmask fail!");
     }
     pthread_cleanup_push(cleanup, this);
 

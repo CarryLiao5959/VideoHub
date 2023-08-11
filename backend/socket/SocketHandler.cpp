@@ -24,13 +24,13 @@ void SocketHandler::handle(int max_connects, int wait_time)
 
     int inotify_fd= inotify_init();
     if (inotify_fd < 0) {
-        error("inotify_init");
+        log_error("inotify_init");
     }
     debug("inotify_fd = %d", inotify_fd);
     string watched_file="/home/engage/github_projects/socket/backend/movie/movie1/barrages.json";
     int watch_fd= inotify_add_watch(inotify_fd, watched_file.c_str(), IN_MODIFY);
     if (watch_fd < 0) {
-        error("inotify_add_watch");
+        log_error("inotify_add_watch");
     }
     m_epoll->add(inotify_fd, nullptr, EPOLLIN);
     debug("inotify_fd = %d", inotify_fd);
@@ -66,7 +66,7 @@ void SocketHandler::handle(int max_connects, int wait_time)
                 char buffer[1024];
                 int length = read(inotify_fd, buffer, 1024);
                 if (length < 0) {
-                    error("read");
+                    log_error("read");
                 }
                 int index = 0;
                 while (index < length) {
