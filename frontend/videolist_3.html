@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video List</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+
 </head>
 <body>
 
@@ -12,22 +17,27 @@
 <ul id="videolist"></ul>
 
 <script>
+    
 $(document).ready(function(){
     $.ajax({
         url: 'http://20.222.213.210:5000/videos',
         method: 'GET',
         success: function(data){
             data.videos.forEach(function(video){
+                console.log(video.vid);
                 let videoItem = `
                     <li style="list-style-type: none; margin: 10px 0;">
-                        <a href="http://20.222.213.210:5000/video?vid=${video.id}">
-                            <img src="${video.cover}" alt="${video.title}" style="width: 200px; height: 112.5px; display: block; margin: 0 auto;">
-                            <div style="text-align: center;">${video.title}</div>
-                        </a>
+                        <a href="http://20.222.213.210:5000/video?vid=${video.vid}">${video.title}</a>
                     </li>
                 `;
                 $('#videolist').append(videoItem);
             });
+
+            // 初始化每个 video-js 元素
+            document.querySelectorAll('video-js').forEach(function(element) {
+                videojs(element);
+            });
+
         },
         error: function(error){
             alert('Error fetching videos: ' + error.statusText);

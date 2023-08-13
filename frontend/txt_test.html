@@ -10,24 +10,24 @@
                 alert("您的浏览器支持 WebSocket!");
 
                 // 打开一个 web socket
-                var ws = new WebSocket("ws://localhost:8080");
+                var ws = new WebSocket("ws://20.222.213.210:8765");
                 // var ws = new WebSocket("ws://172.24.232.143:8080")
                 // var ws = new WebSocket("localhost:8080");
                 // var ws = new WebSocket("ws://localhost:9998/echo");
 
                 ws.onopen = function () {
                     // Web Socket 已连接上，使用 send() 方法发送数据
-                    ws.send("发送数据");
-                    alert("数据发送中...");
+                    // ws.send("发送数据");
+                    // alert("数据发送中...");
                 };
 
                 ws.onmessage = function (evt) {
-                    var received_msg = evt.data;
-                    if (evt.data === null) {
-                        console.log("evt is null")
-                    }
+                    // var received_msg = evt.data;
+                    // if (evt.data === null) {
+                    //     console.log("evt is null")
+                    // }
                     console.log(evt.data)
-                    alert("数据已接收...");
+                    // alert("数据已接收...");
                 };
 
                 ws.onclose = function () {

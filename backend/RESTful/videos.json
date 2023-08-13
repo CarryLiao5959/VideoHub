@@ -3,17 +3,20 @@
         {
             "title": "arm instructions overview",
             "url": "/static/movie1/output.m3u8",
-            "cover": "/static/movie1/cover.png"
+            "cover": "/static/movie1/cover.png",
+            "vid": "1"
         },
         {
             "title": "armv8 introduction 1",
             "url": "/static/movie2/output.m3u8",
-            "cover": "/static/movie1/cover.png"
+            "cover": "/static/movie1/cover.png",
+            "vid": "2"
         },
         {
             "title": "armv8 introduction 2",
             "url": "/static/movie3/output.m3u8",
-            "cover": "/static/movie1/cover.png"
+            "cover": "/static/movie1/cover.png",
+            "vid": "3"
         }
     ]
 }

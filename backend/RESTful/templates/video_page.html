@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Video</title>
+    
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+</head>
+<body>
+
+<video-js controls class="vjs-default-skin" style="width: 640px; height: 360px;">
+    <source src="{{ video_url }}" type="application/x-mpegURL">
+</video-js>
+
+<script>
+    // 初始化 video-js 元素
+    videojs(document.querySelector('video-js'));
+</script>
+
+</body>
+</html>
