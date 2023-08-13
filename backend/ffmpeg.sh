@@ -1,53 +1,69 @@
 #!/bin/bash
 
-# 输入视频文件路径
-input_file="/home/engage/github_projects/socket/backend/file/mp4-13min/ins.mp4"
-# 获取视频文件的目录路径
-dir_path=$(dirname "$input_file")
-# 输出的m3u8文件路径
-output_playlist="$dir_path/output.m3u8"
-# 输出的ts文件路径前缀
-output_segment="$dir_path/segment%03d.ts"
-# 每个切片的时间
-segment_time=10
-
-# 如果目标文件夹中存在.ts或.m3u8文件，则删除
-if [ -f "$dir_path/*.ts" ] || [ -f "$output_playlist" ]; then
-  rm "$dir_path/*.ts"
-  rm "$output_playlist"
+# Check for correct number of arguments
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <movie_folder_name> <segment_time>"
+    exit 2
 fi
 
-# 获取视频文件大小
-original_size=$(du -sh "$input_file" | cut -f1)
+# Initialize variables
+movie_folder_name=$1
+segment_time=$2
 
-# 获取切分开始的时间
+dir_path="/home/engage/github_projects/socket/backend/static/$movie_folder_name"
+mp4_file=$(find "$dir_path" -type f -name "*.mp4" | head -n 1)
+
+# Check for the existence of the mp4 file
+if [ -z "$mp4_file" ]; then
+    echo "No mp4 file found in the directory static/$movie_folder_name"
+    exit 1
+fi
+
+# Define the output paths
+out_m3u8="$dir_path/output.m3u8"
+out_segment="$dir_path/segment%03d.ts"
+
+# Remove existing segments and playlist, if they exist
+rm "$dir_path"/*.ts 2> /dev/null
+rm "$out_m3u8" 2> /dev/null
+
+# Capture the start time of segmentation
 start_time=$(date +%s)
 
-# 使用ffmpeg切分视频
-ffmpeg -i "$input_file" -codec copy -map 0 -f segment -segment_list "$output_playlist" -segment_time ${segment_time} "${output_segment/\%03d/%03d}"
+# FFmpeg command setup
+src=(-i "$mp4_file")
+codec=(-codec copy)
+codev=(-c:v libx264 -force_key_frames "expr:gte(t,n_forced*$segment_time)")
+codea=(-c:a aac)
+map=(-map 0)
+form=(-f segment)
+path=(-segment_list "$out_m3u8")
+max_time_0=(-segment_time 1)
+max_time=(-segment_time "$segment_time")
 
-# 获取切分结束的时间
+ffmpeg_opt0=("${src[@]}" "${codev[@]}" "${codea[@]}" "${map[@]}" "${form[@]}" "${path[@]}" "${max_time_0[@]}")
+ffmpeg_opt=("${src[@]}" "${codev[@]}" "${codea[@]}" "${map[@]}" "${form[@]}" "${path[@]}" "${max_time[@]}")
+
+# Segment the first 10 seconds of the video into 1-second chunks
+for i in $(seq 0 9); do
+  ffmpeg "${ffmpeg_opt0[@]}" -ss $i -t 1 "$out_segment"
+done
+
+# Segment the rest of the video
+ffmpeg -ss 10 "${ffmpeg_opt[@]}" "${out_segment}"
+
+# Capture the end time of segmentation
 end_time=$(date +%s)
 
-# 计算切分耗费的时间
+# Compute segmentation duration and file details
 duration=$((end_time - start_time))
-
-# 获取切分后的ts文件数量
 num_segments=$(find "$dir_path" -name 'segment*.ts' -type f | wc -l)
-
-# 获取切分后的ts文件总大小
 total_size=$(du -csh "$dir_path"/segment*.ts | grep total | cut -f1)
-# 如果没有生成任何ts文件，平均大小设为0，否则计算平均大小
-if [ "$num_segments" -eq 0 ]; then
-  average_size="0"
-else
-  average_size=$(du -sh "$dir_path"/segment*.ts | awk '{total += $1} END {print total/NR "M"}')
-fi
+average_size=$(du -sh "$dir_path"/segment*.ts | awk '{total += $1} END {print total/NR "K"}')
 
-# 打印信息
-echo "[every slide lasts] $segment_time s"
-echo "[segment lasts] $duration s"
-echo "[video size] $original_size"
-echo "[.ts nums] $num_segments"
-echo "[.ts total size] $total_size"
-echo "[.ts average size] $average_size"
+# Display information
+echo "[Duration of each segment] $segment_time s"
+echo "[Time taken to segment] $duration s"
+echo "[Number of .ts files] $num_segments"
+echo "[Total size of .ts files] $total_size"
+echo "[Average size of .ts files] $average_size"
