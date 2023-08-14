@@ -1,1 +1,29 @@
-2023-08-13 11:23:41 DEBUG ./util/System.h: 29 open log/main.log
+2023-08-14 17:06:32 DEBUG ./util/System.h: 29 open log/main.log
+2023-08-14 19:00:30 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"text":"111","time":"11:00:29.698"}]}
+2023-08-14 19:00:58 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"text":"222","time":"11:00:57.702"}]}
+2023-08-14 19:06:41 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"text":"111","time":"11:06:40.772","barrageTime":0}]}
+2023-08-14 19:06:44 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"text":"222","time":"11:06:44.189","barrageTime":0}]}
+2023-08-14 19:06:46 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"text":"333","time":"11:06:46.600","barrageTime":0}]}
+2023-08-14 19:06:54 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"text":"555","time":"11:06:54.559","barrageTime":2}]}
+2023-08-14 19:06:58 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"text":"555","time":"11:06:58.551","barrageTime":6}]}
+2023-08-14 19:21:51 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"111","time":"11:21:51.335","barrageTime":0}]}
+2023-08-14 19:21:54 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"2222","time":"11:21:53.748","barrageTime":0}]}
+2023-08-14 19:21:55 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"3333","time":"11:21:55.378","barrageTime":0}]}
+2023-08-14 19:21:57 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"4444","time":"11:21:56.927","barrageTime":0}]}
+2023-08-14 19:21:59 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"5555","time":"11:21:59.384","barrageTime":0}]}
+2023-08-14 19:22:01 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"6666","time":"11:22:01.199","barrageTime":0}]}
+2023-08-14 19:22:15 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"3333","time":"11:22:14.838","barrageTime":2}]}
+2023-08-14 19:22:17 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"44444","time":"11:22:17.349","barrageTime":4}]}
+2023-08-14 19:22:19 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"5555","time":"11:22:19.341","barrageTime":6}]}
+2023-08-14 19:22:21 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"66666","time":"11:22:21.538","barrageTime":8}]}
+2023-08-14 19:22:24 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"7777","time":"11:22:24.054","barrageTime":11}]}
+2023-08-14 19:22:26 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"99999","time":"11:22:26.424","barrageTime":13}]}
+2023-08-14 19:22:31 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"11111111","time":"11:22:30.802","barrageTime":17}]}
+2023-08-14 19:49:04 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"1","time":"11:49:05.073","barrageTime":0}]}
+2023-08-14 19:49:09 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"1111","time":"11:49:09.601","barrageTime":0}]}
+2023-08-14 19:49:10 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"","time":"11:49:10.601","barrageTime":0}]}
+2023-08-14 19:49:13 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"2222222222222222","time":"11:49:13.457","barrageTime":0}]}
+2023-08-14 19:49:28 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"33333","time":"11:49:28.713","barrageTime":0}]}
+2023-08-14 19:52:02 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"324","time":"11:52:02.680","barrageTime":0}]}
+2023-08-14 19:52:23 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"333","time":"11:52:23.555","barrageTime":0}]}
+2023-08-14 19:53:17 INFO socket/WebSocket.cpp: 39 Received message: {"barrages":[{"barrageText":"dedd","time":"11:53:17.642","barrageTime":263}]}

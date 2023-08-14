@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Video</title>
-    
+
     <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+    <!-- <script src="/home/engage/github_projects/socket/backend/RESTful/danmuku.min.js"></script>
+    <script src='../barragedata.js'></script> -->
+
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+
+    <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/danmuku.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/barragedata.js') }}"></script>
 
     <style>
         /* 将视频居中显示 */
         body {
             display: flex;
-            justify-content: center; /* 水平居中 */
-            align-items: center;     /* 垂直居中 */
-            height: 100vh;           /* 使用视口高度使其占满全屏 */
-            margin: 0;               /* 去除任何默认的边距 */
+            justify-content: center;
+            /* 水平居中 */
+            align-items: center;
+            /* 垂直居中 */
+            height: 100vh;
+            /* 使用视口高度使其占满全屏 */
+            margin: 0;
+            /* 去除任何默认的边距 */
         }
 
         /* 默认样式，主要为手机竖屏设置 */
@@ -28,16 +49,19 @@
             position: relative;
             overflow: hidden;
             width: 80%;
-            padding-top: calc(80% * 9 / 16); /* 16:9 的纵横比 */
+            padding-top: calc(80% * 9 / 16);
+            /* 16:9 的纵横比 */
         }
 
         /* 电脑端：始终适应高度 */
         @media screen and (min-width: 769px) {
             .video-wrapper {
-                width: calc(80vh * 16 / 9); /* 根据 16:9 的纵横比计算 80% 视口高度的宽度 */
+                width: calc(80vh * 16 / 9);
+                /* 根据 16:9 的纵横比计算 80% 视口高度的宽度 */
                 height: 80vh;
                 padding-top: 0;
             }
+
             .video-wrapper video-js {
                 height: 100%;
                 width: auto;
@@ -47,10 +71,12 @@
         /* 手机横屏：适应高度 */
         @media screen and (max-width: 768px) and (orientation: landscape) {
             .video-wrapper {
-                width: calc(80vh * 16 / 9); /* 根据 16:9 的纵横比计算 80% 视口高度的宽度 */
+                width: calc(80vh * 16 / 9);
+                /* 根据 16:9 的纵横比计算 80% 视口高度的宽度 */
                 height: 80vh;
                 padding-top: 0;
             }
+
             .video-wrapper video-js {
                 height: 100%;
                 width: auto;
@@ -66,22 +92,499 @@
             height: 100%;
         }
 
-    </style>    
-      
+        #time {
+            position: fixed;
+            /* right: 10px; */
+            left: 10px;
+            top: 10px;
+            color: black;
+        }
+
+        #container {
+            overflow: hidden;
+            /* background-color: white; */
+            /* background: red; */
+            width: 800px;
+            height: 500px;
+            float: right;
+            right: 0;
+        }
+
+        .vjs-paused .vjs-big-play-button,
+        .vjs-paused.vjs-has-started .vjs-big-play-button {
+            display: block;
+        }
+
+        .video-js .vjs-big-play-button {
+            font-size: 2.5em;
+            line-height: 2.3em;
+            height: 2.5em;
+            width: 2.5em;
+            -webkit-border-radius: 2.5em;
+            -moz-border-radius: 2.5em;
+            border-radius: 2.5em;
+            background-color: #73859f;
+            background-color: rgba(115, 133, 159, .5);
+            border-width: 0.15em;
+            margin-top: -1.25em;
+            margin-left: -1.75em;
+        }
+
+        /* 中间的播放箭头 */
+        .vjs-big-play-button .vjs-icon-placeholder {
+            font-size: 1.63em;
+        }
+
+        /* 加载圆圈 */
+        .vjs-loading-spinner {
+            font-size: 2.5em;
+            width: 2em;
+            height: 2em;
+            border-radius: 1em;
+            margin-top: -1em;
+            margin-left: -1.5em;
+        }
+
+        .video-js .vjs-time-control {
+            display: block;
+        }
+
+        .video-js .vjs-remaining-time {
+            display: none;
+        }
+    </style>
+
 </head>
+
 <body>
 
-<div class="video-wrapper">
-    <video-js controls class="vjs-default-skin" playsinline>
-        <source src="{{ video_url }}" type="application/x-mpegURL">
-    </video-js>
-</div>
-    
+    <div id="time">0</div>
+    <div class="container">
+        <div class="video-wrapper" id="video-wrapper">
+            <video-js controls class="video-js vjs-big-play-centered " playsinline id="my-player">
+                <source src="{{ video_url }}" type="application/x-mpegURL">
+            </video-js>
 
-<script>
-    // 初始化 video-js 元素
-    videojs(document.querySelector('video-js'));
-</script>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text">编辑弹幕内容</span>
+            <textarea class="form-control" aria-label="With textarea" id="message"></textarea>
+            <button class="btn btn-primary" id="send">发送</button>
+        </div>
+    </div>
+
+    <input type="hidden" id="videoId" value="{{ vid }}">
+
+    <script>
+        // 初始化 video-js 元素
+        videojs(document.querySelector('video-js'));
+    </script>
+
+
+    <script>
+        const random = (min, max) => +(Math.random() * (max - min) + min).toFixed(0)
+
+        const m = Danmuku.create({
+            container: document.getElementById('video-wrapper'),
+            height: 35, // 轨道高度
+            rowGap: 10, // 两个弹幕的横向间隔（速度不一样，后面的可能会追上）
+            direction: 'right', // 弹幕的方向 left or right
+            times: [4, 8], // 弹幕动画的时间取值范围
+            limit: 150, // 能够渲染的最大数量
+            interval: 1,
+            hooks: {  // 这里的生命周期，特殊弹幕和普通弹幕都会调用
+                // 弹幕创建时
+                barrageCreate(barrage, node) {
+                    if (barrage.isSpecial) return
+
+                    if (typeof barrage.data !== 'string') {
+                        node.style.border = '3px solid #fff'
+                        node.textContent = barrage.data.content
+                    } else {
+                        node.textContent = barrage.data
+                    }
+
+                    node.classList.add('barrage')
+                    node.style.color = `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
+                },
+
+                // // 弹幕开始移动时
+                // barrageMove(barrage, node) {
+                //     // 查看当前这个弹幕是否被修正过停留在视图的时长
+                //     // console.log(barrage.isChangeDuration)
+                //     node.style.opacity = opacity.value / 100
+                // },
+
+                // // 弹幕节点移除视图时
+                barrageRemove(barrage, node) {
+                },
+
+                // barrageDestroy(barrage, node) {
+                //     allNumber.textContent = m.length
+                //     showNumber.textContent = m.showLength
+                // },
+
+                // send() {
+                //     allNumber.textContent = m.length
+                // },
+
+                ended() {
+                    console.log('end')
+                },
+
+                capacityWarning(manager) {
+                    console.error('capacityWarning 钩子被调用')
+                },
+
+                willRender(manager, barrage, isSpecial) {
+                    if (!isSpecial) return
+                    console.log(barrage, isSpecial)
+                },
+
+                // render() {
+                //     allNumber.textContent = m.length
+                //     showNumber.textContent = m.showLength
+                // },
+
+                // start() {
+                //     start.classList.add('select')
+                //     stopBtn.classList.remove('select')
+                // },
+
+                // stop() {
+                //     start.classList.remove('select')
+                //     stopBtn.classList.add('select')
+                // },
+
+                clear() {
+                    allNumber.textContent = m.length
+                    showNumber.textContent = m.showLength
+                },
+
+                setOptions() {
+                    console.log('setOptions')
+                },
+
+                show() {
+                    show.classList.add('select')
+                    hidden.classList.remove('select')
+                },
+
+                hidden() {
+                    show.classList.remove('select')
+                    hidden.classList.add('select')
+                },
+            }
+        })
+
+
+        // 监听当前视频播放时间
+        var myplayer = videojs('my-player');
+        var timeDisplay = myplayer.currentTime();
+        // console.log(timeDisplay)
+        myplayer.on("timeupdate", mytime);
+
+        function mytime() {
+            timeDisplay = Math.floor(myplayer.currentTime());
+        }
+
+        // const count = 30
+        // const repeat = 2
+
+        var barrageDataRequest = [];
+        const timeline = m.use(Danmuku.Timeline, { forceRender: true })
+
+        let videoId = document.getElementById("videoId").value;
+        // console.log("http://20.222.213.210:5001/barrage?vid=" + videoId)
+
+        $.ajax({
+            url: "http://20.222.213.210:5001/barrage?vid=" + videoId,
+            method: 'GET',
+            success: (data) => {
+                console.log(data);
+                barrageDataRequest = data.barrages;
+
+                // const timeline = m.use(Danmuku.Timeline, { forceRender: true })
+                // for (let i = 0; i < barrageDataRequest.length; i++) {
+                //     // console.log(barrageDataRequest[i].barrageTime, barrageDataRequest[i].barrageText)
+
+                //     timeline.add(barrageDataRequest[i].barrageTime, barrageDataRequest[i].barrageText, {
+                //         // 弹幕渲染到页面上时
+                //         append(barrage, node) {
+                //             node.onmouseenter = e => {
+                //                 barrage.pause()
+                //                 node.classList.add('active')
+                //             }
+                //             node.onmouseleave = e => {
+                //                 barrage.resume()
+                //                 node.classList.remove('active')
+                //             }
+                //             node.onclick = e => {
+                //                 barrage.destroy()
+                //             }
+                //         },
+                //     })
+                // }
+
+            },
+
+            error: (error) => {
+                alert('Error fetching videos: ' + error.statusText);
+            }
+        });
+        console.log(barrageDataRequest);
+        console.log("video_url:")
+        // console.log("video_url:", video_url)
+
+        for (let i = 0; i < barragedata.length; i++) {
+
+            timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
+                // 弹幕渲染到页面上时
+                append(barrage, node) {
+                    node.onmouseenter = e => {
+                        barrage.pause()
+                        node.classList.add('active')
+                    }
+                    node.onmouseleave = e => {
+                        barrage.resume()
+                        node.classList.remove('active')
+                    }
+                    node.onclick = e => {
+                        barrage.destroy()
+                    }
+                },
+            })
+        }
+        m.start()
+
+        setInterval(() => {
+            timeline.emit(timeDisplay)
+            time.innerHTML = timeDisplay
+            // i++
+        }, 1000)
+
+        const ws = new WebSocket('ws://20.222.213.210:8081');
+        ws.onopen = function () {
+            console.log('Connected to WebSocket server');
+        };
+
+        ws.onmessage = function (event) {
+            const messages = document.getElementById('messages');
+            // const li = document.createElement('li');
+            // li.appendChild(document.createTextNode(event.data));
+            // messages.appendChild(li);
+        };
+
+        ws.onclose = function () {
+            console.log('Disconnected from WebSocket server');
+        };
+
+        const sendButton = document.getElementById('send');
+        const messageInput = document.getElementById('message');
+
+        sendButton.onclick = function () {
+            const message = messageInput.value;
+
+            const currentDate = new Date();
+            const time = currentDate.toISOString().substr(11, 12);
+
+            // 构建JSON对象
+            const payload = {
+                barrages: [
+                    {
+                        barrageText: message,
+                        time: time,
+                        barrageTime: timeDisplay
+                    }
+                ]
+            };
+
+            ws.send(JSON.stringify(payload));
+            // console.log('send: ' + JSON.stringify(payload));
+            messageInput.value = '';
+        };
+
+        // 定义初始值
+        height.value = m.opts.height
+        limit.value = m.opts.limit
+        rowGap.value = m.opts.rowGap
+        renderTime.value = m.opts.interval
+        minTime.value = m.opts.times[0]
+        maxTime.value = m.opts.times[1]
+
+        const setDirection = direction => {
+            if (direction === 'left') {
+                left.classList.add('select')
+                right.classList.remove('select')
+            } else {
+                left.classList.remove('select')
+                right.classList.add('select')
+            }
+        }
+        setDirection(m.opts.direction)
+
+        const input = (node, cb) => {
+            node.oninput = e => {
+                const val = Number(e.currentTarget.value)
+                if (typeof val === 'number' && !isNaN(val)) {
+                    cb(val)
+                }
+            }
+        }
+
+        // 轨道高度
+        input(height, val => {
+            m.setOptions({ height: val })
+        })
+
+        // limit
+        input(limit, val => {
+            m.setOptions({ limit: val })
+        })
+
+        // rowgap
+        input(rowGap, val => {
+            m.setOptions({ rowGap: val })
+        })
+
+        // render time
+        input(renderTime, val => {
+            m.setOptions({ interval: val })
+        })
+
+        // 隐藏显示
+        show.onclick = e => {
+            m.show()
+        }
+
+        hidden.onclick = e => {
+            m.hidden()
+        }
+
+        // direction
+        left.onclick = e => {
+            setDirection('left')
+            m.setOptions({ direction: 'left' })
+        }
+
+        right.onclick = e => {
+            setDirection('right')
+            m.setOptions({ direction: 'right' })
+        }
+
+        // 启动
+        start.onclick = e => {
+            m.start()
+        }
+
+        stopBtn.onclick = e => {
+            m.stop()
+        }
+
+        // times
+        input(minTime, min => {
+            const max = m.opts.times[1]
+            m.setOptions({ times: [min, max] })
+        })
+
+        input(maxTime, max => {
+            const min = m.opts.times[0]
+            m.setOptions({ times: [min, max] })
+        })
+
+        // 发送弹幕
+        send.onclick = e => {
+            m.send({ content: barrageText.value }, {}, true)
+            barrageText.value = ''
+        }
+
+        // 发送高级弹幕
+        sendSpecial.onclick = e => {
+            const text = specialBarrage.value
+            const directions = ['right', 'left', 'none']
+            specialBarrage.value = ''
+
+            m.sendSpecial({
+                duration: random(3, 5),
+                direction: directions[random(0, 2)],
+                position(barrage) {
+                    return {
+                        x: m.containerWidth / 2,
+                        y: 100,
+                    }
+                },
+                hooks: {
+                    create(barrage, node) {
+                        node.textContent = `高级弹幕--${text}`
+                        node.classList.add('special-barrage')
+                    },
+                    destroy() {
+                        console.log('高级弹幕销毁')
+                    }
+                }
+            })
+        }
+
+        // 清空弹幕
+        clear.onclick = e => {
+            m.clear()
+        }
+
+        // 透明度
+        input(opacity, val => {
+            val /= 100
+            m.each(barrage => {
+                barrage.node.style.opacity = val
+            })
+        })
+
+        // 显示区域
+        const toggle = node => {
+            [allArea, topArea, bottomArea].forEach(v => {
+                if (v === node) {
+                    v.classList.add('select')
+                } else {
+                    v.classList.remove('select')
+                }
+            })
+        }
+
+        // 全部半部分区域
+        allArea.onclick = e => {
+            m.container.style.height = '100vh'
+            m.container.style.transform = 'translateY(0)'
+            m.resize()
+            toggle(allArea)
+        }
+
+        // 上半部分区域
+        topArea.onclick = e => {
+            m.container.style.height = '50vh'
+            m.container.style.transform = 'translateY(0)'
+            m.resize()
+            toggle(topArea)
+        }
+
+        // 下半部分区域
+        bottomArea.onclick = e => {
+            m.container.style.height = '50vh'
+            m.container.style.transform = 'translateY(100%)'
+            m.resize()
+            toggle(bottomArea)
+        }
+
+        // 实时响应
+        responsive.onclick = e => {
+            m.setOptions({
+                rowGap: -1,
+                limit: Infinity,
+            })
+            rowGap.value = -1
+            limit.value = Infinity
+        }
+    </script>
 
 </body>
+
 </html>

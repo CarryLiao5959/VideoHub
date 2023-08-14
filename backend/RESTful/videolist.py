@@ -35,7 +35,7 @@ def video_page():
     video_url = get_video_url_by_vid(vid)
     if video_url is None:
         abort(404, description="Video not found")
-    return render_template('video_page.html', video_url=video_url)
+    return render_template('video_page.html', video_url=video_url,vid=vid)
 
 
 @app.route('/videolist')
