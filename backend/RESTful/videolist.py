@@ -38,11 +38,10 @@ def video_page():
     return render_template('video_page.html', video_url=video_url,vid=vid)
 
 
-@app.route('/videolist')
+@app.route('/')
 @cross_origin()
 def video_list():
-    frontend_path = "/home/engage/github_projects/socket/frontend"
-    return send_from_directory(frontend_path, 'videolist_3.html')
+    return render_template('videolist.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000,debug=True)
+    app.run(host='0.0.0.0',port=80,debug=True)

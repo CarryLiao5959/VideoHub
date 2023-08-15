@@ -370,6 +370,7 @@
         };
 
         ws.onmessage = function (event) {
+            console.log(event);
             const messages = document.getElementById('messages');
             // const li = document.createElement('li');
             // li.appendChild(document.createTextNode(event.data));
@@ -401,7 +402,7 @@
             };
 
             ws.send(JSON.stringify(payload));
-            // console.log('send: ' + JSON.stringify(payload));
+            console.log('send: ' + JSON.stringify(payload));
             messageInput.value = '';
         };
 
