@@ -25,10 +25,10 @@
             "vid": "4"
         },
         {
-            "title": "store instructions",
-            "url": "/static/movie4/output.m3u8",
-            "cover": "/static/movie4/cover.png",
-            "vid": "4"
+            "title": "build arm64 env",
+            "url": "/static/movie5/output.m3u8",
+            "cover": "/static/movie5/cover.png",
+            "vid": "5"
         }
     ]
 }
