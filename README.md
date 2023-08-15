@@ -36,6 +36,9 @@ $ python3 videolist.py
 # 弹幕列表服务
 $ cd /backend/RESTful/
 $ python3 barrage.py
+# 程序后台运行
+$ sudo nohup python3 videolist.py > videolist.log 2>&1 &
+$ sudo nohup python3 barrage.py > barrage.log 2>&1 &
 ```
 
 ## 客户端连接

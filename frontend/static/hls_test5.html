@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xgplayer test page</title>
+    <link rel="stylesheet" href="//unpkg.byted-static.com/xgplayer/3.0.8/dist/index.min.css">
+    <script src="//unpkg.byted-static.com/xgplayer/3.0.8/dist/index.min.js"></script>
+    <script src="//unpkg.com/xgplayer-hls@latest/dist/index.min.js"></script>
+    <style>
+        /* 将视频居中显示 */
+        body {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center;     /* 垂直居中 */
+            height: 100vh;           /* 使用视口高度使其占满全屏 */
+            margin: 0;               /* 去除任何默认的边距 */
+        }
+
+        body #vs {
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div id="vs"></div>
+    <script>
+        if (document.createElement('video').canPlayType('application/vnd.apple.mpegurl')) {
+            // 原生支持 hls 播放
+            player = new Player({
+                id: 'vs',
+                url: 'http://engage-2023.com:3000/resource_1/output.m3u8',
+                width: '80%',
+                height: '80%'
+            })
+        } else if (HlsPlayer.isSupported()) { // 第一步
+            player = new Player({
+                id: 'vs',
+                isLive: false,
+                url: 'http://engage-2023.com:3000/resource_1/output.m3u8',
+                width: '80%',
+                height: '80%',
+                plugins: [HlsPlayer] // 第二步
+            })
+        }
+    </script>
+</body>
+</html>
