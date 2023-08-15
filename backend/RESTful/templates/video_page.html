@@ -157,7 +157,6 @@
 </head>
 
 <body>
-
     <div id="time">0</div>
     <div class="container">
         <div class="video-wrapper" id="video-wrapper">
@@ -299,7 +298,7 @@
         // console.log("http://20.222.213.210:5001/barrage?vid=" + videoId)
 
         $.ajax({
-            url: "http://20.222.213.210:5001/barrage?vid=" + videoId,
+            url: "https://engage-2023.com/barrage?vid=" + videoId,
             method: 'GET',
             success: (data) => {
                 console.log(data);
@@ -330,7 +329,7 @@
             },
 
             error: (error) => {
-                alert('Error fetching videos: ' + error.statusText);
+                alert('Error fetching barrages: ' + error.statusText);
             }
         });
         console.log(barrageDataRequest);

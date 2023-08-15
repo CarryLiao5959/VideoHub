@@ -41,8 +41,8 @@ path=(-segment_list "$out_m3u8")
 max_time_0=(-segment_time 1)
 max_time=(-segment_time "$segment_time")
 
-ffmpeg_opt0=("${src[@]}" "${codev[@]}" "${codea[@]}" "${map[@]}" "${form[@]}" "${path[@]}" "${max_time_0[@]}")
-ffmpeg_opt=("${src[@]}" "${codev[@]}" "${codea[@]}" "${map[@]}" "${form[@]}" "${path[@]}" "${max_time[@]}")
+ffmpeg_opt0=("${src[@]}" "${codec[@]}" "${map[@]}" "${form[@]}" "${path[@]}" "${max_time_0[@]}")
+ffmpeg_opt=("${src[@]}" "${codec[@]}" "${map[@]}" "${form[@]}" "${path[@]}" "${max_time[@]}")
 
 # Segment the first 10 seconds of the video into 1-second chunks
 for i in $(seq 0 9); do

@@ -10,6 +10,16 @@
     <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+    
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+
+    <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
     <style>
         .videos_container {
             display: flex;
@@ -36,6 +46,42 @@
 </head>
 
 <body>
+
+    <nav className="navbar navbar-dark bg-dark">
+        <div className="container">
+            <div className="navbar-brand" to="/">首页</div>
+            <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div className="offcanvas-header">
+                    <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">（用户的名字）</h5>
+                    <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div className="offcanvas-body">
+                    <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li className="nav-item">
+                            <div className="nav-link active" aria-current="page" to="/home">Home</div>
+                            <div className="nav-link active" aria-current="page" to="/login">login</div>
+                            <div className="nav-link active" aria-current="page" to="/register">register</div>
+                        </li>
+                        {/* <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            APP
+                            </a>
+                            <ul className="dropdown-menu dropdown-menu-dark">
+                                <li><div className="dropdown-item" to="/calculator">Calculator</div></li>
+                            </ul>
+                        </li> */}
+                    </ul>
+                    {/* <form className="d-flex mt-3" role="search">
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-success" type="submit">Search</button>
+                    </form> */}
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <h1>Video List</h1>
     <div class="videos_container">
