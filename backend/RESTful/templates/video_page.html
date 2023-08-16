@@ -56,7 +56,7 @@
         /* 电脑端：始终适应高度 */
         @media screen and (min-width: 769px) {
             .video-wrapper {
-                width: calc(80vh * 16 / 9);
+                width: calc(min(80vh * 16 / 9, 90vw));
                 /* 根据 16:9 的纵横比计算 80% 视口高度的宽度 */
                 height: 80vh;
                 padding-top: 0;
@@ -92,14 +92,12 @@
             height: 100%;
         }
 
-        #container {
-            overflow: hidden;
-            /* background-color: white; */
-            /* background: red; */
-            width: 800px;
-            height: 500px;
-            float: right;
-            right: 0;
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
         }
 
         .vjs-paused .vjs-big-play-button,
