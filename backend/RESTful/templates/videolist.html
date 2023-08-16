@@ -8,10 +8,9 @@
     <title>Video List</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    <!-- <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script> -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
@@ -174,8 +173,26 @@
 </head>
 
 <body>
+    
     <div class="header">VideoHub</div>
     <div class="subheader">learning arm</div>
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">VideoHub</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active" id="tabA">
+                    <a class="nav-link" href="#">A</a>
+                </li>
+                <li class="nav-item" id="tabB">
+                    <a class="nav-link" href="#">B</a>
+                </li>
+                <li class="nav-item" id="tabC">
+                    <a class="nav-link" href="#">C</a>
+                </li>
+            </ul>
+        </div>
+    </nav>     -->
 
     <!-- <h1>Video List</h1> -->
     <div class="videos_container">
@@ -202,17 +219,53 @@
                         `;
                         $('#videolist').append(videoItem);
                     });
-
-                    // 初始化每个 video-js 元素
-                    document.querySelectorAll('video-js').forEach(function (element) {
-                        videojs(element);
-                    });
-
+                    // // 初始化每个 video-js 元素
+                    // document.querySelectorAll('video-js').forEach(function (element) {
+                    //     videojs(element);
+                    // });
                 },
                 error: function (error) {
                     alert('Error fetching videos: ' + error.statusText);
                 }
             });
+
+            // // Function to load videos based on tab
+            // function loadVideos(tab = 'A') {
+            //     $.ajax({
+            //         url: `https://engage-2023.com/videos?tab=${tab}`, // the backend supports the 'tab' parameter
+            //         method: 'GET',
+            //         success: function(data) {
+            //             $('#videolist').empty();  // Clear the existing videos
+            //             data.videos.forEach(function(video) {
+            //                 let videoItem = `
+            //                         <li class="video video_item">
+            //                             <a href="https://engage-2023.com/video?vid=${video.vid}">
+            //                                 <div class="video_cover_container">
+            //                                     <img src="${video.cover}" alt="${video.title}" class="video_cover">
+            //                                 </div>
+            //                                 <div class="video_title">${video.title}</div>
+            //                             </a>
+            //                         </li>
+            //                     `;
+            //                 $('#videolist').append(videoItem);
+            //             });
+            //         },
+            //         error: function(error) {
+            //             alert('Error fetching videos: ' + error.statusText);
+            //         }
+            //     });
+            // }
+
+            // // Load videos for default tab 'A' on page load
+            // loadVideos();
+
+            // // Handle tab clicks
+            // $('.nav-item').on('click', function() {
+            //     $('.nav-item').removeClass('active');  // Remove 'active' class from all tabs
+            //     $(this).addClass('active');            // Add 'active' class to clicked tab
+            //     let tab = $(this).attr('id').substring(3);  // Extract tab name from id (tabA -> A)
+            //     loadVideos(tab);
+            // });
         });
     </script>
     <div class="footer">https://engage-2023.com/</div>

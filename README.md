@@ -41,6 +41,55 @@ $ sudo nohup python3 videolist.py > videolist.log 2>&1 &
 $ sudo nohup python3 barrage.py > barrage.log 2>&1 &
 ```
 
+## TLS 配置
+
+```bash
+$ echo | openssl s_client -connect engage-2023.com:443
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = engage-2023.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = engage-2023.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+subject=CN = engage-2023.com
+
+issuer=C = US, O = Let's Encrypt, CN = R3
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: ECDSA
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 4129 bytes and written 387 bytes
+Verification: OK
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 256 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+DONE
+```
+
 ## 客户端连接
 
 另起一个终端执行，客户端将下载服务端的文件：

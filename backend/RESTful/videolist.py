@@ -38,6 +38,25 @@ def video_page():
     return render_template('video_page.html', video_url=video_url,vid=vid)
 
 
+# def get_video_url_by_tag(tag):
+#     with open('/home/engage/github_projects/socket/backend/RESTful/videos.json', 'r') as file:
+#         data = json.load(file)
+#         for video in data["videos"]:
+#             if video["tag"] == tag:
+#                 return video["url"]
+#     return None
+
+
+# @app.route('/videolist')
+# @cross_origin()
+# def video_list_tag():
+#     tag = request.args.get('tag')
+#     video_url = get_video_url_by_vid(tag)
+#     if video_url is None:
+#         abort(404, description="Video not found")
+#     return render_template('video_page.html', video_url=video_url,tag=tag)
+
+
 @app.route('/')
 @cross_origin()
 def video_list():
