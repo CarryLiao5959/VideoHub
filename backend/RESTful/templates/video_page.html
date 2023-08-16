@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Video</title>
 
@@ -142,6 +143,13 @@
         .video-js .vjs-remaining-time {
             display: none;
         }
+
+        .barrage-area {
+            position: absolute;
+            width: 100%;
+            height: 25%;
+            top: 0;
+        }
     </style>
 
 </head>
@@ -149,10 +157,13 @@
 <body>
     <div class="container">
         <div class="video-wrapper" id="video-wrapper">
+
             <video-js controls class="video-js vjs-big-play-centered " playsinline id="my-player">
                 <source src="{{ video_url }}" type="application/x-mpegURL">
             </video-js>
 
+            <div class="barrage-area" id="barrage-area">
+            </div>
         </div>
 
         <div class="input-group">
@@ -173,12 +184,14 @@
     <script>
         const random = (min, max) => +(Math.random() * (max - min) + min).toFixed(0)
 
+        let isVideoPaused = false;
+
         const m = Danmuku.create({
-            container: document.getElementById('video-wrapper'),
+            container: document.getElementById('barrage-area'),
             height: 35, // 轨道高度
             rowGap: 10, // 两个弹幕的横向间隔（速度不一样，后面的可能会追上）
             direction: 'right', // 弹幕的方向 left or right
-            times: [4, 8], // 弹幕动画的时间取值范围
+            times: [8, 8], // 弹幕动画的时间取值范围
             limit: 150, // 能够渲染的最大数量
             interval: 1,
             hooks: {  // 这里的生命周期，特殊弹幕和普通弹幕都会调用
@@ -194,7 +207,8 @@
                     }
 
                     node.classList.add('barrage')
-                    node.style.color = `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
+                    // node.style.color = `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
+                    node.style.color = 'rgba(255, 255, 255, 0.5)'
                 },
 
                 // // 弹幕开始移动时
@@ -277,6 +291,18 @@
             timeDisplay = Math.floor(myplayer.currentTime());
         }
 
+        // 监听当前视频是否暂停
+        myplayer.on("pause", () => {
+            isVideoPaused = true;
+            console.log("Now the video is paused!");
+        })
+
+        // 监听当前视频是否播放
+        myplayer.on("play", () => {
+            isVideoPaused = false;
+            console.log("Now the video is playing!");
+        })
+
         // const count = 30
         // const repeat = 2
 
@@ -284,29 +310,35 @@
         const timeline = m.use(Danmuku.Timeline, { forceRender: true })
 
         function barrageReload() {
-            for (let i = 0; i < barragedata.length; i++) {
-                console.log("barragedata.length:", barragedata.length)
+            for (let i = 0; i < barrageDataRequest.length; i++) {
+                console.log("barrageDataRequest.length:", barrageDataRequest.length)
 
-                if (barragedata.length === 0) {
-                    console.log("barragedata is NULL!!!")
+                if (barrageDataRequest.length === 0) {
+                    console.log("barrageDataRequest is NULL!!!")
                 }
 
-                timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
-                    // 弹幕渲染到页面上时
-                    append(barrage, node) {
-                        node.onmouseenter = e => {
-                            barrage.pause()
-                            node.classList.add('active')
-                        }
-                        node.onmouseleave = e => {
-                            barrage.resume()
-                            node.classList.remove('active')
-                        }
-                        node.onclick = e => {
-                            barrage.destroy()
-                        }
-                    },
-                })
+                if (barrageDataRequest[i].barrageText === undefined) {
+                    continue;
+                } else {
+                    timeline.add(barrageDataRequest[i].barrageTime, barrageDataRequest[i].barrageText, {
+                        // 弹幕渲染到页面上时
+                        append(barrage, node) {
+                            node.onmouseenter = e => {
+                                barrage.pause()
+                                node.classList.add('active')
+                            }
+                            node.onmouseleave = e => {
+                                barrage.resume()
+                                node.classList.remove('active')
+                            }
+                            node.onclick = e => {
+                                barrage.destroy()
+                            }
+                        },
+                    })
+                }
+
+
             }
             console.log("timeline:")
             console.log(timeline);
@@ -338,21 +370,25 @@
         let videoId = document.getElementById("videoId").value;
         // console.log("http://20.222.213.210:5001/barrage?vid=" + videoId)
 
-        $.ajax({
-            url: "https://engage-2023.com/barrage?vid=" + videoId,
-            method: 'GET',
-            success: (data) => {
-                console.log(data);
-                barrageDataRequest = data.barrages;
+        function request() {
+            $.ajax({
+                url: "https://engage-2023.com/barrage?vid=" + videoId,
+                method: 'GET',
+                success: (data) => {
+                    console.log(data);
+                    barrageDataRequest = data.barrages;
 
-                barrageReload();
+                    barrageReload();
 
-            },
+                },
 
-            error: (error) => {
-                alert('Error fetching barrages: ' + error.statusText);
-            }
-        });
+                error: (error) => {
+                    alert('Error fetching barrages: ' + error.statusText);
+                }
+            });
+        }
+
+        request();
         console.log(barrageDataRequest);
         console.log("video_url:")
         // console.log("video_url:", video_url)
@@ -382,9 +418,11 @@
         m.start()
 
         setInterval(() => {
-            timeline.emit(timeDisplay)
-            time.innerHTML = timeDisplay
-            // i++
+
+            if (isVideoPaused === false) {
+                timeline.emit(timeDisplay)
+            }
+
         }, 1000)
 
         const ws = new WebSocket('ws://20.222.213.210:8081');
@@ -427,6 +465,11 @@
             ws.send(JSON.stringify(payload));
             console.log('send: ' + JSON.stringify(payload));
             messageInput.value = '';
+
+
+            // barrageReload();
+            // request();
+
         };
 
         // 定义初始值
