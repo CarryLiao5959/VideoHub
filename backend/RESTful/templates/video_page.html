@@ -294,13 +294,11 @@
         // 监听当前视频是否暂停
         myplayer.on("pause", () => {
             isVideoPaused = true;
-            console.log("Now the video is paused!");
         })
 
         // 监听当前视频是否播放
         myplayer.on("play", () => {
             isVideoPaused = false;
-            console.log("Now the video is playing!");
         })
 
         // const count = 30
@@ -368,7 +366,6 @@
         }
 
         let videoId = document.getElementById("videoId").value;
-        // console.log("http://20.222.213.210:5001/barrage?vid=" + videoId)
 
         function request() {
             $.ajax({

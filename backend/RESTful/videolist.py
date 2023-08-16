@@ -9,15 +9,8 @@ CORS(app)
 @app.route('/videos', methods=['GET'])
 @cross_origin()
 def get_videos():
-    tab = request.args.get('tab', default='A')
-    if tab == "A":
-        filename = 'videos1.json'
-    elif tab == "B":
-        filename = 'videos2.json'
-    elif tab == "C":
-        filename = 'videos3.json'
-    else:
-        abort(400, description="Invalid tab parameter")  # 400 Bad Request
+    tab = request.args.get('tab', default='videos')
+    filename = tab + ".json"
     try:
         filepath = f'/home/engage/github_projects/socket/backend/RESTful/{filename}'
         with open(filepath, 'r') as file:

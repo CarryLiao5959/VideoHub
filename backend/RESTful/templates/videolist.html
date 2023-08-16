@@ -34,7 +34,6 @@
             background-color: #e0e0e0;
             /* 默认背景色，可根据需要调整 */
             overflow: hidden;
-            border: 2px solid gray;
             border-radius: 8px;
             transition: border-color 0.5s;
         }
@@ -81,7 +80,7 @@
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
+            align-items: start;
             max-width: 75%;
             width: 100%;
             gap: 12px;
@@ -93,6 +92,7 @@
         @media (max-width: 768px) {
             .video_list {
                 flex-direction: column;
+                align-items: center;
             }
 
             .video_item {
@@ -137,15 +137,6 @@
             /* 字体大小 */
             font-weight: bold;
             /* 字体加粗 */
-        }
-
-        .subheader {
-            background-color: #FFEB9C;
-            color: black;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 20px;
-            font-weight: bold;
         }
 
         .footer {
@@ -239,23 +230,22 @@
 <body>
 
     <div class="header">VideoHub</div>
-    <div class="subheader">learning arm</div>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- <a class="navbar-brand" href="#">Option</a> -->
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active" id="tabA">
-                    <a class="nav-link" href="#">Preparation</a>
-                </li>
-                <li class="nav-item" id="tabB">
-                    <a class="nav-link" href="#">Intro</a>
-                </li>
-                <li class="nav-item" id="tabC">
-                    <a class="nav-link" href="#">Instructions</a>
-                </li>
-            </ul>
-        </div>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" id="videos">
+                <a class="nav-link" href="#">All videos</a>
+            </li>
+            <li class="nav-item" id="videos1">
+                <a class="nav-link" href="#">Preparation videos</a>
+            </li>
+            <li class="nav-item" id="videos2">
+                <a class="nav-link" href="#">Intro videos</a>
+            </li>
+            <li class="nav-item" id="videos3">
+                <a class="nav-link" href="#">Instructions videos</a>
+            </li>
+        </ul>
     </nav>
 
     <!-- <h1>Video List</h1> -->
@@ -265,32 +255,8 @@
 
     <script>
         $(document).ready(function () {
-            $.ajax({
-                url: 'https://engage-2023.com/videos',
-                method: 'GET',
-                success: function (data) {
-                    data.videos.forEach(function (video) {
-                        console.log(video.vid);
-                        let videoItem = `
-                            <li class="video video_item">
-                                <a href="https://engage-2023.com/video?vid=${video.vid}">
-                                    <div class="video_cover_container">
-                                        <img src="${video.cover}" alt="${video.title}" class="video_cover">
-                                    </div>
-                                    <div class="video_title">${video.title}</div>
-                                </a>
-                            </li>
-                        `;
-                        $('#videolist').append(videoItem);
-                    });
-                },
-                error: function (error) {
-                    alert('Error fetching videos: ' + error.statusText);
-                }
-            });
-
             // Function to load videos based on tab
-            function loadVideos(tab = 'A') {
+            function loadVideos(tab = 'videos') {
                 $.ajax({
                     url: `https://engage-2023.com/videos?tab=${tab}`, // the backend supports the 'tab' parameter
                     method: 'GET',
@@ -323,12 +289,12 @@
             $('.nav-item').on('click', function () {
                 $('.nav-item').removeClass('active');  // Remove 'active' class from all tabs
                 $(this).addClass('active');            // Add 'active' class to clicked tab
-                let tab = $(this).attr('id').substring(3);  // Extract tab name from id (tabA -> A)
+                let tab = $(this).attr('id');  // Extract tab name from id
                 loadVideos(tab);
             });
         });
     </script>
-    <div class="footer">https://engage-2023.com/</div>
+    <a class="footer" href="https://engage-2023.com/">https://engage-2023.com/</a>
 </body>
 
 </html>
