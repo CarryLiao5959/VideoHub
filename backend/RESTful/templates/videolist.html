@@ -18,7 +18,7 @@
     <style>
         /* 视频列表项的样式 */
         .video_item {
-            list-style-type: none; 
+            list-style-type: none;
             margin: 30px 20px;
             /* 上下间隔 左右间隔 */
             flex: 1 0 calc(30% - 40px);
@@ -94,20 +94,20 @@
             .video_list {
                 flex-direction: column;
             }
-            
+
             .video_item {
-                max-width: 100%;  /* 视频项在手机上宽度 */
+                max-width: 100%;
+                /* 视频项在手机上宽度 */
             }
         }
 
-        .video_list .video {
-        }
+        .video_list .video {}
 
         .video_list .video img {
             width: 100%;
             height: 100%;
         }
-        
+
         .video_list .video img {
             width: 100%;
             height: 100%;
@@ -167,30 +167,96 @@
             background-attachment: fixed;
             background-position: center center;
         }
+
+        /* 整体样式 */
+        .navbar {
+            margin-top: 40px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            /* 浅灰色 */
+            padding: 10px;
+            /* 内部间距 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            /* 居中导航栏 */
+            max-width: 1000px;
+            /* 根据需要调整 */
+            background-color: #f8f8f8;
+            /* 为导航栏添加一个淡色背景 */
+        }
+
+        .navbar-brand {
+            margin-right: auto;
+            /* 移除右边距以居中 */
+        }
+
+        .navbar-nav {
+            text-align: center;
+            /* 使导航项居中 */
+            width: 100%;
+            flex-grow: 1;
+            /* 允许navbar-nav成长以填充其容器 */
+            justify-content: center;
+            /* 水平居中 */
+        }
+
+        .nav-item {
+            margin: 0 15px;
+            /* 增加导航项之间的间距 */
+        }
+
+        .nav-link {
+            font-size: 18px;
+            /* 调整字体大小 */
+            color: #555;
+            /* 默认的文字颜色 */
+            padding: 5px 10px;
+            /* 为导航项增加一些填充 */
+            border-radius: 5px;
+            /* 添加圆角效果 */
+            transition: background-color 0.3s ease;
+            /* 添加过渡效果 */
+        }
+
+        .nav-item.active .nav-link {
+            color: #fff;
+            /* 选中时的文字颜色 */
+            background-color: #007BFF;
+            /* 选中时的背景颜色 */
+        }
+
+        .nav-link:hover {
+            background-color: #e7e7e7;
+            /* 鼠标悬停时的背景颜色 */
+            color: #333;
+            /* 鼠标悬停时的文字颜色 */
+        }
     </style>
 </head>
 
 <body>
-    
+
     <div class="header">VideoHub</div>
     <div class="subheader">learning arm</div>
 
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">VideoHub</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- <a class="navbar-brand" href="#">Option</a> -->
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active" id="tabA">
-                    <a class="nav-link" href="#">A</a>
+                    <a class="nav-link" href="#">Preparation</a>
                 </li>
                 <li class="nav-item" id="tabB">
-                    <a class="nav-link" href="#">B</a>
+                    <a class="nav-link" href="#">Intro</a>
                 </li>
                 <li class="nav-item" id="tabC">
-                    <a class="nav-link" href="#">C</a>
+                    <a class="nav-link" href="#">Instructions</a>
                 </li>
             </ul>
         </div>
-    </nav>     -->
+    </nav>
 
     <!-- <h1>Video List</h1> -->
     <div class="videos_container">
@@ -217,53 +283,49 @@
                         `;
                         $('#videolist').append(videoItem);
                     });
-                    // // 初始化每个 video-js 元素
-                    // document.querySelectorAll('video-js').forEach(function (element) {
-                    //     videojs(element);
-                    // });
                 },
                 error: function (error) {
                     alert('Error fetching videos: ' + error.statusText);
                 }
             });
 
-            // // Function to load videos based on tab
-            // function loadVideos(tab = 'A') {
-            //     $.ajax({
-            //         url: `https://engage-2023.com/videos?tab=${tab}`, // the backend supports the 'tab' parameter
-            //         method: 'GET',
-            //         success: function(data) {
-            //             $('#videolist').empty();  // Clear the existing videos
-            //             data.videos.forEach(function(video) {
-            //                 let videoItem = `
-            //                         <li class="video video_item">
-            //                             <a href="https://engage-2023.com/video?vid=${video.vid}">
-            //                                 <div class="video_cover_container">
-            //                                     <img src="${video.cover}" alt="${video.title}" class="video_cover">
-            //                                 </div>
-            //                                 <div class="video_title">${video.title}</div>
-            //                             </a>
-            //                         </li>
-            //                     `;
-            //                 $('#videolist').append(videoItem);
-            //             });
-            //         },
-            //         error: function(error) {
-            //             alert('Error fetching videos: ' + error.statusText);
-            //         }
-            //     });
-            // }
+            // Function to load videos based on tab
+            function loadVideos(tab = 'A') {
+                $.ajax({
+                    url: `https://engage-2023.com/videos?tab=${tab}`, // the backend supports the 'tab' parameter
+                    method: 'GET',
+                    success: function (data) {
+                        $('#videolist').empty();  // Clear the existing videos
+                        data.videos.forEach(function (video) {
+                            let videoItem = `
+                                    <li class="video video_item">
+                                        <a href="https://engage-2023.com/video?vid=${video.vid}">
+                                            <div class="video_cover_container">
+                                                <img src="${video.cover}" alt="${video.title}" class="video_cover">
+                                            </div>
+                                            <div class="video_title">${video.title}</div>
+                                        </a>
+                                    </li>
+                                `;
+                            $('#videolist').append(videoItem);
+                        });
+                    },
+                    error: function (error) {
+                        alert('Error fetching videos: ' + error.statusText);
+                    }
+                });
+            }
 
-            // // Load videos for default tab 'A' on page load
-            // loadVideos();
+            // Load videos for default tab 'A' on page load
+            loadVideos();
 
-            // // Handle tab clicks
-            // $('.nav-item').on('click', function() {
-            //     $('.nav-item').removeClass('active');  // Remove 'active' class from all tabs
-            //     $(this).addClass('active');            // Add 'active' class to clicked tab
-            //     let tab = $(this).attr('id').substring(3);  // Extract tab name from id (tabA -> A)
-            //     loadVideos(tab);
-            // });
+            // Handle tab clicks
+            $('.nav-item').on('click', function () {
+                $('.nav-item').removeClass('active');  // Remove 'active' class from all tabs
+                $(this).addClass('active');            // Add 'active' class to clicked tab
+                let tab = $(this).attr('id').substring(3);  // Extract tab name from id (tabA -> A)
+                loadVideos(tab);
+            });
         });
     </script>
     <div class="footer">https://engage-2023.com/</div>

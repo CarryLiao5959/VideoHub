@@ -9,8 +9,18 @@ CORS(app)
 @app.route('/videos', methods=['GET'])
 @cross_origin()
 def get_videos():
+    tab = request.args.get('tab', default='A')
+    if tab == "A":
+        filename = 'videos1.json'
+    elif tab == "B":
+        filename = 'videos2.json'
+    elif tab == "C":
+        filename = 'videos3.json'
+    else:
+        abort(400, description="Invalid tab parameter")  # 400 Bad Request
     try:
-        with open('/home/engage/github_projects/socket/backend/RESTful/videos.json', 'r') as file:
+        filepath = f'/home/engage/github_projects/socket/backend/RESTful/{filename}'
+        with open(filepath, 'r') as file:
             data = json.load(file)
             return jsonify(data)
     except FileNotFoundError:
@@ -36,25 +46,6 @@ def video_page():
     if video_url is None:
         abort(404, description="Video not found")
     return render_template('video_page.html', video_url=video_url,vid=vid)
-
-
-# def get_video_url_by_tag(tag):
-#     with open('/home/engage/github_projects/socket/backend/RESTful/videos.json', 'r') as file:
-#         data = json.load(file)
-#         for video in data["videos"]:
-#             if video["tag"] == tag:
-#                 return video["url"]
-#     return None
-
-
-# @app.route('/videolist')
-# @cross_origin()
-# def video_list_tag():
-#     tag = request.args.get('tag')
-#     video_url = get_video_url_by_vid(tag)
-#     if video_url is None:
-#         abort(404, description="Video not found")
-#     return render_template('video_page.html', video_url=video_url,tag=tag)
 
 
 @app.route('/')

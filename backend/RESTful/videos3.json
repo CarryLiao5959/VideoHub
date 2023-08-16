@@ -1,0 +1,16 @@
+{
+    "videos": [
+        {
+            "title": "arm instructions overview",
+            "url": "static/movie1/output.m3u8",
+            "cover": "static/movie1/cover.png",
+            "vid": "1"
+        },
+        {
+            "title": "store instructions",
+            "url": "static/movie4/output.m3u8",
+            "cover": "static/movie4/cover.png",
+            "vid": "4"
+        }
+    ]
+}

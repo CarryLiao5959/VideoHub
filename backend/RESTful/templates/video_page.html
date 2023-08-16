@@ -283,6 +283,58 @@
         var barrageDataRequest = [];
         const timeline = m.use(Danmuku.Timeline, { forceRender: true })
 
+        function barrageReload() {
+            for (let i = 0; i < barragedata.length; i++) {
+                console.log("barragedata.length:", barragedata.length)
+
+                if (barragedata.length === 0) {
+                    console.log("barragedata is NULL!!!")
+                }
+
+                timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
+                    // 弹幕渲染到页面上时
+                    append(barrage, node) {
+                        node.onmouseenter = e => {
+                            barrage.pause()
+                            node.classList.add('active')
+                        }
+                        node.onmouseleave = e => {
+                            barrage.resume()
+                            node.classList.remove('active')
+                        }
+                        node.onclick = e => {
+                            barrage.destroy()
+                        }
+                    },
+                })
+            }
+            console.log("timeline:")
+            console.log(timeline);
+            m.start()
+        }
+
+        function barrageReloadTest() {
+            for (let i = 0; i < barragedata.length; i++) {
+
+                timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
+                    // 弹幕渲染到页面上时
+                    append(barrage, node) {
+                        node.onmouseenter = e => {
+                            barrage.pause()
+                            node.classList.add('active')
+                        }
+                        node.onmouseleave = e => {
+                            barrage.resume()
+                            node.classList.remove('active')
+                        }
+                        node.onclick = e => {
+                            barrage.destroy()
+                        }
+                    },
+                })
+            }
+        }
+
         let videoId = document.getElementById("videoId").value;
         // console.log("http://20.222.213.210:5001/barrage?vid=" + videoId)
 
@@ -293,27 +345,7 @@
                 console.log(data);
                 barrageDataRequest = data.barrages;
 
-                // const timeline = m.use(Danmuku.Timeline, { forceRender: true })
-                // for (let i = 0; i < barrageDataRequest.length; i++) {
-                //     // console.log(barrageDataRequest[i].barrageTime, barrageDataRequest[i].barrageText)
-
-                //     timeline.add(barrageDataRequest[i].barrageTime, barrageDataRequest[i].barrageText, {
-                //         // 弹幕渲染到页面上时
-                //         append(barrage, node) {
-                //             node.onmouseenter = e => {
-                //                 barrage.pause()
-                //                 node.classList.add('active')
-                //             }
-                //             node.onmouseleave = e => {
-                //                 barrage.resume()
-                //                 node.classList.remove('active')
-                //             }
-                //             node.onclick = e => {
-                //                 barrage.destroy()
-                //             }
-                //         },
-                //     })
-                // }
+                barrageReload();
 
             },
 
@@ -325,25 +357,28 @@
         console.log("video_url:")
         // console.log("video_url:", video_url)
 
-        for (let i = 0; i < barragedata.length; i++) {
 
-            timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
-                // 弹幕渲染到页面上时
-                append(barrage, node) {
-                    node.onmouseenter = e => {
-                        barrage.pause()
-                        node.classList.add('active')
-                    }
-                    node.onmouseleave = e => {
-                        barrage.resume()
-                        node.classList.remove('active')
-                    }
-                    node.onclick = e => {
-                        barrage.destroy()
-                    }
-                },
-            })
-        }
+
+        // for (let i = 0; i < barragedata.length; i++) {
+
+        //     timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
+        //         // 弹幕渲染到页面上时
+        //         append(barrage, node) {
+        //             node.onmouseenter = e => {
+        //                 barrage.pause()
+        //                 node.classList.add('active')
+        //             }
+        //             node.onmouseleave = e => {
+        //                 barrage.resume()
+        //                 node.classList.remove('active')
+        //             }
+        //             node.onclick = e => {
+        //                 barrage.destroy()
+        //             }
+        //         },
+        //     })
+        // }
+        barrageReload();
         m.start()
 
         setInterval(() => {
