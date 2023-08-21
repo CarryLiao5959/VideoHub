@@ -59,7 +59,7 @@ void JsonHandler::sort_file(){
     }
 
     sort(j["barrages"].begin(), j["barrages"].end(), [](const nlohmann::json &a, const nlohmann::json &b) {
-        return a["time"].get<std::string>() < b["time"].get<std::string>();
+        return a["barrageTime"].get<std::string>() < b["barrageTime"].get<std::string>();
     });
 
     ofstream ofs(m_filepath);

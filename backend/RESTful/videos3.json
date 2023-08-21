@@ -1,6 +1,30 @@
 {
     "videos": [
         {
+            "title": "why learn arm",
+            "url": "static/movie6/output.m3u8",
+            "cover": "static/movie6/cover.png",
+            "vid": "6"
+        },
+        {
+            "title": "build arm64 env",
+            "url": "static/movie5/output.m3u8",
+            "cover": "static/movie5/cover.png",
+            "vid": "5"
+        },
+        {
+            "title": "armv8 introduction 1",
+            "url": "static/movie2/output.m3u8",
+            "cover": "static/movie2/cover.png",
+            "vid": "2"
+        },
+        {
+            "title": "armv8 introduction 2",
+            "url": "static/movie3/output.m3u8",
+            "cover": "static/movie3/cover.png",
+            "vid": "3"
+        },
+        {
             "title": "arm instructions overview",
             "url": "static/movie1/output.m3u8",
             "cover": "static/movie1/cover.png",

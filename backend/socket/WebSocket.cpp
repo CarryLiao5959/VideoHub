@@ -6,6 +6,21 @@ using namespace yazi::util;
 
 WebSocket::WebSocket() {
     ws_server.init_asio();
+
+    ws_server.set_tls_init_handler([&](websocketpp::connection_hdl hdl) -> std::shared_ptr<boost::asio::ssl::context> {
+        auto ctx = make_shared<boost::asio::ssl::context>(boost::asio::ssl::context::sslv23);
+        ctx->set_options(boost::asio::ssl::context::default_workarounds |
+                        boost::asio::ssl::context::no_sslv2 |
+                        boost::asio::ssl::context::no_sslv3 |
+                        boost::asio::ssl::context::single_dh_use);
+        ctx->use_certificate_chain_file("/etc/apache2/sites-available/0001_chain.pem");
+        ctx->use_certificate_file("/etc/apache2/sites-available/0000_cert.pem", boost::asio::ssl::context::pem);
+        ctx->use_private_key_file("/etc/apache2/sites-available/engage.key", boost::asio::ssl::context::pem);
+        return ctx;
+    });
+    // 配置跨域连接
+    ws_server.set_http_handler(bind(&WebSocket::on_http, this, std::placeholders::_1));
+
     ws_server.set_message_handler(bind(&WebSocket::on_message, this, std::placeholders::_1, std::placeholders::_2));
     ws_server.set_open_handler(std::bind(&WebSocket::on_open, this, std::placeholders::_1));
     ws_server.set_close_handler(bind(&WebSocket::on_close, this, std::placeholders::_1));
@@ -14,25 +29,30 @@ WebSocket::WebSocket() {
 WebSocket::~WebSocket() {
 }
 
+void WebSocket::on_http(websocketpp::connection_hdl hdl) {
+    auto conn = ws_server.get_con_from_hdl(hdl);
+    conn->append_header("Access-Control-Allow-Origin", "*");
+}
+
 void WebSocket::on_open(connection_hdl hdl) {
-    // debug("on_open");
+    debug("on_open");
     m_connections.insert(hdl);
 }
 
 void WebSocket::on_close(connection_hdl hdl) {
-    // debug("on_close");
+    debug("on_close");
     m_connections.erase(hdl);
 }
 
 void WebSocket::broadcast(const std::string& message) {
-    // debug("broadcast");
+    debug("broadcast");
     for (auto hdl : m_connections) {
         ws_server.send(hdl, message, websocketpp::frame::opcode::text);
     }
 }
 
 void WebSocket::on_message(websocketpp::connection_hdl hdl, websocket_server::message_ptr msg) {
-    // debug("on_message");
+    debug("on_message");
 
     string received = msg->get_payload();
     std::cout << "Received message: " << received << std::endl;
@@ -49,8 +69,8 @@ void WebSocket::on_message(websocketpp::connection_hdl hdl, websocket_server::me
 }
 
 void WebSocket::run_ws_server(uint16_t port) {
-    // debug("run_ws_server");
-    ws_server.listen(port);
+    debug("run_ws_server");
+    ws_server.listen(boost::asio::ip::tcp::v4(),port);
     ws_server.start_accept();
     ws_server.run();
 }

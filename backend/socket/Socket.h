@@ -30,10 +30,13 @@ class Socket {
     bool listen(int backlog);
     int accept();
     bool connect(const string &ip, int port);
-    int recv(char *buf, int len);
-    int send(const char *buf, int len);
+    int recv(char *buf, int len,int flags=0);
+    int send(char *buf, int len);
     int send(int *buf, int len);
     bool close();
+
+    ssize_t readn(void*buf, size_t len, bool isBlock, bool isRead);
+    ssize_t writen(void*buf, size_t len, bool isWrite);
 
     bool set_non_blocking();
     bool set_send_buffer(int size);

@@ -18,11 +18,11 @@ INCLUDE = $(WEBSOCKETPP_INCLUDE_PATH) $(INCLUDE_PATH) $(patsubst %,-I %, $(INCLU
 $(warning INCLUDE is ${INCLUDE})
 
 # 编译选项
-CFLAGS = -g -O0 -Wall -Werror -Wno-unused -fPIC
+CFLAGS = -g -O0 -Wall -Werror -Wno-unused -fPIC -std=c++11
 $(warning CFLAGS is ${CFLAGS})
 
 # 链接选项
-LDFLAG = -lpthread -std=c++11 -ldl
+LDFLAG = -lpthread -ldl -lssl -lcrypto
 $(warning LDFLAG is ${LDFLAG})
 
 # 主程序
