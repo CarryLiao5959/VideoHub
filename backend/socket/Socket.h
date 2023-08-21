@@ -30,13 +30,14 @@ class Socket {
     bool listen(int backlog);
     int accept();
     bool connect(const string &ip, int port);
-    int recv(char *buf, int len,int flags=0);
+    int recv(char *buf, int len);
+    int recv(char *buf, int len,int flags);
     int send(char *buf, int len);
     int send(int *buf, int len);
     bool close();
 
-    ssize_t readn(void*buf, size_t len, bool isBlock, bool isRead);
-    ssize_t writen(void*buf, size_t len, bool isWrite);
+    ssize_t readn(void*buf, size_t len, bool isBlock);
+    ssize_t writen(void*buf, size_t len);
 
     bool set_non_blocking();
     bool set_send_buffer(int size);
@@ -47,6 +48,7 @@ class Socket {
     bool set_reuse_port();
 
     int getfd() { return m_sockfd; }
+    void setfd(int fd) { m_sockfd=fd; }
 
   protected:
     string m_ip;

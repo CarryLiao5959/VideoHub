@@ -1,2 +1,5 @@
-2023-08-21 17:05:53 DEBUG ./util/System.h: 29 open log/main.log
-2023-08-21 17:05:53 DEBUG socket/WebSocket.cpp: 72 run_ws_server
+2023-08-22 00:08:29 DEBUG ./util/System.h: 29 open log/main.log
+2023-08-22 00:08:29 DEBUG socket/WebSocket.cpp: 89 run_ws_server
+2023-08-22 00:10:23 DEBUG socket/WebSocket.cpp: 38 on_open
+2023-08-22 00:10:26 DEBUG socket/WebSocket.cpp: 55 on_message
+2023-08-22 00:10:26 INFO socket/WebSocket.cpp: 59 Received message: 123

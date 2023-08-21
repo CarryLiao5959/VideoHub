@@ -23,9 +23,10 @@ public:
 
   void run_ws_server(uint16_t port);
   void on_message(connection_hdl hdl, websocket_server::message_ptr msg);
+  int get_vid_from_hdl(websocketpp::connection_hdl hdl);
 
 private:
-  // websocket_server ws_server;
-  websocket_tls_server ws_server;
+  websocket_server ws_server;
+  // websocket_tls_server ws_server;
   std::set<connection_hdl, std::owner_less<connection_hdl>> m_connections; 
 };
