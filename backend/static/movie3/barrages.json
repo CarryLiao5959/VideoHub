@@ -39,6 +39,11 @@
         {
             "barrageText": "第10秒",
             "barrageTime": 10
+        },
+        {
+            "barrageText": "good introduction",
+            "barrageTime": 18,
+            "vid": "3"
         }
     ]
 }

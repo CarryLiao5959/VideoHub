@@ -3,6 +3,9 @@ const random = (min, max) => +(Math.random() * (max - min) + min).toFixed(0)
 videojs(document.querySelector('video-js'));
 let isVideoPaused = false;
 
+let allNumber = 0;
+let showNumber = 0;
+
 const m = Danmuku.create({
     container: document.getElementById('barrage-area'),
     height: 35, // 轨道高度
@@ -44,9 +47,9 @@ const m = Danmuku.create({
         //     showNumber.textContent = m.showLength
         // },
 
-        // send() {
-        //     allNumber.textContent = m.length
-        // },
+        send() {
+            // allNumber.textContent = m.length
+        },
 
         ended() {
             console.log('end')
@@ -160,28 +163,6 @@ function barrageReload() {
     m.start()
 }
 
-function barrageReloadTest() {
-    for (let i = 0; i < barragedata.length; i++) {
-
-        timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
-            // 弹幕渲染到页面上时
-            append(barrage, node) {
-                node.onmouseenter = e => {
-                    barrage.pause()
-                    node.classList.add('active')
-                }
-                node.onmouseleave = e => {
-                    barrage.resume()
-                    node.classList.remove('active')
-                }
-                node.onclick = e => {
-                    barrage.destroy()
-                }
-            },
-        })
-    }
-}
-
 let videoId = document.getElementById("videoId").value;
 
 function request() {
@@ -191,11 +172,8 @@ function request() {
         success: (data) => {
             console.log(data);
             barrageDataRequest = data.barrages;
-
             barrageReload();
-
         },
-
         error: (error) => {
             alert('Error fetching barrages: ' + error.statusText);
         }
@@ -203,40 +181,13 @@ function request() {
 }
 
 request();
-console.log(barrageDataRequest);
-console.log("video_url:")
-// console.log("video_url:", video_url)
-
-
-
-// for (let i = 0; i < barragedata.length; i++) {
-
-//     timeline.add(barragedata[i].barrageTime, barragedata[i].barrageText, {
-//         // 弹幕渲染到页面上时
-//         append(barrage, node) {
-//             node.onmouseenter = e => {
-//                 barrage.pause()
-//                 node.classList.add('active')
-//             }
-//             node.onmouseleave = e => {
-//                 barrage.resume()
-//                 node.classList.remove('active')
-//             }
-//             node.onclick = e => {
-//                 barrage.destroy()
-//             }
-//         },
-//     })
-// }
 barrageReload();
-m.start()
+m.start();
 
 setInterval(() => {
-
     if (isVideoPaused === false) {
         timeline.emit(timeDisplay)
     }
-
 }, 1000)
 
 // const ws = new WebSocket('ws://20.222.213.210:8081');
@@ -246,6 +197,13 @@ ws.onopen = function () {
     // const vid_info={"vid":videoId};
     // ws.send(JSON.stringify(vid_info));
     // console.log('send: ' + JSON.stringify(vid_info));
+};
+
+ws.onmessage = (event) => {
+    const { data = ""} = event || {};
+    if (data.startsWith("barrage updated")) {
+        request();
+    }
 };
 
 ws.onclose = function () {
@@ -258,47 +216,19 @@ const messageInput = document.getElementById('message');
 sendButton.onclick = function () {
     const message = messageInput.value;
 
-    const currentDate = new Date();
-    const time = currentDate.toISOString().substr(11, 12);
+    // 显示到屏幕上
+    m.send({ content: message }, {}, true)
 
     // 构建JSON对象
     const payload = {
-        // barrages: [
-        //     {
         vid: videoId,
         barrageText: message,
-        // time: time,
         barrageTime: timeDisplay
-        //     }
-        // ]
     };
 
     ws.send(JSON.stringify(payload));
     console.log('send: ' + JSON.stringify(payload));
     messageInput.value = '';
-
-
-    // timeline.add(time, message, {
-    //     // 弹幕渲染到页面上时
-    //     append(barrage, node) {
-    //         node.onmouseenter = e => {
-    //             barrage.pause()
-    //             node.classList.add('active')
-    //         }
-    //         node.onmouseleave = e => {
-    //             barrage.resume()
-    //             node.classList.remove('active')
-    //         }
-    //         node.onclick = e => {
-    //             barrage.destroy()
-    //         }
-    //     },
-    // })
-    // m.start();
-
-    // barrageReload();
-    // request();
-
 };
 
 // 定义初始值
@@ -389,38 +319,6 @@ input(maxTime, max => {
     m.setOptions({ times: [min, max] })
 })
 
-// 发送弹幕
-send.onclick = e => {
-    m.send({ content: barrageText.value }, {}, true)
-    barrageText.value = ''
-}
-
-// 发送高级弹幕
-sendSpecial.onclick = e => {
-    const text = specialBarrage.value
-    const directions = ['right', 'left', 'none']
-    specialBarrage.value = ''
-
-    m.sendSpecial({
-        duration: random(3, 5),
-        direction: directions[random(0, 2)],
-        position(barrage) {
-            return {
-                x: m.containerWidth / 2,
-                y: 100,
-            }
-        },
-        hooks: {
-            create(barrage, node) {
-                node.textContent = `高级弹幕--${text}`
-                node.classList.add('special-barrage')
-            },
-            destroy() {
-                console.log('高级弹幕销毁')
-            }
-        }
-    })
-}
 
 // 清空弹幕
 clear.onclick = e => {

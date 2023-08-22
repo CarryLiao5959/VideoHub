@@ -20,14 +20,14 @@ $(document).ready(function () {
                         `;
                     $('#videolist').append(videoItem);
                     // Check if the video is in .m3u8 format and if hls.js is supported
-                    if (Hls.isSupported() && video.url.endsWith('.m3u8')) {
-                        let videoElement = $('.video_cover').last().get(0);
-                        let hls = new Hls();
-                        hls.loadSource(video.url);
-                        hls.attachMedia(videoElement);
-                    } else {
-                        $('.video_cover').last().attr('src', video.url);
-                    }
+                    // if (Hls.isSupported() && video.url.endsWith('.m3u8')) {
+                    //     let videoElement = $('.video_cover').last().get(0);
+                    //     let hls = new Hls();
+                    //     hls.loadSource(video.url);
+                    //     hls.attachMedia(videoElement);
+                    // } else {
+                    //     $('.video_cover').last().attr('src', video.url);
+                    // }
                 });
                 // Handle mouse enter and leave events for the video tags
                 // $('.video_cover').on('mouseenter', function() {

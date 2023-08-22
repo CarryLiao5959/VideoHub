@@ -1,0 +1,871 @@
+[2023-08-22 07:01:28] [connect] WebSocket Connection 127.0.0.1:38040 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+Received message: {"vid":"7","barrageText":"22","barrageTime":0}
+[2023-08-22 07:01:33] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:01:33] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:01:33] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+Received message: {"vid":"7","barrageText":"22","barrageTime":0}
+[2023-08-22 07:01:36] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:01:36] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:01:36] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 07:01:37] [control] Control frame received with opcode 8
+[2023-08-22 07:01:37] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 07:01:37] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 07:01:37] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 07:01:37] [disconnect] Disconnect close local:[1001] remote:[1001]
+[2023-08-22 07:14:56] [connect] WebSocket Connection 127.0.0.1:36548 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 07:15:56] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:15:56] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:17:11] [connect] WebSocket Connection 127.0.0.1:49948 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 07:18:11] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:18:11] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:23:27] [connect] WebSocket Connection 127.0.0.1:45764 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 07:24:05] [control] Control frame received with opcode 8
+[2023-08-22 07:24:05] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 07:24:05] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 07:24:05] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 07:24:05] [disconnect] Disconnect close local:[1001] remote:[1001]
+[2023-08-22 07:24:08] [connect] WebSocket Connection 127.0.0.1:53876 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 07:25:09] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:25:09] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:26:51] [connect] WebSocket Connection 127.0.0.1:57540 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 07:27:51] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:27:51] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:42:46] [connect] WebSocket Connection 127.0.0.1:49922 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"8","barrageText":"33333","barrageTime":2}
+[2023-08-22 07:42:52] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:42:52] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:42:52] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 07:43:52] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:43:52] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:44:55] [connect] WebSocket Connection 127.0.0.1:60784 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 07:45:55] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:45:55] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:46:02] [connect] WebSocket Connection 127.0.0.1:56598 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"8","barrageText":"5555","barrageTime":9}
+[2023-08-22 07:46:47] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:46:47] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:46:47] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 07:47:47] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:47:47] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:52:27] [connect] WebSocket Connection 127.0.0.1:37226 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+Received message: {"vid":"7","barrageText":"你好","barrageTime":248}
+[2023-08-22 07:52:45] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:52:45] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:52:45] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 07:53:05] [connect] WebSocket Connection 127.0.0.1:41636 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+Received message: {"vid":"7","barrageText":"你好","barrageTime":321}
+[2023-08-22 07:53:40] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 07:53:40] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 07:53:40] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 07:53:40] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:53:40] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:53:40] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 07:54:40] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:54:40] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:54:40] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:54:40] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:55:55] [connect] WebSocket Connection 127.0.0.1:55604 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+Received message: {"vid":"7","barrageText":"11","barrageTime":0}
+[2023-08-22 07:55:59] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:55:59] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:55:59] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 07:56:06] [connect] WebSocket Connection 127.0.0.1:39734 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+Received message: {"vid":"7","barrageText":"呃呃","barrageTime":1545}
+[2023-08-22 07:56:58] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 07:56:58] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 07:56:58] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 07:56:58] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:56:58] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:56:58] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+Received message: {"vid":"7","barrageText":"额","barrageTime":486}
+[2023-08-22 07:57:05] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 07:57:05] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 07:57:05] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 07:57:05] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:57:05] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:57:05] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+Received message: {"vid":"7","barrageText":"待到","barrageTime":1569}
+[2023-08-22 07:57:23] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 07:57:23] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 07:57:23] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 07:57:23] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 07:57:23] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 07:57:23] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 07:58:23] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:58:23] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:58:23] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 07:58:23] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 07:59:30] [connect] WebSocket Connection 127.0.0.1:54436 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 08:00:05] [connect] WebSocket Connection 127.0.0.1:53044 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 08:00:18] [connect] WebSocket Connection 127.0.0.1:47476 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 08:00:30] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:00:30] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 08:01:06] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:01:06] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 08:01:18] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:01:18] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 08:08:20] [connect] WebSocket Connection 127.0.0.1:36290 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 08:08:21] [connect] WebSocket Connection 127.0.0.1:36298 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 08:08:22] [connect] WebSocket Connection 127.0.0.1:36308 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" /wss 101
+[2023-08-22 08:11:01] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:11:01] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 08:11:01] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:11:01] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 08:13:41] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:13:41] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 08:14:31] [connect] WebSocket Connection 127.0.0.1:40872 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 08:38:22] [fail] WebSocket Connection 104.152.52.200:53494 - "" - 0 websocketpp:22 The opening handshake timed out
+[2023-08-22 08:44:09] [control] Control frame received with opcode 8
+[2023-08-22 08:44:09] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 08:44:09] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 08:44:09] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 08:44:09] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:44:09] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 08:47:46] [connect] WebSocket Connection 127.0.0.1:52602 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"8","barrageText":"999999","barrageTime":12}
+[2023-08-22 08:48:24] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 08:48:24] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 08:48:24] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 08:48:27] [control] Control frame received with opcode 8
+[2023-08-22 08:48:27] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 08:48:27] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 08:48:27] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 08:48:27] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 08:48:27] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 08:48:30] [connect] WebSocket Connection 127.0.0.1:47108 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 09:48:30] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 09:48:30] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 09:55:28] [connect] WebSocket Connection 127.0.0.1:54824 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.54" /wss 101
+[2023-08-22 09:55:30] [control] Control frame received with opcode 8
+[2023-08-22 09:55:30] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 09:55:30] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 09:55:30] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 09:55:30] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 09:55:30] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 09:57:06] [connect] WebSocket Connection 127.0.0.1:53508 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.54" /wss 101
+[2023-08-22 09:57:13] [control] Control frame received with opcode 8
+[2023-08-22 09:57:13] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 09:57:13] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 09:57:13] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 09:57:13] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 09:57:13] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 09:57:13] [connect] WebSocket Connection 127.0.0.1:53520 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.54" /wss 101
+[2023-08-22 09:57:14] [control] Control frame received with opcode 8
+[2023-08-22 09:57:14] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 09:57:14] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 09:57:14] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 09:57:14] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 09:57:14] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 09:57:17] [connect] WebSocket Connection 127.0.0.1:46440 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.54" /wss 101
+[2023-08-22 09:57:18] [control] Control frame received with opcode 8
+[2023-08-22 09:57:18] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 09:57:18] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 09:57:18] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 09:57:18] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 09:57:18] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 09:58:22] [fail] WebSocket Connection 45.147.250.222:56838 - "" - 0 websocketpp:22 The opening handshake timed out
+[2023-08-22 10:15:09] [info] asio async_read_at_least error: system:104 (Connection reset by peer)
+[2023-08-22 10:15:09] [error] handle_read_handshake error: websocketpp.transport:2 (Underlying Transport Error)
+[2023-08-22 10:15:09] [info] Error getting remote endpoint: system:107 (Transport endpoint is not connected)
+[2023-08-22 10:15:09] [fail] WebSocket Connection Unknown - "" - 0 websocketpp.transport:2 Underlying Transport Error
+[2023-08-22 10:15:10] [http] 20.222.213.210:8081 167.248.133.186:57700 "GET / HTTP/1.1" 500 0 "" 
+[2023-08-22 10:15:11] [http] 20.222.213.210:8081 167.248.133.186:44762 "GET / HTTP/1.1" 500 0 "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)" 
+[2023-08-22 10:15:11] [error] Handshake ended with HTTP error: 400
+[2023-08-22 10:15:11] [fail] WebSocket Connection 167.248.133.186:36068 - "" - 400 websocketpp:31 HTTP parse error
+[2023-08-22 10:25:40] [connect] WebSocket Connection 127.0.0.1:33458 v13 "Mozilla/5.0 (Linux; Android 12; ELS-AN10 Build/HUAWEIELS-AN10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 XWEB/5223 MMWEBSDK/20230701 MMWEBID/2187 MicroMessenger/8.0.40.2420(0x28002851) WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64" /wss 101
+[2023-08-22 10:26:18] [connect] WebSocket Connection 127.0.0.1:54718 v13 "Mozilla/5.0 (Linux; Android 13; PGAM10 Build/TP1A.220905.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/97.0.4692.98 Mobile Safari/537.36 T7/13.39 SP-engine/2.77.0 baiduboxapp/13.39.5.10 (Baidu; P1 13) NABar/1.0" /wss 101
+[2023-08-22 10:31:53] [connect] WebSocket Connection 127.0.0.1:41544 v13 "Mozilla/5.0 (Linux; Android 13; PGAM10 Build/TP1A.220905.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 XWEB/5223 MMWEBSDK/20230701 MMWEBID/2466 MicroMessenger/8.0.40.2420(0x28002851) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64" /wss 101
+[2023-08-22 10:32:08] [control] Control frame received with opcode 8
+[2023-08-22 10:32:08] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 10:32:08] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 10:32:08] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 10:32:08] [disconnect] Disconnect close local:[1001] remote:[1001]
+[2023-08-22 10:32:12] [connect] WebSocket Connection 127.0.0.1:34406 v13 "Mozilla/5.0 (Linux; Android 13; PGAM10 Build/TP1A.220905.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 XWEB/5223 MMWEBSDK/20230701 MMWEBID/2466 MicroMessenger/8.0.40.2420(0x28002851) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64" /wss 101
+[2023-08-22 10:32:27] [control] Control frame received with opcode 8
+[2023-08-22 10:32:27] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 10:32:27] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 10:32:27] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 10:32:27] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 10:32:27] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 10:32:30] [connect] WebSocket Connection 127.0.0.1:37502 v13 "Mozilla/5.0 (Linux; Android 13; PGAM10 Build/TP1A.220905.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 XWEB/5223 MMWEBSDK/20230701 MMWEBID/2466 MicroMessenger/8.0.40.2420(0x28002851) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64" /wss 101
+[2023-08-22 10:32:34] [control] Control frame received with opcode 8
+[2023-08-22 10:32:34] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 10:32:34] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 10:32:34] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 10:32:34] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 10:32:34] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 11:09:01] [connect] WebSocket Connection 127.0.0.1:60442 v13 "Mozilla/5.0 (Linux; Android 12; ELS-AN10 Build/HUAWEIELS-AN10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 XWEB/5223 MMWEBSDK/20230701 MMWEBID/2187 MicroMessenger/8.0.40.2420(0x28002851) WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64" /wss 101
+[2023-08-22 11:09:03] [control] Control frame received with opcode 8
+[2023-08-22 11:09:03] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 11:09:03] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 11:09:03] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 11:09:03] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 11:09:03] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 11:09:09] [connect] WebSocket Connection 127.0.0.1:54954 v13 "Mozilla/5.0 (Linux; Android 12; ELS-AN10 Build/HUAWEIELS-AN10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 XWEB/5223 MMWEBSDK/20230701 MMWEBID/2187 MicroMessenger/8.0.40.2420(0x28002851) WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64" /wss 101
+[2023-08-22 11:09:34] [control] Control frame received with opcode 8
+[2023-08-22 11:09:34] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 11:09:34] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 11:09:34] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 11:09:34] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 11:09:34] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 11:25:40] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 11:25:40] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 11:26:18] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 11:26:18] [disconnect] Disconnect close local:[1006,End of File] remote:[1006]
+[2023-08-22 12:22:18] [http] 20.222.213.210 185.36.81.33:52436 "GET / HTTP/1.1" 500 0 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" 
+[2023-08-22 12:26:39] [error] handle_read_handshake error: websocketpp.transport:7 (End of File)
+[2023-08-22 12:26:39] [fail] WebSocket Connection 184.105.247.252:41324 - "" - 0 websocketpp.transport:7 End of File
+[2023-08-22 12:33:28] [http] ip138.com:443 198.98.58.175:47254 "CONNECT ip138.com:443 HTTP/1.1" 500 0 "Go-http-client/1.1" 
+[2023-08-22 13:11:16] [http] 20.222.213.210 141.98.11.60:35298 "GET / HTTP/1.1" 500 0 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" 
+[2023-08-22 13:19:28] [connect] WebSocket Connection 127.0.0.1:52378 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"12","barrageText":"支持实时弹幕的网站真棒！","barrageTime":25}
+[2023-08-22 13:19:56] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 13:19:56] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 13:19:56] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 13:20:37] [control] Control frame received with opcode 8
+[2023-08-22 13:20:37] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 13:20:37] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 13:20:37] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 13:20:37] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 13:20:37] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 13:20:37] [connect] WebSocket Connection 127.0.0.1:35590 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 13:22:00] [control] Control frame received with opcode 8
+[2023-08-22 13:22:00] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 13:22:00] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 13:22:00] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 13:22:00] [disconnect] Disconnect close local:[1001] remote:[1001]
+[2023-08-22 13:22:03] [connect] WebSocket Connection 127.0.0.1:51738 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 13:22:31] [fail] WebSocket Connection 80.82.77.139:57796 - "" - 0 websocketpp:22 The opening handshake timed out
+[2023-08-22 13:35:44] [control] Control frame received with opcode 8
+[2023-08-22 13:35:44] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 13:35:44] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 13:35:44] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 13:35:44] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 13:35:44] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 13:35:49] [connect] WebSocket Connection 127.0.0.1:50932 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"12","barrageText":"Good Final Report","barrageTime":8}
+[2023-08-22 13:51:36] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 13:51:36] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 13:51:36] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 13:51:48] [connect] WebSocket Connection 127.0.0.1:51916 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"12","barrageText":"视频网站做得不错！","barrageTime":11}
+[2023-08-22 13:52:43] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 13:52:43] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 13:52:43] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 13:52:43] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 13:52:43] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 13:52:43] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 13:57:15] [connect] WebSocket Connection 127.0.0.1:56240 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"8","barrageText":"22222334","barrageTime":4}
+[2023-08-22 13:57:23] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 13:57:23] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 13:57:23] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 13:57:23] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 13:57:23] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 13:57:23] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 13:57:23] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 13:57:23] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 13:57:23] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 14:00:02] [control] Control frame received with opcode 8
+[2023-08-22 14:00:02] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:00:02] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:00:02] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:00:02] [disconnect] Disconnect close local:[1001] remote:[1001]
+[2023-08-22 14:00:06] [connect] WebSocket Connection 127.0.0.1:58082 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"8","barrageText":"798120","barrageTime":8}
+[2023-08-22 14:00:28] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:00:28] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:00:28] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:00:28] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:00:28] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:00:28] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:00:28] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 14:00:28] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 14:00:28] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 14:03:31] [control] Control frame received with opcode 8
+[2023-08-22 14:03:31] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:03:31] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:03:31] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:03:31] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:03:31] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:03:33] [control] Control frame received with opcode 8
+[2023-08-22 14:03:33] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:03:33] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:03:33] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:03:33] [disconnect] Disconnect close local:[1001] remote:[1001]
+[2023-08-22 14:03:37] [connect] WebSocket Connection 127.0.0.1:47358 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:03:38] [connect] WebSocket Connection 127.0.0.1:47370 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:04:52] [control] Control frame received with opcode 8
+[2023-08-22 14:04:52] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:04:52] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:04:52] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:04:52] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:04:52] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:04:56] [connect] WebSocket Connection 127.0.0.1:47734 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"12","barrageText":"Good website!","barrageTime":12}
+[2023-08-22 14:05:35] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:05:35] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:05:35] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:05:35] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:05:35] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:05:35] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:05:35] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 14:05:35] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 14:05:35] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+Received message: {"vid":"12","barrageText":"第20秒","barrageTime":20}
+[2023-08-22 14:06:27] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:06:27] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:06:27] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:06:27] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:06:27] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:06:27] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:06:27] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 14:06:27] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 14:06:27] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 14:10:25] [control] Control frame received with opcode 8
+[2023-08-22 14:10:25] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:10:25] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:10:25] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:10:25] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:10:25] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:10:29] [connect] WebSocket Connection 127.0.0.1:48414 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:13:24] [control] Control frame received with opcode 8
+[2023-08-22 14:13:24] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:13:24] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:13:24] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:13:24] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:13:24] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:13:27] [control] Control frame received with opcode 8
+[2023-08-22 14:13:27] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:13:27] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:13:27] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:13:27] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:13:27] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:13:28] [connect] WebSocket Connection 127.0.0.1:35356 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:13:30] [connect] WebSocket Connection 127.0.0.1:35368 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"12","barrageText":"视频开始了","barrageTime":3}
+[2023-08-22 14:13:54] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:13:54] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:13:54] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:13:54] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:13:54] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:13:54] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:13:54] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 14:13:54] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 14:13:54] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 14:18:09] [control] Control frame received with opcode 8
+[2023-08-22 14:18:09] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:18:09] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:18:09] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:18:09] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:18:09] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:18:17] [connect] WebSocket Connection 127.0.0.1:53380 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:20:45] [control] Control frame received with opcode 8
+[2023-08-22 14:20:45] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:20:45] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:20:45] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:20:45] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:20:45] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:20:49] [connect] WebSocket Connection 127.0.0.1:34992 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:21:17] [control] Control frame received with opcode 8
+[2023-08-22 14:21:17] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:21:17] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:21:17] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:21:17] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:21:17] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:21:21] [connect] WebSocket Connection 127.0.0.1:53030 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:21:37] [control] Control frame received with opcode 8
+[2023-08-22 14:21:37] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:21:37] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:21:37] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:21:37] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:21:37] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:21:40] [connect] WebSocket Connection 127.0.0.1:35442 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:21:52] [control] Control frame received with opcode 8
+[2023-08-22 14:21:52] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:21:52] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:21:52] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:21:52] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:21:52] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:22:01] [connect] WebSocket Connection 127.0.0.1:55172 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:22:03] [control] Control frame received with opcode 8
+[2023-08-22 14:22:03] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:22:03] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:22:03] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:22:03] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:22:03] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:22:12] [connect] WebSocket Connection 127.0.0.1:52160 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:22:25] [control] Control frame received with opcode 8
+[2023-08-22 14:22:25] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:22:25] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:22:25] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:22:25] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:22:25] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:22:27] [control] Control frame received with opcode 8
+[2023-08-22 14:22:27] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:22:27] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:22:27] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:22:27] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:22:27] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:22:29] [connect] WebSocket Connection 127.0.0.1:48446 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:22:30] [connect] WebSocket Connection 127.0.0.1:48456 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"12","barrageText":"Good report","barrageTime":12}
+[2023-08-22 14:22:50] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:22:50] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:22:50] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:22:50] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:22:50] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:22:50] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:22:50] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 14:22:50] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 14:22:50] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 14:22:58] [control] Control frame received with opcode 8
+[2023-08-22 14:22:58] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:22:58] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:22:58] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:22:58] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:22:58] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:23:01] [connect] WebSocket Connection 127.0.0.1:33404 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:23:01] [connect] WebSocket Connection 127.0.0.1:33418 v13 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:23:29] [control] Control frame received with opcode 8
+[2023-08-22 14:23:29] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:23:29] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:23:29] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:23:29] [disconnect] Disconnect close local:[1001] remote:[1001]
+[2023-08-22 14:23:30] [control] Control frame received with opcode 8
+[2023-08-22 14:23:30] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:23:30] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:23:30] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:23:30] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:23:30] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:23:49] [connect] WebSocket Connection 127.0.0.1:37670 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:23:55] [connect] WebSocket Connection 127.0.0.1:37686 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+Received message: {"vid":"3","barrageText":"good introduction","barrageTime":18}
+[2023-08-22 14:24:15] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:24:15] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:24:15] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:24:15] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:24:15] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:24:15] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:24:15] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:24:15] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:24:15] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:24:15] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 14:24:15] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 14:24:15] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+Received message: {"vid":"3","barrageText":"第60秒\n","barrageTime":59}
+[2023-08-22 14:24:59] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:24:59] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:24:59] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:24:59] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:24:59] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:24:59] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:24:59] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 16 payload bytes
+[2023-08-22 14:24:59] [frame_header] Header Bytes: 
+[0] (2) 81 10 
+
+[2023-08-22 14:24:59] [frame_payload] Payload Bytes: 
+[0] (16) [1] barrage updated!
+
+[2023-08-22 14:24:59] [frame_header] Dispatching write containing 2 message(s) containing 4 header bytes and 48 payload bytes
+[2023-08-22 14:24:59] [frame_header] Header Bytes: 
+[0] (2) 81 20 
+[1] (2) 81 10 
+
+[2023-08-22 14:24:59] [frame_payload] Payload Bytes: 
+[0] (32) [1] Hello from the WebSocket server!
+[1] (16) [1] barrage updated!
+
+[2023-08-22 14:25:28] [control] Control frame received with opcode 8
+[2023-08-22 14:25:28] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:25:28] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:25:28] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:25:28] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:25:28] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:25:28] [control] Control frame received with opcode 8
+[2023-08-22 14:25:28] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:25:28] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:25:28] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:25:28] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:25:28] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:31:46] [connect] WebSocket Connection 127.0.0.1:49910 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:31:55] [control] Control frame received with opcode 8
+[2023-08-22 14:31:55] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:31:55] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:31:55] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:31:55] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:31:55] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:31:59] [connect] WebSocket Connection 127.0.0.1:51652 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
+[2023-08-22 14:35:32] [control] Control frame received with opcode 8
+[2023-08-22 14:35:32] [frame_header] Dispatching write containing 1 message(s) containing 2 header bytes and 2 payload bytes
+[2023-08-22 14:35:32] [frame_header] Header Bytes: 
+[0] (2) 88 02 
+
+[2023-08-22 14:35:32] [frame_payload] Payload Bytes: 
+[0] (2) [8] 03 E9 
+
+[2023-08-22 14:35:32] [error] handle_read_frame error: websocketpp.transport:7 (End of File)
+[2023-08-22 14:35:32] [disconnect] Disconnect close local:[1006,End of File] remote:[1001]
+[2023-08-22 14:35:39] [connect] WebSocket Connection 127.0.0.1:53072 v13 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" /wss 101
