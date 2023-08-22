@@ -1,12 +1,22 @@
 {
     "barrages": [
         {
+            "barrageText": "111",
+            "barrageTime": 0,
+            "vid": "2"
+        },
+        {
             "barrageText": "第1秒",
             "barrageTime": 1
         },
         {
             "barrageText": "第2秒",
             "barrageTime": 2
+        },
+        {
+            "barrageText": "33",
+            "barrageTime": 2,
+            "vid": "2"
         },
         {
             "barrageText": "第3秒",
@@ -39,6 +49,21 @@
         {
             "barrageText": "第10秒",
             "barrageTime": 10
+        },
+        {
+            "barrageText": "222",
+            "barrageTime": 97,
+            "vid": "2"
+        },
+        {
+            "barrageText": "1111",
+            "barrageTime": 301,
+            "vid": "2"
+        },
+        {
+            "barrageText": "this",
+            "barrageTime": 935,
+            "vid": "2"
         }
     ]
 }

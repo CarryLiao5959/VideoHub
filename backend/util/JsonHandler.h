@@ -6,7 +6,7 @@ using namespace std;
 class JsonHandler{
     public:
         JsonHandler();
-        JsonHandler(std::string filepath);
+        JsonHandler(std::string directory);
         ~JsonHandler();
 
         void set_filepath(std::string filepath);
@@ -15,5 +15,6 @@ class JsonHandler{
         void sort_file();
 
     private:
+        string m_directory;
         std::string m_filepath;
 };

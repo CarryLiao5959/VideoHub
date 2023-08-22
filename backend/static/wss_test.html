@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Example</title>
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+  <h1>WebSocket Example</h1>
+  <input type="text" id="message" placeholder="Enter message">
+  <button id="send">Send</button>
+  <ul id="messages"></ul>
+  <script>
+    const ws = new WebSocket('wss://caona.xyz');
+    ws.onopen = function() {
+      console.log('Connected to WebSocket server');
+    };
+    ws.onmessage = function(event) {
+      const messages = document.getElementById('messages');
+      const li = document.createElement('li');
+      li.appendChild(document.createTextNode(event.data));
+      messages.appendChild(li);
+    };
+    const sendButton = document.getElementById('send');
+    const messageInput = document.getElementById('message');
+    sendButton.onclick = function() {
+      const message = messageInput.value;
+      ws.send(message);
+      messageInput.value = '';
+    };
+  </script>
+</body>
+</html>

@@ -58,9 +58,21 @@ void WebSocket::on_message(websocketpp::connection_hdl hdl, websocket_server::me
     std::cout << "Received message: " << received << std::endl;
     info("Received message: %s", received.c_str());
 
-    int vid = get_vid_from_hdl(hdl); 
-    string filepath = "/home/engage/github_projects/socket/backend/static/movie" + std::to_string(vid) + "/barrages.json";
-    Singleton<JsonHandler>::instance(filepath)->append_to_file(received);
+    // size_t pos = received.find("vid");
+    // string vid;
+    // if(pos!=string::npos){
+    //     pos = received.find(":");
+    //     int start=received.find("\"",pos+1);
+    //     int end = received.find("\"",start+1);
+    //     vid=received.substr(start+1,end-start-1);
+    //     debug("vid received: %s",vid.c_str());
+    // }
+    // int vid = get_vid_from_hdl(hdl); 
+    // debug("get_vid_from_hdl: %d", vid);
+    // string filepath = "/home/engage/github_projects/socket/backend/static/movie" + std::to_string(vid) + "/barrages.json";
+    // string filepath = "/home/engage/github_projects/socket/backend/static/movie"+vid+"/barrage.json";
+    string directory = "/home/engage/github_projects/socket/backend/static/movie";
+    Singleton<JsonHandler>::instance(directory)->append_to_file(received);
 
     std::string response = "Hello from the WebSocket server!";
     ws_server.send(hdl, response, websocketpp::frame::opcode::text);
@@ -72,6 +84,7 @@ void WebSocket::on_message(websocketpp::connection_hdl hdl, websocket_server::me
 int WebSocket::get_vid_from_hdl(websocketpp::connection_hdl hdl) {
     websocket_server::connection_ptr con = ws_server.get_con_from_hdl(hdl);
     std::string uri = con->get_resource(); // 获取URI，例如 "/barrage?vid=8"
+    debug("uri: %s",uri.c_str());
     
     // 进行字符串解析，从URI中提取vid的值
     size_t pos = uri.find("vid=");

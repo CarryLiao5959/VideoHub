@@ -1,0 +1,130 @@
+/* 将视频居中显示 */
+body {
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    height: 100vh;
+    /* 使用视口高度使其占满全屏 */
+    margin: 0;
+    /* 去除任何默认的边距 */
+}
+
+/* 默认样式，主要为手机竖屏设置 */
+video-js {
+    width: 90%;
+}
+
+.video-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    padding-top: calc(80% * 9 / 16);
+    /* 16:9 的纵横比 */
+}
+
+/* 电脑端：始终适应高度 */
+@media screen and (min-width: 769px) {
+    .video-wrapper {
+        width: calc(min(80vh * 16 / 9, 90vw));
+        /* 根据 16:9 的纵横比计算 80% 视口高度的宽度 */
+        height: 80vh;
+        padding-top: 0;
+    }
+
+    .video-wrapper video-js {
+        height: 100%;
+        width: auto;
+    }
+}
+
+/* 手机横屏：适应高度 */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .video-wrapper {
+        width: calc(80vh * 16 / 9);
+        /* 根据 16:9 的纵横比计算 80% 视口高度的宽度 */
+        height: 80vh;
+        padding-top: 0;
+    }
+
+    .video-wrapper video-js {
+        height: 100%;
+        width: auto;
+    }
+}
+
+/* 通用视频样式，确保 video-js 始终填充其容器 */
+.video-wrapper video-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.vjs-paused .vjs-big-play-button,
+.vjs-paused.vjs-has-started .vjs-big-play-button {
+    display: block;
+}
+
+.video-js .vjs-big-play-button {
+    font-size: 2.5em;
+    line-height: 2.3em;
+    height: 2.5em;
+    width: 2.5em;
+    -webkit-border-radius: 2.5em;
+    -moz-border-radius: 2.5em;
+    border-radius: 2.5em;
+    background-color: #73859f;
+    background-color: rgba(115, 133, 159, .5);
+    border-width: 0.15em;
+    margin-top: -1.25em;
+    margin-left: -1.75em;
+}
+
+/* 中间的播放箭头 */
+.vjs-big-play-button .vjs-icon-placeholder {
+    font-size: 1.63em;
+}
+
+/* 加载圆圈 */
+.vjs-loading-spinner {
+    font-size: 2.5em;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    margin-top: -1em;
+    margin-left: -1.5em;
+}
+
+.video-js .vjs-time-control {
+    display: block;
+}
+
+.video-js .vjs-remaining-time {
+    display: none;
+}
+
+.barrage-area {
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    top: 0;
+}
+
+body {
+    background-image: url('/static/img/vbackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}

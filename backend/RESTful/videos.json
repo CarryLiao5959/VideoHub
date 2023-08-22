@@ -1,10 +1,28 @@
 {
     "videos": [
         {
+            "title": "VideoHub Intro",
+            "url": "static/movie12/output.m3u8",
+            "cover": "static/movie12/cover.png",
+            "vid": "12"
+        },
+        {
             "title": "西部世界第7集",
             "url": "static/movie7/output.m3u8",
             "cover": "static/movie7/cover.jpg",
             "vid": "7"
+        },
+        {
+            "title": "arm instructions overview",
+            "url": "static/movie1/output.m3u8",
+            "cover": "static/movie1/cover.png",
+            "vid": "1"
+        },
+        {
+            "title": "armv8 introduction 1",
+            "url": "static/movie2/output.m3u8",
+            "cover": "static/movie2/cover.png",
+            "vid": "2"
         },
         {
             "title": "black cat",
@@ -31,18 +49,6 @@
             "vid": "11"
         },
         {
-            "title": "arm instructions overview",
-            "url": "static/movie1/output.m3u8",
-            "cover": "static/movie1/cover.png",
-            "vid": "1"
-        },
-        {
-            "title": "armv8 introduction 1",
-            "url": "static/movie2/output.m3u8",
-            "cover": "static/movie2/cover.png",
-            "vid": "2"
-        },
-        {
             "title": "armv8 introduction 2",
             "url": "static/movie3/output.m3u8",
             "cover": "static/movie3/cover.png",
@@ -65,6 +71,12 @@
             "url": "static/movie6/output.m3u8",
             "cover": "static/movie6/cover.png",
             "vid": "6"
+        },
+        {
+            "title": "mountain people mountain sea",
+            "url": "static/movie13/output.m3u8",
+            "cover": "static/movie13/cover.png",
+            "vid": "13"
         }
     ]
 }
