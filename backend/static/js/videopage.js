@@ -119,7 +119,23 @@ myplayer.on("pause", () => {
 // 监听当前视频是否播放
 myplayer.on("play", () => {
     isVideoPaused = false;
+    // m.clear();
+    // m.start();
+    m.clear();
+    m.start();
 })
+
+// 监听视频进度条是否被拖动或点击
+myplayer.on('seeking', () => {
+    m.clear();
+    m.start();
+});
+
+myplayer.on('seeked', () => {
+    m.clear();
+    m.start();
+});
+
 
 // const count = 30
 // const repeat = 2
@@ -128,6 +144,8 @@ var barrageDataRequest = [];
 const timeline = m.use(Danmuku.Timeline, { forceRender: true })
 
 function barrageReload() {
+    m.clear();
+
     for (let i = 0; i < barrageDataRequest.length; i++) {
         console.log("barrageDataRequest.length:", barrageDataRequest.length)
 
@@ -160,7 +178,7 @@ function barrageReload() {
     }
     console.log("timeline:")
     console.log(timeline);
-    m.start()
+    m.start();
 }
 
 let videoId = document.getElementById("videoId").value;
@@ -186,29 +204,43 @@ m.start();
 
 setInterval(() => {
     if (isVideoPaused === false) {
-        timeline.emit(timeDisplay)
+        m.emit(timeDisplay)
     }
 }, 1000)
 
+const WS_URL = "wss://engage-2023.com/wss";
 // const ws = new WebSocket('ws://20.222.213.210:8081');
-const ws = new WebSocket("wss://engage-2023.com/wss");
-ws.onopen = function () {
-    console.log('Connected to WebSocket server');
-    // const vid_info={"vid":videoId};
-    // ws.send(JSON.stringify(vid_info));
-    // console.log('send: ' + JSON.stringify(vid_info));
-};
+let ws;
+function connectws() {
+    ws = new WebSocket(WS_URL);
+    // ws = new ReconnectingWebSocket(WS_URL);
 
-ws.onmessage = (event) => {
-    const { data = ""} = event || {};
-    if (data.startsWith("barrage updated")) {
-        request();
+    ws.onopen = function () {
+        console.log('Connected to WebSocket server');
+    };
+
+    ws.onmessage = (event) => {
+        const { data = "" } = event || {};
+        if (data.startsWith("barrage updated")) {
+            request();
+        }
+    };
+
+    ws.onclose = function (e) {
+        console.log('Disconnected from WebSocket server', e.reason);
+        setTimeout(connectws, 5000);
+    };
+
+    ws.onerror = function (err) {
+        console.error('WebSocket encountered an error', err.message);
+        ws.close();
     }
-};
+}
 
-ws.onclose = function () {
-    console.log('Disconnected from WebSocket server');
-};
+connectws();
+
+let heartbeatInterval = null;
+const heartbeatRate = 5000;
 
 const sendButton = document.getElementById('send');
 const messageInput = document.getElementById('message');
@@ -217,7 +249,14 @@ sendButton.onclick = function () {
     const message = messageInput.value;
 
     // 显示到屏幕上
-    m.send({ content: message }, {}, true)
+    timeline.send({ content: message }, {}, true)
+
+    // check ws connection before sending
+    if (ws.readyState != WebSocket.OPEN) {
+        alert('WebSocket is not connected. Reconnecting...');
+        connectws();
+        return;
+    }
 
     // 构建JSON对象
     const payload = {

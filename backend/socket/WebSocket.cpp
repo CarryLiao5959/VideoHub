@@ -3,22 +3,13 @@
 #include "Singleton.h"
 using namespace yazi::util;
 #include "JsonHandler.h"
+#include <typeinfo>
+using namespace std;
 
 WebSocket::WebSocket() {
     ws_server.init_asio();
 
-    // ws_server.set_tls_init_handler([&](websocketpp::connection_hdl hdl) -> std::shared_ptr<boost::asio::ssl::context> {
-    //     auto ctx = make_shared<boost::asio::ssl::context>(boost::asio::ssl::context::sslv23);
-    //     ctx->set_options(boost::asio::ssl::context::default_workarounds |
-    //                     boost::asio::ssl::context::no_sslv2 |
-    //                     boost::asio::ssl::context::no_sslv3 |
-    //                     boost::asio::ssl::context::single_dh_use);
-    //     ctx->use_certificate_chain_file("/etc/apache2/sites-available/0001_chain.pem");
-    //     ctx->use_certificate_file("/etc/apache2/sites-available/0000_cert.pem", boost::asio::ssl::context::pem);
-    //     ctx->use_private_key_file("/etc/apache2/sites-available/engage.key", boost::asio::ssl::context::pem);
-    //     return ctx;
-    // });
-    // 配置跨域连接
+    set_tls_handler(ws_server);
     ws_server.set_http_handler(bind(&WebSocket::on_http, this, std::placeholders::_1));
 
     ws_server.set_message_handler(bind(&WebSocket::on_message, this, std::placeholders::_1, std::placeholders::_2));
@@ -29,6 +20,24 @@ WebSocket::WebSocket() {
 WebSocket::~WebSocket() {
 }
 
+template <typename ServerType>
+void set_tls_handler(ServerType& server) {}
+
+void set_tls_handler(websocketpp::server<websocketpp::config::asio_tls>& server) {
+    server.set_tls_init_handler([&](websocketpp::connection_hdl hdl) -> std::shared_ptr<boost::asio::ssl::context> {
+        auto ctx = std::make_shared<boost::asio::ssl::context>(boost::asio::ssl::context::sslv23);
+        ctx->set_options(boost::asio::ssl::context::default_workarounds |
+                        boost::asio::ssl::context::no_sslv2 |
+                        boost::asio::ssl::context::no_sslv3 |
+                        boost::asio::ssl::context::single_dh_use);
+        ctx->use_certificate_chain_file("/etc/apache2/sites-available/0001_chain.pem");
+        ctx->use_certificate_file("/etc/apache2/sites-available/0000_cert.pem", boost::asio::ssl::context::pem);
+        ctx->use_private_key_file("/etc/apache2/sites-available/engage.key", boost::asio::ssl::context::pem);
+        return ctx;
+    });
+}
+
+// 配置跨域连接
 void WebSocket::on_http(websocketpp::connection_hdl hdl) {
     auto conn = ws_server.get_con_from_hdl(hdl);
     conn->append_header("Access-Control-Allow-Origin", "*");
@@ -58,19 +67,6 @@ void WebSocket::on_message(websocketpp::connection_hdl hdl, websocket_server::me
     std::cout << "Received message: " << received << std::endl;
     info("Received message: %s", received.c_str());
 
-    // size_t pos = received.find("vid");
-    // string vid;
-    // if(pos!=string::npos){
-    //     pos = received.find(":");
-    //     int start=received.find("\"",pos+1);
-    //     int end = received.find("\"",start+1);
-    //     vid=received.substr(start+1,end-start-1);
-    //     debug("vid received: %s",vid.c_str());
-    // }
-    // int vid = get_vid_from_hdl(hdl); 
-    // debug("get_vid_from_hdl: %d", vid);
-    // string filepath = "/home/engage/github_projects/socket/backend/static/movie" + std::to_string(vid) + "/barrages.json";
-    // string filepath = "/home/engage/github_projects/socket/backend/static/movie"+vid+"/barrage.json";
     string directory = "/home/engage/github_projects/socket/backend/static/movie";
     Singleton<JsonHandler>::instance(directory)->append_to_file(received);
 
@@ -79,6 +75,10 @@ void WebSocket::on_message(websocketpp::connection_hdl hdl, websocket_server::me
 
     std::string broadcast_info = "barrage updated!";
     broadcast(broadcast_info);
+}
+
+void WebSocket::on_error(connection_hdl hdl,const error_code& ec){
+    log_error("%s",ec.message().c_str());
 }
 
 int WebSocket::get_vid_from_hdl(websocketpp::connection_hdl hdl) {

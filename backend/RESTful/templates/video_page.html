@@ -1,58 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Video</title>
-
     <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
-    <!-- <script src="/home/engage/github_projects/socket/backend/RESTful/danmuku.min.js"></script>
     <script src='../barragedata.js'></script> -->
-
     <!-- 新 Bootstrap5 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
-
     <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
     <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
-
-    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
     <script src="{{ url_for('static', filename='js/danmuku.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/barragedata.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='js/reconnecting-websocket.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="../../static/css/videopage.css">
 </head>
-
 <body>
     <div class="container">
         <div class="video-wrapper" id="video-wrapper">
-
             <video-js controls class="video-js vjs-big-play-centered " playsinline id="my-player">
                 <source src="{{ video_url }}" type="application/x-mpegURL">
             </video-js>
-
             <div class="barrage-area" id="barrage-area">
             </div>
         </div>
-
         <div class="input-group">
             <span class="input-group-text">编辑弹幕内容</span>
             <textarea class="form-control" aria-label="With textarea" id="message"></textarea>
             <button class="btn btn-primary" id="send">发送</button>
         </div>
     </div>
-
     <input type="hidden" id="videoId" value="{{ vid }}">
-
     <script src="../../static/js/videopage.js"></script>
-
+    <a class="footer" href="https://engage-2023.com/">https://engage-2023.com/</a>
 </body>
-
 </html>
