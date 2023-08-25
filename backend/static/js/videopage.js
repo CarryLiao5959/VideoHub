@@ -121,14 +121,14 @@ myplayer.on("play", () => {
     isVideoPaused = false;
     // m.clear();
     // m.start();
-    m.clear();
-    m.start();
+    // m.clear();
+    // m.start();
 })
 
 // 监听视频进度条是否被拖动或点击
 myplayer.on('seeking', () => {
-    m.clear();
-    m.start();
+    // m.clear();
+    // m.start();
 });
 
 myplayer.on('seeked', () => {
@@ -144,7 +144,10 @@ var barrageDataRequest = [];
 const timeline = m.use(Danmuku.Timeline, { forceRender: true })
 
 function barrageReload() {
-    m.clear();
+    // m.clear();
+    timeline.timeStore = [];
+    console.log("timeline has been reloaded!");
+    console.log(timeline);
 
     for (let i = 0; i < barrageDataRequest.length; i++) {
         console.log("barrageDataRequest.length:", barrageDataRequest.length)
@@ -204,7 +207,7 @@ m.start();
 
 setInterval(() => {
     if (isVideoPaused === false) {
-        m.emit(timeDisplay)
+        timeline.emit(timeDisplay)
     }
 }, 1000)
 
@@ -249,7 +252,7 @@ sendButton.onclick = function () {
     const message = messageInput.value;
 
     // 显示到屏幕上
-    timeline.send({ content: message }, {}, true)
+    m.send({ content: message }, {}, true)
 
     // check ws connection before sending
     if (ws.readyState != WebSocket.OPEN) {

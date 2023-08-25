@@ -23,6 +23,47 @@
 <body>
     <!-- 页面的标题头部 -->
     <div class="header">VideoHub</div>
+    <!-- 导航栏开始 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- 折叠导航栏的按钮，在小屏幕上显示，用于切换导航项的展示 -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <a class="navbar-brand" href="#">Option</a> -->
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active" id="videos">
+                    <a class="nav-link" href="#">All</a>
+                </li>
+                <!-- The rest of the items will be collapsed on mobile -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-lg-none" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#" id="videos1">Animals</a>
+                        <a class="dropdown-item" href="#" id="videos2">Movies</a>
+                        <a class="dropdown-item" href="#" id="videos3">Courses</a>
+                        <a class="dropdown-item" href="#" id="videos4">Others</a>
+                    </div>
+                </li>
+                <!-- On larger screens, the items will be visible by default -->
+                <li class="nav-item d-none d-lg-block" id="videos1">
+                    <a class="nav-link" href="#">Animals</a>
+                </li>
+                <li class="nav-item d-none d-lg-block" id="videos2">
+                    <a class="nav-link" href="#">Movies</a>
+                </li>
+                <li class="nav-item d-none d-lg-block" id="videos3">
+                    <a class="nav-link" href="#">Courses</a>
+                </li>
+                <li class="nav-item d-none d-lg-block" id="videos4">
+                    <a class="nav-link" href="#">Others</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- <a class="navbar-brand" href="#">Option</a> -->
         <ul class="navbar-nav mr-auto">

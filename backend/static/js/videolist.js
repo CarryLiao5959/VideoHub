@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    // 保存navbar的初始位置
+    const navbarOffsetTop = $(".navbar").offset().top;
+
+    $(window).on('scroll', function () {
+        if ($(window).scrollTop() > navbarOffsetTop) {
+            $('.navbar').addClass('fixed-top');
+        } else {
+            $('.navbar').removeClass('fixed-top');
+        }
+    });
     // Function to load videos based on tab
     function loadVideos(tab = 'videos') {
         $.ajax({
