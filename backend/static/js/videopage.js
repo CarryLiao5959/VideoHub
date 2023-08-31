@@ -28,74 +28,53 @@ const m = Danmuku.create({
 
             node.classList.add('barrage')
             // node.style.color = `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
-            node.style.color = 'rgba(255, 255, 255, 0.5)'
+            node.style.color = 'rgba(255, 255, 255, 0.9)'
         },
 
         // // 弹幕开始移动时
-        // barrageMove(barrage, node) {
-        //     // 查看当前这个弹幕是否被修正过停留在视图的时长
-        //     // console.log(barrage.isChangeDuration)
-        //     node.style.opacity = opacity.value / 100
-        // },
+        barrageMove(barrage, node) {
+            console.log("barrage:", barrage);
+            console.log("node", node)
+        },
 
         // // 弹幕节点移除视图时
         barrageRemove(barrage, node) {
         },
 
-        // barrageDestroy(barrage, node) {
-        //     allNumber.textContent = m.length
-        //     showNumber.textContent = m.showLength
-        // },
+        barrageDestroy(barrage, node) {
+        },
 
         send() {
-            // allNumber.textContent = m.length
         },
 
         ended() {
-            console.log('end')
         },
 
         capacityWarning(manager) {
-            console.error('capacityWarning 钩子被调用')
         },
 
         willRender(manager, barrage, isSpecial) {
-            if (!isSpecial) return
-            console.log(barrage, isSpecial)
         },
 
-        // render() {
-        //     allNumber.textContent = m.length
-        //     showNumber.textContent = m.showLength
-        // },
+        render() {
+        },
 
-        // start() {
-        //     start.classList.add('select')
-        //     stopBtn.classList.remove('select')
-        // },
+        start() {
+        },
 
-        // stop() {
-        //     start.classList.remove('select')
-        //     stopBtn.classList.add('select')
-        // },
+        stop() {
+        },
 
         clear() {
-            allNumber.textContent = m.length
-            showNumber.textContent = m.showLength
         },
 
         setOptions() {
-            console.log('setOptions')
         },
 
         show() {
-            show.classList.add('select')
-            hidden.classList.remove('select')
         },
 
         hidden() {
-            show.classList.remove('select')
-            hidden.classList.add('select')
         },
     }
 })
@@ -121,8 +100,7 @@ myplayer.on("play", () => {
     isVideoPaused = false;
     // m.clear();
     // m.start();
-    // m.clear();
-    // m.start();
+
 })
 
 // 监听视频进度条是否被拖动或点击
@@ -137,8 +115,6 @@ myplayer.on('seeked', () => {
 });
 
 
-// const count = 30
-// const repeat = 2
 
 var barrageDataRequest = [];
 const timeline = m.use(Danmuku.Timeline, { forceRender: true })
@@ -273,149 +249,3 @@ sendButton.onclick = function () {
     messageInput.value = '';
 };
 
-// 定义初始值
-height.value = m.opts.height
-limit.value = m.opts.limit
-rowGap.value = m.opts.rowGap
-renderTime.value = m.opts.interval
-minTime.value = m.opts.times[0]
-maxTime.value = m.opts.times[1]
-
-const setDirection = direction => {
-    if (direction === 'left') {
-        left.classList.add('select')
-        right.classList.remove('select')
-    } else {
-        left.classList.remove('select')
-        right.classList.add('select')
-    }
-}
-setDirection(m.opts.direction)
-
-const input = (node, cb) => {
-    node.oninput = e => {
-        const val = Number(e.currentTarget.value)
-        if (typeof val === 'number' && !isNaN(val)) {
-            cb(val)
-        }
-    }
-}
-
-// 轨道高度
-input(height, val => {
-    m.setOptions({ height: val })
-})
-
-// limit
-input(limit, val => {
-    m.setOptions({ limit: val })
-})
-
-// rowgap
-input(rowGap, val => {
-    m.setOptions({ rowGap: val })
-})
-
-// render time
-input(renderTime, val => {
-    m.setOptions({ interval: val })
-})
-
-// 隐藏显示
-show.onclick = e => {
-    m.show()
-}
-
-hidden.onclick = e => {
-    m.hidden()
-}
-
-// direction
-left.onclick = e => {
-    setDirection('left')
-    m.setOptions({ direction: 'left' })
-}
-
-right.onclick = e => {
-    setDirection('right')
-    m.setOptions({ direction: 'right' })
-}
-
-// 启动
-start.onclick = e => {
-    m.start()
-}
-
-stopBtn.onclick = e => {
-    m.stop()
-}
-
-// times
-input(minTime, min => {
-    const max = m.opts.times[1]
-    m.setOptions({ times: [min, max] })
-})
-
-input(maxTime, max => {
-    const min = m.opts.times[0]
-    m.setOptions({ times: [min, max] })
-})
-
-
-// 清空弹幕
-clear.onclick = e => {
-    m.clear()
-}
-
-// 透明度
-input(opacity, val => {
-    val /= 100
-    m.each(barrage => {
-        barrage.node.style.opacity = val
-    })
-})
-
-// 显示区域
-const toggle = node => {
-    [allArea, topArea, bottomArea].forEach(v => {
-        if (v === node) {
-            v.classList.add('select')
-        } else {
-            v.classList.remove('select')
-        }
-    })
-}
-
-// 全部半部分区域
-allArea.onclick = e => {
-    m.container.style.height = '100vh'
-    m.container.style.transform = 'translateY(0)'
-    m.resize()
-    toggle(allArea)
-}
-
-// 上半部分区域
-topArea.onclick = e => {
-    m.container.style.height = '50vh'
-    m.container.style.transform = 'translateY(0)'
-    m.resize()
-    toggle(topArea)
-}
-
-// 下半部分区域
-bottomArea.onclick = e => {
-    m.container.style.height = '50vh'
-    m.container.style.transform = 'translateY(100%)'
-    m.resize()
-    toggle(bottomArea)
-}
-
-// 实时响应
-responsive.onclick = e => {
-    m.setOptions({
-        rowGap: -1,
-        limit: Infinity,
-    })
-    rowGap.value = -1
-    limit.value = Infinity
-}

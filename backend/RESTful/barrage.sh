@@ -1,0 +1,1 @@
+sudo nohup python3 -m barrage.main > ./barrage/logs/barrage.log 2>&1 &

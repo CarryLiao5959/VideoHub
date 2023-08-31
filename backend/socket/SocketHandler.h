@@ -33,6 +33,7 @@ class SocketHandler {
     EventPoller *m_epoll;
     Socket *m_server;
     ObjectPool<Socket> m_sockpool;
+    // 用来广播所有client
     vector<Socket*> active_sock;
     Mutex m_mutex;
 };

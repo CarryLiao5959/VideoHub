@@ -122,6 +122,19 @@ video-js {
     top: 0;
 }
 
+.barrage {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 5px;
+    border-radius: 3px;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
 .footer {
     background-color: #E0E0E0;
     /* 浅灰色 */

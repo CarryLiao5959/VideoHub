@@ -9,6 +9,11 @@
             "barrageTime": 2
         },
         {
+            "barrageText": "哈哈哈哈",
+            "barrageTime": 2,
+            "vid": "1"
+        },
+        {
             "barrageText": "第3秒",
             "barrageTime": 3
         },
@@ -19,6 +24,11 @@
         {
             "barrageText": "第5秒",
             "barrageTime": 5
+        },
+        {
+            "barrageText": "。。。。",
+            "barrageTime": 5,
+            "vid": "1"
         },
         {
             "barrageText": "第6秒",
@@ -39,6 +49,11 @@
         {
             "barrageText": "第10秒",
             "barrageTime": 10
+        },
+        {
+            "barrageText": "很棒！",
+            "barrageTime": 18,
+            "vid": "1"
         }
     ]
 }
