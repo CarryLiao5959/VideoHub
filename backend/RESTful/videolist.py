@@ -107,6 +107,17 @@ def update_videos_json(movie_folder_name, mp4_filename):
         json.dump(data, file, indent=4)
 
 
+def extract_frame(video_path, frame_number, output_path):
+    cmd = [
+        'ffmpeg', 
+        '-i', video_path, 
+        '-vf', f'select=eq(n\,{frame_number})', 
+        '-vframes', '1', 
+        output_path
+    ]
+    subprocess.check_call(cmd)
+
+
 @app.route('/upload', methods=['POST'])
 @cross_origin()
 def upload_file():
@@ -134,6 +145,14 @@ def upload_file():
                 file.save(filepath)
                 logging.info(f"File successfully saved to: {filepath}")
 
+                # Extract cover image from uploaded video
+                cover_path = os.path.join(next_movie_folder, 'cover.png')
+                try:
+                    extract_frame(filepath, 25, cover_path)  # 25 is the frame number; you can adjust it as needed
+                    logging.info(f"Cover image extracted to: {cover_path}")
+                except Exception as e:
+                    logging.error(f"Error extracting cover image: {e}")
+
                 # 创建 barrages.json
                 barrages_path = os.path.join(next_movie_folder, 'barrages.json')
                 try:
@@ -143,7 +162,7 @@ def upload_file():
                 except Exception as e:
                     logging.error(f"Error creating barrages.json: {e}")
 
-                subprocess_cmd = ['sudo /home/engage/github_projects/socket/backend/config/ffmpeg.sh', os.path.basename(next_movie_folder), '1']
+                subprocess_cmd = ['sudo','/home/engage/github_projects/socket/backend/config/ffmpeg.sh', os.path.basename(next_movie_folder), '1']
                 try:
                     subprocess.check_call(subprocess_cmd)
                     logging.info(f"Successfully executed: {' '.join(subprocess_cmd)}")
@@ -152,7 +171,7 @@ def upload_file():
                     logging.error(e)
 
                 update_videos_json(os.path.basename(next_movie_folder), filename)
-                
+
             except Exception as e:
                 logging.error(f"Error saving file to {filepath}: {str(e)}")
                 raise e  # 重新抛出异常以供上级处理或让其终止程序

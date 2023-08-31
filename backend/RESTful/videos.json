@@ -13,7 +13,7 @@
             "vid": "14"
         },
         {
-            "title": "西部世界第7集",
+            "title": "\u897f\u90e8\u4e16\u754c\u7b2c7\u96c6",
             "url": "static/movie7/output.m3u8",
             "cover": "static/movie7/cover.jpg",
             "vid": "7"
@@ -83,6 +83,12 @@
             "url": "static/movie13/output.m3u8",
             "cover": "static/movie13/cover.png",
             "vid": "13"
+        },
+        {
+            "title": "lost_game",
+            "url": "static/movie15/output.m3u8",
+            "cover": "static/movie15/cover.png",
+            "vid": "15"
         }
     ]
 }
