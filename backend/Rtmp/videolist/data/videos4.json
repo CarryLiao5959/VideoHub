@@ -1,0 +1,22 @@
+{
+    "videos": [
+        {
+            "title": "VideoHub Intro",
+            "url": "static/movie12/output.m3u8",
+            "cover": "static/movie12/cover.png",
+            "vid": "12"
+        },
+        {
+            "title": "VideoHub Intro(with Subtitle)",
+            "url": "static/movie14/output.m3u8",
+            "cover": "static/movie14/cover.png",
+            "vid": "14"
+        },
+        {
+            "title": "mountain people mountain sea",
+            "url": "static/movie13/output.m3u8",
+            "cover": "static/movie13/cover.png",
+            "vid": "13"
+        }
+    ]
+}

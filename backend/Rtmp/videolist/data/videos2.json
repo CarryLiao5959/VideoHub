@@ -1,0 +1,10 @@
+{
+    "videos": [
+        {
+            "title": "西部世界第7集",
+            "url": "static/movie7/output.m3u8",
+            "cover": "static/movie7/cover.jpg",
+            "vid": "7"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "videos": [
+        {
+            "title": "black cat",
+            "url": "static/movie8/output.m3u8",
+            "cover": "static/movie8/cover.png",
+            "vid": "8"
+        },
+        {
+            "title": "colorful parrot",
+            "url": "static/movie9/output.m3u8",
+            "cover": "static/movie9/cover.png",
+            "vid": "9"
+        },
+        {
+            "title": "cat drink water",
+            "url": "static/movie10/output.m3u8",
+            "cover": "static/movie10/cover.png",
+            "vid": "10"
+        },
+        {
+            "title": "little cat",
+            "url": "static/movie11/output.m3u8",
+            "cover": "static/movie11/cover.png",
+            "vid": "11"
+        }
+    ]
+}
