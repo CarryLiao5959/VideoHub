@@ -8,6 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 定义页面标题 -->
     <title>VideoHub</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const isHttp = location.protocol === 'http:';
+            if (isHttp) { location.protocol = 'https:'; }
+        });
+    </script>
     <!-- 加载jQuery库 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- 加载Popper.js, Bootstrap 5 的依赖项 -->
